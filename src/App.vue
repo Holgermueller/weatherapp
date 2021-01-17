@@ -23,12 +23,6 @@ export default {
 
   components: {},
 
-  // computed: {
-  //   menuLinks() {
-
-  //   },
-  // },
-
   data() {
     return {
       menuLinks: [

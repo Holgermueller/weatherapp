@@ -1,34 +1,26 @@
 <template>
   <div>
-    <v-card class="date-time-display">
-      <v-card-title>
-        {{ todaysDate }}
-      </v-card-title>
-      <v-card-subtitle>
-        {{ timeRightNow }}
-      </v-card-subtitle>
-    </v-card>
+    <DateAndTime />
+    <Forecast />
   </div>
 </template>
 
 <script>
-import moment from "moment";
+import DateAndTime from "./HomeComponents/Time";
+import Forecast from "./HomeComponents/Forecast";
 
 export default {
   name: "Home",
 
+  components: {
+    DateAndTime,
+    Forecast,
+  },
+
   data() {
-    return {
-      todaysDate: moment().format("Do MMM YYYY"),
-      timeRightNow: moment().format("hh:mm:ss A"),
-    };
+    return {};
   },
 };
 </script>
 
-<style scoped>
-.date-time-display {
-  width: 55%;
-  margin: 2% auto;
-}
-</style>
+<style scoped></style>

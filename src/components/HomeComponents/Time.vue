@@ -1,0 +1,34 @@
+<template>
+  <div>
+    <v-card class="date-time-display">
+      <v-card-title class="text-center">
+        {{ todaysDate }}
+      </v-card-title>
+      <v-card-subtitle class="text-center">
+        {{ timeRightNow }}
+      </v-card-subtitle>
+    </v-card>
+  </div>
+</template>
+
+<script>
+import moment from "moment";
+
+export default {
+  name: "Time",
+
+  data() {
+    return {
+      todaysDate: moment().format("Do MMM YYYY"),
+      timeRightNow: moment().format("hh:mm:ss A"),
+    };
+  },
+};
+</script>
+
+<style scoped>
+.date-time-display {
+  width: 55%;
+  margin: 2% auto;
+}
+</style>
