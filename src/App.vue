@@ -1,6 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar app color="red" dark> </v-app-bar>
+    <v-app-bar app color="red" dark>
+      <div v-for="link in menuLinks" :key="link.title" link>
+        <v-btn :to="link.link" elevation="0">
+          <v-icon left>
+            {{ link.icon }}
+          </v-icon>
+          {{ link.title }}
+        </v-btn>
+      </div>
+    </v-app-bar>
 
     <v-main>
       <router-view></router-view>
@@ -14,8 +23,27 @@ export default {
 
   components: {},
 
-  data: () => ({
-    //
-  }),
+  // computed: {
+  //   menuLinks() {
+
+  //   },
+  // },
+
+  data() {
+    return {
+      menuLinks: [
+        {
+          icon: "mdi-home",
+          title: "Home",
+          link: "/",
+        },
+        {
+          icon: "mdi-home",
+          title: "5 Day Forecast",
+          link: "fiveDay",
+        },
+      ],
+    };
+  },
 };
 </script>
