@@ -10,8 +10,13 @@ export default {
   },
 
   actions: {
-    getForecast({ commit }) {
+    getForecast({ commit, getters }) {
+      let lat = getters.lat;
+      let long = getters.long;
+      console.log(lat);
+      console.log(long);
       let forecast = console.log("hello");
+
       commit("SET_FORECAST", forecast);
     },
   },
