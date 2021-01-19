@@ -34,7 +34,12 @@ export default {
         {
           icon: "mdi-home",
           title: "5 Day Forecast",
-          link: "fiveDay",
+          link: "/fiveDay",
+        },
+        {
+          icon: "mdi-home",
+          title: "About",
+          link: "/about",
         },
       ],
     };

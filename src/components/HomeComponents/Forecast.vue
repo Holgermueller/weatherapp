@@ -28,7 +28,7 @@ export default {
     };
   },
 
-  beforeCreate() {
+  beforeMount() {
     this.$store.dispatch("getLocation");
   },
 
