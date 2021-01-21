@@ -5,14 +5,7 @@
         <h1>Forecast'll appear here.</h1>
       </v-card-title>
 
-      <v-card-text>
-        <p>
-          {{ location.lat }}
-        </p>
-        <p>
-          {{ location.long }}
-        </p>
-      </v-card-text>
+      <v-card-text> </v-card-text>
     </v-card>
   </div>
 </template>
@@ -28,15 +21,8 @@ export default {
     };
   },
 
-  beforeCreate() {
-    this.$store.dispatch("getLocation");
-  },
-
   created() {
-    this.$store.dispatch("getForecast", {
-      lat: this.location.lat,
-      long: this.location.long,
-    });
+    this.$store.dispatch("getForecast");
   },
 
   computed: {

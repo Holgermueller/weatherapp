@@ -1,3 +1,6 @@
+import axios from "axios";
+import APIKey from "../../APIKey";
+
 export default {
   state: {
     todaysForecast: null,
@@ -15,7 +18,7 @@ export default {
         (position) => {
           let lat = position.coords.latitude;
           let long = position.coords.longitude;
-          const APIKey = "";
+          //const APIKey = APIKey;
           let QUERYURL =
             "https://api.openweathermap.org/data/2.5/weather?lat=" +
             lat +
@@ -24,10 +27,14 @@ export default {
             "&APPID=" +
             APIKey;
 
-          console.log(QUERYURL);
-
-          console.log(lat);
-          console.log(long);
+          axios
+            .get(QUERYURL)
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         },
         (error) => {
           console.log(error.message);
