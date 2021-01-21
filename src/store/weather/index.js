@@ -10,22 +10,29 @@ export default {
   },
 
   actions: {
-    getForecast({ commit, getters }) {
-      const APIKey = "";
-      let LAT = getters.lat;
-      let LONG = getters.long;
-      let QUERYURL =
-        "https://api.openweathermap.org/data/2.5/weather?lat=" +
-        LAT +
-        "&lon=" +
-        LONG +
-        "&APPID=" +
-        APIKey;
+    getForecast({ commit }) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          let lat = position.coords.latitude;
+          let long = position.coords.longitude;
+          const APIKey = "";
+          let QUERYURL =
+            "https://api.openweathermap.org/data/2.5/weather?lat=" +
+            lat +
+            "&lon=" +
+            long +
+            "&APPID=" +
+            APIKey;
 
-      console.log(QUERYURL);
+          console.log(QUERYURL);
 
-      console.log(LAT);
-      console.log(LONG);
+          console.log(lat);
+          console.log(long);
+        },
+        (error) => {
+          console.log(error.message);
+        }
+      );
 
       let forecast = console.log("hello");
 

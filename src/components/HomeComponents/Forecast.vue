@@ -28,12 +28,15 @@ export default {
     };
   },
 
-  beforeMount() {
+  beforeCreate() {
     this.$store.dispatch("getLocation");
   },
 
   created() {
-    this.$store.dispatch("getForecast");
+    this.$store.dispatch("getForecast", {
+      lat: this.location.lat,
+      long: this.location.long,
+    });
   },
 
   computed: {
