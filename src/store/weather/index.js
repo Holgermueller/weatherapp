@@ -3,7 +3,7 @@ import APIKey from "../../APIKey";
 
 export default {
   state: {
-    todaysForecast: null,
+    todaysForecast: [],
   },
 
   mutations: {
@@ -18,7 +18,6 @@ export default {
         (position) => {
           let lat = position.coords.latitude;
           let long = position.coords.longitude;
-          //const APIKey = APIKey;
           let QUERYURL =
             "https://api.openweathermap.org/data/2.5/weather?lat=" +
             lat +
@@ -29,8 +28,10 @@ export default {
 
           axios
             .get(QUERYURL)
-            .then((data) => {
-              console.log(data);
+            .then((response) => {
+              let forecast = response.data;
+              commit("SET_FORECAST", forecast);
+              console.log(forecast.main);
             })
             .catch((err) => {
               console.log(err);
@@ -40,10 +41,6 @@ export default {
           console.log(error.message);
         }
       );
-
-      let forecast = console.log("hello");
-
-      commit("SET_FORECAST", forecast);
     },
   },
 

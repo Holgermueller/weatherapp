@@ -5,7 +5,11 @@
         <h1>Forecast'll appear here.</h1>
       </v-card-title>
 
-      <v-card-text> </v-card-text>
+      <v-card-text>
+        <p>
+          {{ todaysForecast.name }}
+        </p>
+      </v-card-text>
     </v-card>
   </div>
 </template>
@@ -15,19 +19,16 @@ export default {
   name: "Forecast",
 
   data() {
-    return {
-      lat: null,
-      long: null,
-    };
+    return {};
   },
 
-  created() {
+  beforeCreate() {
     this.$store.dispatch("getForecast");
   },
 
   computed: {
-    location() {
-      return this.$store.state.location;
+    todaysForecast() {
+      return this.$store.state.weather.todaysForecast;
     },
   },
 };
