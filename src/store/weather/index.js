@@ -31,7 +31,7 @@ export default {
             .then((response) => {
               let forecast = response.data;
               commit("SET_FORECAST", forecast);
-              console.log(forecast.main);
+              console.log(forecast);
             })
             .catch((err) => {
               console.log(err);
