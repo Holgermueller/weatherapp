@@ -2,9 +2,7 @@
   <div>
     <v-card class="forecast-display">
       <v-card-title>
-        <h1>
-          {{ todaysForecast.name }}
-        </h1>
+        <h1>{{ todaysForecast.name }}, {{ todaysForecast.sys.country }}</h1>
         <v-spacer></v-spacer>
         <h1>
           {{ todaysForecast.main.temp }}
@@ -17,10 +15,10 @@
 
       <v-card-text>
         <p>
-          {{ todaysForecast.sys.sunrise }}
+          {{ timestampToDate(todaysForecast.sys.sunrise) }}
         </p>
         <p>
-          {{ todaysForecast.sys.sunset }}
+          {{ timestampToDate(todaysForecast.sys.sunset) }}
         </p>
       </v-card-text>
     </v-card>
@@ -42,6 +40,13 @@ export default {
   computed: {
     todaysForecast() {
       return this.$store.state.weather.todaysForecast;
+    },
+  },
+
+  methods: {
+    timestampToDate(timestamp) {
+      let date = new Date(timestamp * 1000);
+      return date.toLocaleTimeString();
     },
   },
 };
