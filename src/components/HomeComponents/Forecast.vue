@@ -11,13 +11,16 @@
       </v-card-title>
 
       <v-card-subtitle>
+        <h4>Description: {{ todaysForecast.weather[0].description }}</h4>
+      </v-card-subtitle>
+
+      <v-card-text>
         <h3>
           Feels like:
           {{ convertKelvinToFahrenheit(todaysForecast.main.feels_like) }}&#176;
           F / {{ convertKelvinToCelcius(todaysForecast.main.feels_like) }}&#176;
           C
         </h3>
-
         <h3>
           High:
           {{ convertKelvinToFahrenheit(todaysForecast.main.temp_max) }}&#176; F
@@ -28,11 +31,22 @@
           {{ convertKelvinToFahrenheit(todaysForecast.main.temp_min) }}&#176; F
           / {{ convertKelvinToCelcius(todaysForecast.main.temp_min) }}&#176; C
         </h3>
-      </v-card-subtitle>
+        <p>
+          <v-icon left>mdi-weather-sunset-up</v-icon>
+          Sunrise: {{ timestampToDate(todaysForecast.sys.sunrise) }}
+        </p>
+        <p>
+          <v-icon left>mdi-weather-sunset-down</v-icon>Sunset:
+          {{ timestampToDate(todaysForecast.sys.sunset) }}
+        </p>
 
-      <v-card-text>
-        <p>Sunrise: {{ timestampToDate(todaysForecast.sys.sunrise) }}</p>
-        <p>Sunset: {{ timestampToDate(todaysForecast.sys.sunset) }}</p>
+        <h5>
+          Pressure: {{ convertPressure(todaysForecast.main.pressure) }} inches
+        </h5>
+
+        <h5>
+          Visibility: {{ convertVisibility(todaysForecast.visibility) }} miles
+        </h5>
       </v-card-text>
     </v-card>
   </div>
@@ -63,13 +77,19 @@ export default {
     },
 
     convertKelvinToFahrenheit(value) {
-      let kelvin = parseFloat(value);
-      return Math.round((kelvin - 273.15) * 1.8 + 32);
+      return Math.round((parseFloat(value) - 273.15) * 1.8 + 32);
     },
 
     convertKelvinToCelcius(value) {
-      let kelvin = parseFloat(value);
-      return Math.round(kelvin - 273.15);
+      return Math.round(parseFloat(value) - 273.15);
+    },
+
+    convertVisibility(value) {
+      return Math.round(value * 0.000621371192);
+    },
+
+    convertPressure(value) {
+      return Math.round(value * 0.02953);
     },
   },
 };
