@@ -5,8 +5,7 @@
         <h1>{{ todaysForecast.name }}, {{ todaysForecast.sys.country }}</h1>
         <v-spacer></v-spacer>
         <h1>
-          {{ convertKelvinToFahrenheit(todaysForecast.main.temp) }}&#176; F /
-          {{ convertKelvinToCelcius(todaysForecast.main.temp) }}&#176; C
+          {{ convertKelvinToFahrenheit(todaysForecast.main.temp) }}&#176; F
         </h1>
       </v-card-title>
 
@@ -54,7 +53,7 @@
 
 <script>
 export default {
-  name: "Forecast",
+  name: "FahrenheitForecast",
 
   data() {
     return {};
@@ -95,9 +94,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.forecast-display {
-  width: 75%;
-  margin: auto;
-}
-</style>
+<style scoped></style>

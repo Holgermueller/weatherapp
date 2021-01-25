@@ -1,20 +1,20 @@
 <template>
   <div>
     <DateAndTime />
-    <Forecast />
+    <FahrCelciusTabs />
   </div>
 </template>
 
 <script>
 import DateAndTime from "./HomeComponents/Time";
-import Forecast from "./HomeComponents/Forecast";
+import FahrCelciusTabs from "./HomeComponents/FahrCelciusTabs";
 
 export default {
   name: "Home",
 
   components: {
     DateAndTime,
-    Forecast,
+    FahrCelciusTabs,
   },
 
   data() {
