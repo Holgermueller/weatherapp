@@ -13,10 +13,10 @@
         <v-tab-item v-for="(tab, index) in tabs" :key="index">
           <v-card>
             <div v-if="tab.tabName === 'Fahrenheit'">
-              <FahrenheitForecast />
+              <FahrenheitForecast :todaysForecast="todaysForecast" />
             </div>
             <div v-else>
-              <CelciusForecast />
+              <CelciusForecast :todaysForecast="todaysForecast" />
             </div>
           </v-card>
         </v-tab-item>
@@ -49,6 +49,16 @@ export default {
         },
       ],
     };
+  },
+
+  beforeCreate() {
+    this.$store.dispatch("getForecast");
+  },
+
+  computed: {
+    todaysForecast() {
+      return this.$store.state.weather.todaysForecast;
+    },
   },
 };
 </script>

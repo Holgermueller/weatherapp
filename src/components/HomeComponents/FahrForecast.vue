@@ -17,19 +17,19 @@
         <h3>
           Feels like:
           {{ convertKelvinToFahrenheit(todaysForecast.main.feels_like) }}&#176;
-          F / {{ convertKelvinToCelcius(todaysForecast.main.feels_like) }}&#176;
-          C
+          F
         </h3>
         <h3>
           High:
           {{ convertKelvinToFahrenheit(todaysForecast.main.temp_max) }}&#176; F
-          / {{ convertKelvinToCelcius(todaysForecast.main.temp_max) }}&#176; C
         </h3>
         <h3>
           Low:
           {{ convertKelvinToFahrenheit(todaysForecast.main.temp_min) }}&#176; F
-          / {{ convertKelvinToCelcius(todaysForecast.main.temp_min) }}&#176; C
         </h3>
+
+        <p>Humidity: {{ todaysForecast.main.humidity }}%</p>
+
         <p>
           <v-icon left>mdi-weather-sunset-up</v-icon>
           Sunrise: {{ timestampToDate(todaysForecast.sys.sunrise) }}
@@ -55,18 +55,10 @@
 export default {
   name: "FahrenheitForecast",
 
+  props: ["todaysForecast"],
+
   data() {
     return {};
-  },
-
-  beforeCreate() {
-    this.$store.dispatch("getForecast");
-  },
-
-  computed: {
-    todaysForecast() {
-      return this.$store.state.weather.todaysForecast;
-    },
   },
 
   methods: {
@@ -77,10 +69,6 @@ export default {
 
     convertKelvinToFahrenheit(value) {
       return Math.round((parseFloat(value) - 273.15) * 1.8 + 32);
-    },
-
-    convertKelvinToCelcius(value) {
-      return Math.round(parseFloat(value) - 273.15);
     },
 
     convertVisibility(value) {
