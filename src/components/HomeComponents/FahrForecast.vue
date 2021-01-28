@@ -30,23 +30,29 @@
 
         <p>Humidity: {{ todaysForecast.main.humidity }}%</p>
 
+        <h5>
+          Pressure:
+          {{ convertPressureToInches(todaysForecast.main.pressure) }} inches
+        </h5>
+
+        <h5>
+          Visibility:
+          {{ convertVisibilityToMiles(todaysForecast.visibility) }} miles
+        </h5>
+      </v-card-text>
+
+      <v-card-actions>
         <p>
           <v-icon left>mdi-weather-sunset-up</v-icon>
           Sunrise: {{ timestampToDate(todaysForecast.sys.sunrise) }}
         </p>
+        <v-spacer></v-spacer>
         <p>
-          <v-icon left>mdi-weather-sunset-down</v-icon>Sunset:
+          Sunset:
           {{ timestampToDate(todaysForecast.sys.sunset) }}
+          <v-icon right>mdi-weather-sunset-down</v-icon>
         </p>
-
-        <h5>
-          Pressure: {{ convertPressure(todaysForecast.main.pressure) }} inches
-        </h5>
-
-        <h5>
-          Visibility: {{ convertVisibility(todaysForecast.visibility) }} miles
-        </h5>
-      </v-card-text>
+      </v-card-actions>
     </v-card>
   </div>
 </template>
@@ -71,11 +77,11 @@ export default {
       return Math.round((parseFloat(value) - 273.15) * 1.8 + 32);
     },
 
-    convertVisibility(value) {
+    convertVisibilityToMiles(value) {
       return Math.round(value * 0.000621371192);
     },
 
-    convertPressure(value) {
+    convertPressureToInches(value) {
       return Math.round(value * 0.02953);
     },
   },
