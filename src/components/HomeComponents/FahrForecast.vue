@@ -39,6 +39,17 @@
           Visibility:
           {{ convertVisibilityToMiles(todaysForecast.visibility) }} miles
         </h5>
+
+        <h5>
+          Cloudiness:
+          {{ todaysForecast.clouds.all }}%
+        </h5>
+
+        <h5>
+          Wind:
+          {{ todaysForecast.wind.deg }}
+          {{ convertSpeedToMPH(todaysForecast.wind.speed) }} mph
+        </h5>
       </v-card-text>
 
       <v-card-actions>
@@ -83,6 +94,10 @@ export default {
 
     convertPressureToInches(value) {
       return Math.round(value * 0.02953);
+    },
+
+    convertSpeedToMPH(value) {
+      return Math.round(value * 2.24);
     },
   },
 };

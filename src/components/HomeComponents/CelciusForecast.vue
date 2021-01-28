@@ -36,6 +36,17 @@
           Visibility:
           {{ convertVisibilityToMetric(todaysForecast.visibility) }} km
         </h5>
+
+        <h5>
+          Clouds:
+          {{ todaysForecast.clouds.all }}%
+        </h5>
+
+        <h5>
+          Wind:
+          {{ todaysForecast.wind.deg }}
+          {{ todaysForecast.wind.speed }}m/s
+        </h5>
       </v-card-text>
       <v-card-actions>
         <p>
