@@ -14,6 +14,19 @@
       </v-card-subtitle>
 
       <v-card-text>
+        <div
+          :style="{
+            'background-image':
+              'url(https://openweathermap.org/img/w/' +
+              todaysForecast.weather[0].icon +
+              '@2x .png)',
+          }"
+        ></div>
+        <!-- <v-img
+        alt="image"
+          :src=""
+        ></v-img> -->
+
         <h3>
           Feels like:
           {{ convertKelvinToFahrenheit(todaysForecast.main.feels_like) }}&#176;
@@ -28,7 +41,10 @@
           {{ convertKelvinToFahrenheit(todaysForecast.main.temp_min) }}&#176; F
         </h3>
 
-        <p>Humidity: {{ todaysForecast.main.humidity }}%</p>
+        <p>
+          <v-icon left>mdi-water</v-icon>
+          Humidity: {{ todaysForecast.main.humidity }}%
+        </p>
 
         <h5>
           Pressure:
@@ -41,11 +57,13 @@
         </h5>
 
         <h5>
+          <v-icon left>mdi-weather-cloudy</v-icon>
           Cloudiness:
           {{ todaysForecast.clouds.all }}%
         </h5>
 
         <h5>
+          <v-icon left>mdi-weather-windy</v-icon>
           Wind:
           {{ todaysForecast.wind.deg }}
           {{ convertSpeedToMPH(todaysForecast.wind.speed) }} mph
