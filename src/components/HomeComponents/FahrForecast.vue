@@ -14,18 +14,6 @@
       </v-card-subtitle>
 
       <v-card-text>
-        <v-layout class="progress">
-          <v-flex class="tet-xs-center">
-            <v-progress-circular
-              indeterminate
-              class="primary--text"
-              :width="7"
-              :size="70"
-              v-if="loading"
-            ></v-progress-circular>
-          </v-flex>
-        </v-layout>
-
         <div
           :style="{
             'background-image':
@@ -108,11 +96,7 @@ export default {
     return {};
   },
 
-  computed: {
-    loading() {
-      return this.$store.getters.loading;
-    },
-  },
+  computed: {},
 
   methods: {
     timestampToDate(timestamp) {

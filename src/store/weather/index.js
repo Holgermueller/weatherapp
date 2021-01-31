@@ -14,6 +14,8 @@ export default {
 
   actions: {
     getForecast({ commit }) {
+      commit("SET_LOADING", true);
+
       navigator.geolocation.getCurrentPosition(
         (position) => {
           let lat = position.coords.latitude;
@@ -31,6 +33,7 @@ export default {
             .then((response) => {
               let forecast = response.data;
               commit("SET_FORECAST", forecast);
+              commit("SET_LOADING", false);
               console.log(forecast);
             })
             .catch((err) => {

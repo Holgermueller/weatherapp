@@ -12,6 +12,18 @@
       <v-tabs-items v-model="tab">
         <v-tab-item v-for="(tab, index) in tabs" :key="index">
           <v-card>
+            <v-layout class="progress">
+              <v-flex class="tet-xs-center">
+                <v-progress-circular
+                  indeterminate
+                  class="primary--text"
+                  :width="7"
+                  :size="70"
+                  v-if="loading"
+                ></v-progress-circular>
+              </v-flex>
+            </v-layout>
+
             <div v-if="tab.tabName === 'Fahrenheit'">
               <FahrenheitForecast :todaysForecast="todaysForecast" />
             </div>
@@ -58,6 +70,10 @@ export default {
   computed: {
     todaysForecast() {
       return this.$store.state.weather.todaysForecast;
+    },
+
+    loading() {
+      return this.$store.getters.loading;
     },
   },
 };
