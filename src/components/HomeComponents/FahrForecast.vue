@@ -47,11 +47,13 @@
         </p>
 
         <h5>
+          <v-icon left>mdi-arrow-collapse-vertical</v-icon>
           Pressure:
           {{ convertPressureToInches(todaysForecast.main.pressure) }} inches
         </h5>
 
         <h5>
+          <v-icon left>mdi-eye-outline</v-icon>
           Visibility:
           {{ convertVisibilityToMiles(todaysForecast.visibility) }} miles
         </h5>
@@ -65,7 +67,7 @@
         <h5>
           <v-icon left>mdi-weather-windy</v-icon>
           Wind:
-          {{ todaysForecast.wind.deg }}
+          {{ convertWindDirection(todaysForecast.wind.deg) }}
           {{ convertSpeedToMPH(todaysForecast.wind.speed) }} mph
         </h5>
       </v-card-text>
@@ -118,6 +120,26 @@ export default {
 
     convertSpeedToMPH(value) {
       return Math.round(value * 2.24);
+    },
+
+    convertWindDirection(value) {
+      if (value > 337.5) {
+        return "Northerly";
+      } else if (value > 292.5) {
+        return "North Westerly";
+      } else if (value > 247.5) {
+        return "Westerly";
+      } else if (value > 202.5) {
+        return "South Westerly";
+      } else if (value > 157.5) {
+        return "Southerly";
+      } else if (value > 122.5) {
+        return "South Easterly";
+      } else if (value > 67.5) {
+        return "Easterly";
+      } else if (value > 22.5) {
+        return "North Easterly";
+      }
     },
   },
 };
