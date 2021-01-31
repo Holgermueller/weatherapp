@@ -83,4 +83,8 @@ export default {
 .forecast-tabs {
   margin: auto;
 }
+
+.progress {
+  margin: auto;
+}
 </style>
