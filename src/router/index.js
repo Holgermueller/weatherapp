@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../components/index";
+import Hourly from "../components/Hourly";
 import FiveDay from "../components/FiveDay";
 import About from "../components/About";
 
@@ -10,6 +11,7 @@ let router = new VueRouter({
   mode: "history",
   routes: [
     { path: "/", name: "Home", component: Home },
+    { path: "/hourly", name: "HourlyForecase", component: Hourly },
     { path: "/fiveDay", name: "FiveDay", component: FiveDay },
     { path: "/about", name: "About", component: About },
   ],

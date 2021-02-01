@@ -32,12 +32,17 @@ export default {
           link: "/",
         },
         {
-          icon: "mdi-home",
+          icon: "mdi-clock",
+          title: "Hourly Forecast",
+          link: "/hourly",
+        },
+        {
+          icon: "mdi-view-week-outline",
           title: "5 Day Forecast",
           link: "/fiveDay",
         },
         {
-          icon: "mdi-home",
+          icon: "mdi-book-open",
           title: "About",
           link: "/about",
         },
