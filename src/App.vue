@@ -38,7 +38,7 @@ export default {
         },
         {
           icon: "mdi-view-week-outline",
-          title: "5 Day Forecast",
+          title: "7 Day Forecast",
           link: "/fiveDay",
         },
         {
