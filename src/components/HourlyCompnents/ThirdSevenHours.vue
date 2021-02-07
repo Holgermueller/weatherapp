@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if="hidden1">
+    <div v-if="hidden2">
       <div
-        v-for="(hour, index) in hourlyForecast.hourly.slice(7, 14)"
+        v-for="(hour, index) in hourlyForecast.hourly.slice(14, 21)"
         :key="index"
       >
         <v-card class="forecast-display">
@@ -33,37 +33,26 @@
       </div>
     </div>
 
-    <div class="show-more" v-if="hiddenButton1">
+    <div class="show-more" v-if="hiddenButton2">
       <v-btn class="show-more-btn" block @click.prevent="showMore"
         >Show More</v-btn
       >
     </div>
-
-    <ThirdSevenHours
-      v-if="hiddenThirdSevenHours"
-      :hourlyForecast="hourlyForecast"
-    />
   </div>
 </template>
 
 <script>
 import moment from "moment";
-import ThirdSevenHours from "./ThirdSevenHours";
 
 export default {
   name: "SecondSevenHours",
-
-  components: {
-    ThirdSevenHours,
-  },
 
   props: ["hourlyForecast"],
 
   data() {
     return {
-      hidden1: false,
-      hiddenButton1: true,
-      hiddenThirdSevenHours: false,
+      hidden2: false,
+      hiddenButton2: true,
     };
   },
 
@@ -81,9 +70,8 @@ export default {
     },
 
     showMore() {
-      this.hidden1 = true;
-      this.hiddenButton1 = false;
-      this.hiddenThirdSevenHours = true;
+      this.hidden2 = true;
+      this.hiddenButton2 = false;
     },
   },
 };
