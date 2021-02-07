@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../components/index";
 import Hourly from "../components/Hourly";
-import FiveDay from "../components/FiveDay";
+import SevenDay from "../components/SevenDayForecast";
 import About from "../components/About";
 
 Vue.use(VueRouter);
@@ -12,7 +12,7 @@ let router = new VueRouter({
   routes: [
     { path: "/", name: "Home", component: Home },
     { path: "/hourly", name: "HourlyForecase", component: Hourly },
-    { path: "/fiveDay", name: "FiveDay", component: FiveDay },
+    { path: "/sevenDay", name: "SevenDay", component: SevenDay },
     { path: "/about", name: "About", component: About },
   ],
 });

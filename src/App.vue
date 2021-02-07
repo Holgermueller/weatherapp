@@ -39,7 +39,7 @@ export default {
         {
           icon: "mdi-view-week-outline",
           title: "7 Day Forecast",
-          link: "/fiveDay",
+          link: "/sevenDay",
         },
         {
           icon: "mdi-book-open",
