@@ -6,16 +6,12 @@
           {{ todaysForecast.current.temp }}, {{ todaysForecast.sys.country }}
         </h1> -->
         <v-spacer></v-spacer>
-        <h1>
-          {{ convertKelvinToFahrenheit(todaysForecast.current.temp) }}&#176; F
-        </h1>
+        <h1>{{ convertKelvinToFahrenheit(todaysForecast.temp) }}&#176; F</h1>
       </v-card-title>
 
       <v-card-subtitle>
-        <h4>{{ todaysForecast.current.weather[0].main }}</h4>
-        <h4>
-          Description: {{ todaysForecast.current.weather[0].description }}
-        </h4>
+        <h4>{{ todaysForecast.weather[0].main }}</h4>
+        <h4>Description: {{ todaysForecast.weather[0].description }}</h4>
       </v-card-subtitle>
 
       <v-card-text>
@@ -35,72 +31,60 @@
         <h3>
           <v-icon left>mdi-thermometer</v-icon>
           Feels like:
-          {{
-            convertKelvinToFahrenheit(todaysForecast.current.feels_like)
-          }}&#176; F
+          {{ convertKelvinToFahrenheit(todaysForecast.feels_like) }}&#176; F
         </h3>
-        <!-- <h3>
-          High:
-          {{ convertKelvinToFahrenheit(todaysForecast.current.temp_max) }}&#176;
-          F
-        </h3>
-        <h3>
-          Low:
-          {{ convertKelvinToFahrenheit(todaysForecast.current.temp_min) }}&#176;
-          F
-        </h3> -->
 
         <p>
           <v-icon left>mdi-water-percent</v-icon>
-          Humidity: {{ todaysForecast.current.humidity }}%
+          Humidity: {{ todaysForecast.humidity }}%
         </p>
 
         <h5>
           <v-icon left>mdi-arrow-collapse-vertical</v-icon>
           Pressure:
-          {{ convertPressureToInches(todaysForecast.current.pressure) }} inches
+          {{ convertPressureToInches(todaysForecast.pressure) }} inches
         </h5>
 
         <h5>
           <v-icon left>mdi-water</v-icon>Dew point:
-          {{ todaysForecast.current.dew_point }}
+          {{ todaysForecast.dew_point }}
         </h5>
 
         <h5>
           <v-icon left>mdi-eye-outline</v-icon>
           Visibility:
-          {{ convertVisibilityToMiles(todaysForecast.current.visibility) }}
+          {{ convertVisibilityToMiles(todaysForecast.visibility) }}
           miles
         </h5>
 
         <h5>
           <v-icon left>mdi-weather-cloudy</v-icon>
           Cloudiness:
-          {{ todaysForecast.current.clouds }}%
+          {{ todaysForecast.clouds }}%
         </h5>
 
         <h5>
           <v-icon left>mdi-weather-windy</v-icon>
           Wind:
-          {{ convertWindDirection(todaysForecast.current.wind_deg) }}
-          {{ convertSpeedToMPH(todaysForecast.current.wind_speed) }} mph
+          {{ convertWindDirection(todaysForecast.wind_deg) }}
+          {{ convertSpeedToMPH(todaysForecast.wind_speed) }} mph
         </h5>
 
         <h5>
           <v-icon left>mdi-weather-sunny</v-icon>
-          UV Index: {{ todaysForecast.current.uvi }}
+          UV Index: {{ todaysForecast.uvi }}
         </h5>
       </v-card-text>
 
       <v-card-actions>
         <p>
           <v-icon left>mdi-weather-sunset-up</v-icon>
-          Sunrise: {{ timestampToDate(todaysForecast.current.sunrise) }}
+          Sunrise: {{ timestampToDate(todaysForecast.sunrise) }}
         </p>
         <v-spacer></v-spacer>
         <p>
           Sunset:
-          {{ timestampToDate(todaysForecast.current.sunset) }}
+          {{ timestampToDate(todaysForecast.sunset) }}
           <v-icon right>mdi-weather-sunset-down</v-icon>
         </p>
       </v-card-actions>

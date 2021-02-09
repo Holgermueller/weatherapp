@@ -3,7 +3,7 @@
     <v-expansion-panels class="seven-day-display" focusable inset>
       <v-expansion-panel v-for="(day, index) in SevenDayForecast" :key="index">
         <v-expansion-panel-header>
-          {{ convertTime(day.dt) }}
+          {{ convertTimeToDayOfWeek(day.dt) }}
           <v-spacer></v-spacer>
 
           {{ convertKelvinToFahrenheit(day.temp.max) }}&#176; F /
@@ -11,12 +11,12 @@
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          Description: {{ day.weather[0].description }}
+          <h5>Description: {{ day.weather[0].description }}</h5>
 
           <div class="sunrise-sunset">
-            Sunrise:
+            Sunrise: {{ convertSunriseSunset(day.sunrise) }}
             <v-spacer></v-spacer>
-            Sunset:
+            Sunset: {{ convertSunriseSunset(day.sunset) }}
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -33,8 +33,12 @@ export default {
   props: ["SevenDayForecast"],
 
   methods: {
-    convertTime(value) {
-      return moment.unix(value).format("Do MMMM YYYY");
+    convertTimeToDayOfWeek(value) {
+      return moment.unix(value).format("ddd Do MMMM YYYY");
+    },
+
+    convertSunriseSunset(value) {
+      return moment.unix(value).format("LT");
     },
 
     convertKelvinToFahrenheit(value) {

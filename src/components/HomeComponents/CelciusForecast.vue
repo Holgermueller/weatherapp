@@ -2,61 +2,71 @@
   <div>
     <v-card>
       <v-card-title>
-        <h1>{{ todaysForecast.name }}, {{ todaysForecast.sys.country }}</h1>
+        <!-- <h1>{{ todaysForecast.name }}, {{ todaysForecast.sys.country }}</h1> -->
         <v-spacer></v-spacer>
-        <h1>{{ convertKelvinToCelcius(todaysForecast.main.temp) }}&#176; C</h1>
+        <h1>{{ convertKelvinToCelcius(todaysForecast.temp) }}&#176; C</h1>
       </v-card-title>
 
       <v-card-subtitle>
+        <h4>{{ todaysForecast.weather[0].main }}</h4>
         <h4>Description: {{ todaysForecast.weather[0].description }}</h4>
       </v-card-subtitle>
 
       <v-card-text>
         <h3>
           Feels like:
-          {{ convertKelvinToCelcius(todaysForecast.main.feels_like) }}&#176; C
-        </h3>
-        <h3>
-          High:
-          {{ convertKelvinToCelcius(todaysForecast.main.temp_max) }}&#176; C
-        </h3>
-        <h3>
-          Low:
-          {{ convertKelvinToCelcius(todaysForecast.main.temp_min) }}&#176; C
+          {{ convertKelvinToCelcius(todaysForecast.feels_like) }}&#176; C
         </h3>
 
-        <p>Humidity: {{ todaysForecast.main.humidity }}%</p>
+        <p>
+          <v-icon left>mdi-water-percent</v-icon>
+          Humidity: {{ todaysForecast.humidity }}%
+        </p>
 
         <h5>
+          <v-icon left>mdi-arrow-collapse-vertical</v-icon>
           Pressure:
-          {{ convertPressureToMetric(todaysForecast.main.pressure) }} cm
+          {{ convertPressureToMetric(todaysForecast.pressure) }} cm
         </h5>
 
         <h5>
+          <v-icon left>mdi-water</v-icon>Dew point:
+          {{ todaysForecast.dew_point }}
+        </h5>
+
+        <h5>
+          <v-icon left>mdi-eye-outline</v-icon>
           Visibility:
           {{ convertVisibilityToMetric(todaysForecast.visibility) }} km
         </h5>
 
         <h5>
+          <v-icon left>mdi-weather-cloudy</v-icon>
           Clouds:
-          {{ todaysForecast.clouds.all }}%
+          {{ todaysForecast.clouds }}%
         </h5>
 
         <h5>
+          <v-icon left>mdi-weather-windy</v-icon>
           Wind:
-          {{ todaysForecast.wind.deg }}
-          {{ todaysForecast.wind.speed }}m/s
+          {{ convertWindDirection(todaysForecast.wind_deg) }}
+          {{ convertMPStoKPH(todaysForecast.wind_speed) }} km/h
+        </h5>
+
+        <h5>
+          <v-icon left>mdi-weather-sunny</v-icon>
+          UV Index: {{ todaysForecast.uvi }}
         </h5>
       </v-card-text>
       <v-card-actions>
         <p>
           <v-icon left>mdi-weather-sunset-up</v-icon>
-          Sunrise: {{ timestampToDate(todaysForecast.sys.sunrise) }}
+          Sunrise: {{ timestampToDate(todaysForecast.sunrise) }}
         </p>
         <v-spacer></v-spacer>
         <p>
           Sunset:
-          {{ timestampToDate(todaysForecast.sys.sunset) }}
+          {{ timestampToDate(todaysForecast.sunset) }}
           <v-icon right>mdi-weather-sunset-down</v-icon>
         </p>
       </v-card-actions>
@@ -90,6 +100,30 @@ export default {
 
     convertPressureToMetric(value) {
       return Math.round((value * 0.02953) / 0.3937);
+    },
+
+    convertMPStoKPH(value) {
+      return Math.round(value * 3.6);
+    },
+
+    convertWindDirection(value) {
+      if (value > 337.5) {
+        return "Northerly";
+      } else if (value > 292.5) {
+        return "North Westerly";
+      } else if (value > 247.5) {
+        return "Westerly";
+      } else if (value > 202.5) {
+        return "South Westerly";
+      } else if (value > 157.5) {
+        return "Southerly";
+      } else if (value > 122.5) {
+        return "South Easterly";
+      } else if (value > 67.5) {
+        return "Easterly";
+      } else if (value > 22.5) {
+        return "North Easterly";
+      }
     },
   },
 };

@@ -12,10 +12,7 @@
       </v-flex>
     </v-layout>
 
-    <div
-      v-for="(hour, index) in hourlyForecast.hourly.slice(0, 7)"
-      :key="index"
-    >
+    <div v-for="(hour, index) in hourlyForecast.slice(0, 7)" :key="index">
       <v-card class="forecast-display">
         <v-card-title>
           {{ convertTime(hour.dt) }}

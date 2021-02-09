@@ -1,10 +1,7 @@
 <template>
   <div>
     <div v-if="hidden1">
-      <div
-        v-for="(hour, index) in hourlyForecast.hourly.slice(7, 14)"
-        :key="index"
-      >
+      <div v-for="(hour, index) in hourlyForecast.slice(7, 14)" :key="index">
         <v-card class="forecast-display">
           <v-card-title>
             {{ convertTime(hour.dt) }}
