@@ -27,12 +27,17 @@
         >
 
         <v-card-text>
-          <!-- <v-img
-            alt="weather-icon"
-            height="200"
-            width="200"
-            src="http://openweathermap.org/img/wn/" + {{hour.weather[0].icon} }+ "@2x.png"
-          ></v-img> -->
+          <v-img
+            class="forecast-icon"
+            alt="image"
+            width="100"
+            height="100"
+            :src="
+              'http://openweathermap.org/img/wn/' +
+                hour.weather[0].icon +
+                '@2x.png'
+            "
+          ></v-img>
 
           {{ hour.weather[0].description }}
         </v-card-text>
@@ -79,6 +84,10 @@ export default {
 
 .progress {
   width: 55%;
+  margin: auto;
+}
+
+.forecast-icon {
   margin: auto;
 }
 </style>

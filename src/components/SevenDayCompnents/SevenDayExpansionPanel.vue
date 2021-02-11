@@ -11,12 +11,26 @@
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          <h5>Description: {{ day.weather[0].description }}</h5>
+          <v-img
+            class="forecast-icon"
+            alt="image"
+            width="150"
+            height="150"
+            :src="
+              'http://openweathermap.org/img/wn/' +
+                day.weather[0].icon +
+                '@2x.png'
+            "
+          ></v-img>
+
+          <h5 class="text-center">
+            Description: {{ day.weather[0].description }}
+          </h5>
 
           <div class="sunrise-sunset">
-            Sunrise: {{ convertSunriseSunset(day.sunrise) }}
-            <v-spacer></v-spacer>
-            Sunset: {{ convertSunriseSunset(day.sunset) }}
+            <h6>Sunrise: {{ convertSunriseSunset(day.sunrise) }}</h6>
+
+            <h6>Sunset: {{ convertSunriseSunset(day.sunset) }}</h6>
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -60,5 +74,9 @@ export default {
 
 .sunrise-sunset {
   bottom: 0;
+}
+
+.forecast-icon {
+  margin: auto;
 }
 </style>

@@ -7,12 +7,24 @@
         <h1>{{ convertKelvinToCelcius(todaysForecast.temp) }}&#176; C</h1>
       </v-card-title>
 
-      <v-card-subtitle>
+      <v-card-subtitle class="text-center">
         <h4>{{ todaysForecast.weather[0].main }}</h4>
         <h4>Description: {{ todaysForecast.weather[0].description }}</h4>
       </v-card-subtitle>
 
       <v-card-text>
+        <v-img
+          class="forecast-icon"
+          alt="image"
+          width="150"
+          height="150"
+          :src="
+            'http://openweathermap.org/img/wn/' +
+              todaysForecast.weather[0].icon +
+              '@2x.png'
+          "
+        ></v-img>
+
         <h3>
           Feels like:
           {{ convertKelvinToCelcius(todaysForecast.feels_like) }}&#176; C
@@ -129,4 +141,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.forecast-icon {
+  margin: auto;
+}
+</style>

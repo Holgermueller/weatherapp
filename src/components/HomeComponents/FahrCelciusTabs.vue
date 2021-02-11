@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 .forecast-tabs {
-  margin: auto;
+  margin: 3% auto;
 }
 
 .progress {

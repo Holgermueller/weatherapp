@@ -9,24 +9,23 @@
         <h1>{{ convertKelvinToFahrenheit(todaysForecast.temp) }}&#176; F</h1>
       </v-card-title>
 
-      <v-card-subtitle>
+      <v-card-subtitle class="text-center">
         <h4>{{ todaysForecast.weather[0].main }}</h4>
         <h4>Description: {{ todaysForecast.weather[0].description }}</h4>
       </v-card-subtitle>
 
       <v-card-text>
-        <!-- <div
-          :style="{
-            'background-image':
-              'url(https://openweathermap.org/img/w/' +
+        <v-img
+          class="forecast-icon"
+          alt="image"
+          width="150"
+          height="150"
+          :src="
+            'http://openweathermap.org/img/wn/' +
               todaysForecast.weather[0].icon +
-              '@2x .png)',
-          }"
-        ></div> -->
-        <!-- <v-img
-        alt="image"
-          :src=""
-        ></v-img> -->
+              '@2x.png'
+          "
+        ></v-img>
 
         <h3>
           <v-icon left>mdi-thermometer</v-icon>
@@ -149,4 +148,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.forecast-icon {
+  margin: auto;
+}
+</style>
