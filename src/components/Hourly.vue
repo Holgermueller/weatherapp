@@ -1,5 +1,7 @@
 <template>
   <div>
+    <HourlyPageHeader :hourlyForecast="todaysForecast" />
+
     <FirstSevenHours :hourlyForecast="todaysForecast" />
 
     <SecondSevenHours :hourlyForecast="todaysForecast" />
@@ -7,6 +9,7 @@
 </template>
 
 <script>
+import HourlyPageHeader from "./HourlyCompnents/HourlyPageHeader";
 import FirstSevenHours from "./HourlyCompnents/FirstSevenHours";
 import SecondSevenHours from "./HourlyCompnents/SecondSevenHours";
 
@@ -14,6 +17,7 @@ export default {
   name: "HourlyForecast",
 
   components: {
+    HourlyPageHeader,
     FirstSevenHours,
     SecondSevenHours,
   },
@@ -28,15 +32,7 @@ export default {
     },
   },
 
-  methods: {
-    convertKelvinToFahrenheit(value) {
-      return Math.round((parseFloat(value) - 273.15) * 1.8 + 32);
-    },
-
-    convertKelvinToCelcius(value) {
-      return Math.round(parseFloat(value) - 273.15);
-    },
-  },
+  methods: {},
 };
 </script>
 

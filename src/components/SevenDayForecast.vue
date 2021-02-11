@@ -1,5 +1,7 @@
 <template>
   <div>
+    <SevenDayHeader :SevenDayForecast="SevenDayForecast" />
+
     <v-layout class="progress">
       <v-flex class="tet-xs-center">
         <v-progress-circular
@@ -17,12 +19,14 @@
 </template>
 
 <script>
+import SevenDayHeader from "./SevenDayCompnents/SevenDayHeader";
 import SevenDayExpansion from "./SevenDayCompnents/SevenDayExpansionPanel";
 
 export default {
   name: "SevenDay",
 
   components: {
+    SevenDayHeader,
     SevenDayExpansion,
   },
 

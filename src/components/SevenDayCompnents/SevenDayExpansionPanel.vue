@@ -27,6 +27,8 @@
             Description: {{ day.weather[0].description }}
           </h5>
 
+          <h6 v-if="day.pop">Chance of snow: {{ day.pop }} %</h6>
+
           <div class="sunrise-sunset">
             <h6>Sunrise: {{ convertSunriseSunset(day.sunrise) }}</h6>
 
