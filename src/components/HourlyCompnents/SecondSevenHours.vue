@@ -1,22 +1,22 @@
 <template>
   <div>
     <div v-if="hidden1">
-      <div v-for="(hour, index) in hourlyForecast.slice(7, 14)" :key="index">
-        <v-card class="forecast-display">
-          <v-card-title>
+      <v-expansion-panels class="forecast-display" focusable inset>
+        <v-expansion-panel
+          v-for="(hour, index) in hourlyForecast.slice(7, 14)"
+          :key="index"
+        >
+          <v-expansion-panel-header>
             {{ convertTime(hour.dt) }}
             <v-spacer></v-spacer>
             {{ convertKelvinToFahrenheit(hour.temp) }}&#176; F /
             {{ convertKelvinToCelcius(hour.temp) }}&#176; C
-          </v-card-title>
+          </v-expansion-panel-header>
 
-          <v-card-subtitle>
+          <v-expansion-panel-content>
             Feels like: {{ convertKelvinToFahrenheit(hour.feels_like) }}&#176; F
-            / {{ convertKelvinToCelcius(hour.feels_like) }}&#176;
-            C</v-card-subtitle
-          >
+            / {{ convertKelvinToCelcius(hour.feels_like) }}&#176; C
 
-          <v-card-text>
             <v-img
               class="forecast-icon"
               alt="image"
@@ -30,9 +30,9 @@
             ></v-img>
 
             {{ hour.weather[0].description }}
-          </v-card-text>
-        </v-card>
-      </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
     </div>
 
     <div class="show-more" v-if="hiddenButton1">
@@ -94,7 +94,7 @@ export default {
 <style scoped>
 .forecast-display {
   width: 75%;
-  margin: 1% auto;
+  margin: 0 auto 1%;
 }
 
 .show-more {

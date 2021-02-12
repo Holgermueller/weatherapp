@@ -12,21 +12,33 @@
       </v-flex>
     </v-layout>
 
-    <div v-for="(hour, index) in hourlyForecast.slice(0, 7)" :key="index">
-      <v-card class="forecast-display">
-        <v-card-title>
+    <v-expansion-panels class="forecast-display" focusable inset>
+      <v-expansion-panel
+        v-for="(hour, index) in hourlyForecast.slice(1, 48)"
+        :key="index"
+      >
+        <v-expansion-panel-header>
           {{ convertTime(hour.dt) }}
           <v-spacer></v-spacer>
-          {{ convertKelvinToFahrenheit(hour.temp) }}&#176; F /
-          {{ convertKelvinToCelcius(hour.temp) }}&#176; C
-        </v-card-title>
 
-        <v-card-subtitle>
+          <h3 class="text-left">
+            {{ hour.weather[0].description }}
+          </h3>
+
+          <v-spacer></v-spacer>
+
+          <h3 class="text-right">
+            {{ convertKelvinToFahrenheit(hour.temp) }}&#176; F /
+            {{ convertKelvinToCelcius(hour.temp) }}&#176; C
+          </h3>
+
+          <v-spacer></v-spacer>
+        </v-expansion-panel-header>
+
+        <v-expansion-panel-content>
           Feels like: {{ convertKelvinToFahrenheit(hour.feels_like) }}&#176; F /
-          {{ convertKelvinToCelcius(hour.feels_like) }}&#176; C</v-card-subtitle
-        >
+          {{ convertKelvinToCelcius(hour.feels_like) }}&#176; C
 
-        <v-card-text>
           <v-img
             class="forecast-icon"
             alt="image"
@@ -38,11 +50,9 @@
                 '@2x.png'
             "
           ></v-img>
-
-          {{ hour.weather[0].description }}
-        </v-card-text>
-      </v-card>
-    </div>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </div>
 </template>
 
@@ -79,7 +89,7 @@ export default {
 <style scoped>
 .forecast-display {
   width: 75%;
-  margin: 1% auto;
+  margin: 1% auto 0;
 }
 
 .progress {
