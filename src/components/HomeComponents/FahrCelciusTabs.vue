@@ -69,7 +69,7 @@ export default {
 
   computed: {
     todaysForecast() {
-      return this.$store.state.weather.todaysForecast.current;
+      return this.$store.getters.todaysForecast.current;
     },
 
     loading() {
