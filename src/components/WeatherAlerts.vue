@@ -1,7 +1,12 @@
 <template>
   <div>
     <v-card class="alerts-page-header">
-      <v-card-title> Alerts: {{ weatherAlerts.length }} </v-card-title>
+      <v-card-title>
+        <h3>
+          <v-icon dark left>mdi-exclamation-thick</v-icon>
+          Alerts: {{ weatherAlerts.length }}
+        </h3>
+      </v-card-title>
     </v-card>
 
     <WeatherAlertsExpansionPanels :weatherAlerts="weatherAlerts" />
@@ -34,5 +39,7 @@ export default {
 .alerts-page-header {
   width: 75%;
   margin: 1% auto;
+  background-color: red;
+  color: white;
 }
 </style>

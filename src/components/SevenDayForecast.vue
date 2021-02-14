@@ -40,7 +40,7 @@ export default {
 
   computed: {
     SevenDayForecast() {
-      return this.$store.state.weather.todaysForecast.daily;
+      return this.$store.getters.todaysForecast.daily;
     },
 
     loading() {

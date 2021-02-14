@@ -28,7 +28,7 @@ export default {
 
   computed: {
     todaysForecast() {
-      return this.$store.state.weather.todaysForecast.hourly;
+      return this.$store.getters.todaysForecast.hourly;
     },
   },
 
