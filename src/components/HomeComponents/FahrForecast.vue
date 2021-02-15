@@ -46,7 +46,7 @@
 
         <h5>
           <v-icon left>mdi-water</v-icon>Dew point:
-          {{ todaysForecast.dew_point }}
+          {{ convertKelvinToFahrenheit(todaysForecast.dew_point) }}&#176; F
         </h5>
 
         <h5>
