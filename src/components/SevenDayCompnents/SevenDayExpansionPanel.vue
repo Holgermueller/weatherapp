@@ -27,7 +27,16 @@
             Description: {{ day.weather[0].description }}
           </h5>
 
-          <h6 v-if="day.pop">Chance of snow: {{ day.pop }} %</h6>
+          <h6>UV Index: {{ day.uvi }}</h6>
+
+          <h6 v-if="day.pop">Chance of precipitation: {{ day.pop }} %</h6>
+
+          <h6 v-if="day.snow">
+            Accumulation: {{ convertMMtoInches(day.snow) }} /
+            {{ convertMMtoCM(day.snow) }} cm
+          </h6>
+
+          <h6 v-if="day.rain">Rain: {{ day.rain }}</h6>
 
           <div class="sunrise-sunset">
             <h6>Sunrise: {{ convertSunriseSunset(day.sunrise) }}</h6>
@@ -63,6 +72,20 @@ export default {
 
     convertKelvinToCelcius(value) {
       return Math.round(parseFloat(value) - 273.15);
+    },
+
+    convertMMtoInches(value) {
+      let accumulationInInches = Math.round((value / 10) * 0.3937);
+
+      if (accumulationInInches < 1) {
+        return "Less than one inch";
+      } else {
+        return Math.round((value / 10) * 0.3937) + " inches";
+      }
+    },
+
+    convertMMtoCM(value) {
+      return Math.round(value / 10);
     },
   },
 };

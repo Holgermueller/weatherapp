@@ -25,6 +25,7 @@ export default {
             lat +
             "&lon=" +
             long +
+            "&exclude=minutely" +
             "&APPID=" +
             APIKey;
 
