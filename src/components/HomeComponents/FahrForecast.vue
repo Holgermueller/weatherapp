@@ -75,6 +75,10 @@
           {{ convertSpeedToMPH(todaysForecast.wind_speed) }} mph
         </h5>
 
+        <h5 v-if="todaysForecast.wind_gust">
+          Gusts: {{ convertMetersPerSecondToMPH(todaysForecast.wind_gust) }} mph
+        </h5>
+
         <h5>
           <v-icon left>mdi-weather-sunny</v-icon>
           UV Index: {{ todaysForecast.uvi }}
@@ -129,6 +133,10 @@ export default {
 
     convertSpeedToMPH(value) {
       return Math.round(value * 2.24);
+    },
+
+    convertMetersPerSecondToMPH(value) {
+      return Math.round(value * 2.23694);
     },
 
     convertMMtoInches(value) {

@@ -65,6 +65,10 @@
           {{ convertMPStoKPH(todaysForecast.wind_speed) }} km/h
         </h5>
 
+        <h5 v-if="todaysForecast.wind_gust">
+          Gusts: {{ todaysForecast.wind_gust }} kph
+        </h5>
+
         <h5>
           <v-icon left>mdi-weather-sunny</v-icon>
           UV Index: {{ todaysForecast.uvi }}
