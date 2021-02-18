@@ -27,6 +27,12 @@
           "
         ></v-img>
 
+        <h4 v-if="todaysForecast.snow || todaysForecast.rain">
+          <v-icon left>mdi-ruler</v-icon>
+          Precipitation this last hour:
+          {{ todaysForecast.snow }}
+        </h4>
+
         <h3>
           <v-icon left>mdi-thermometer</v-icon>
           Feels like:
@@ -123,6 +129,16 @@ export default {
 
     convertSpeedToMPH(value) {
       return Math.round(value * 2.24);
+    },
+
+    convertMMtoInches(value) {
+      let accumulationInInches = Math.round((value / 10) * 0.3937);
+
+      if (accumulationInInches < 1) {
+        return "Less than one inch";
+      } else {
+        return Math.round((value / 10) * 0.3937) + " inches";
+      }
     },
 
     convertWindDirection(value) {
