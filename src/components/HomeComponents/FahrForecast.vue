@@ -79,10 +79,14 @@
           Gusts: {{ convertMetersPerSecondToMPH(todaysForecast.wind_gust) }} mph
         </h5>
 
-        <h5>
-          <v-icon left>mdi-weather-sunny</v-icon>
-          UV Index: {{ todaysForecast.uvi }}
-        </h5>
+        <div>
+          <v-progress-linear height="25" v-model="todaysForecast.uvi">
+            <strong>
+              <v-icon left>mdi-weather-sunny</v-icon>
+              UV Index: {{ todaysForecast.uvi }}
+            </strong>
+          </v-progress-linear>
+        </div>
       </v-card-text>
 
       <v-card-actions>
