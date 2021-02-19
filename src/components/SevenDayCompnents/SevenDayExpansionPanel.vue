@@ -27,8 +27,6 @@
             Description: {{ day.weather[0].description }}
           </h5>
 
-          <h6>UV Index: {{ day.uvi }}</h6>
-
           <h6 v-if="day.pop">Chance of precipitation: {{ day.pop }} %</h6>
 
           <h6 v-if="day.snow">
@@ -40,6 +38,15 @@
             Rain: {{ convertMMtoInches(day.rain) }} /
             {{ convertMMtoCM(day.rain) }}
           </h6>
+
+          <div>
+            <v-progress-linear height="25" v-model="day.uvi">
+              <strong>
+                <v-icon left>mdi-weather-sunny</v-icon>
+                UV Index: {{ day.uvi }}
+              </strong>
+            </v-progress-linear>
+          </div>
 
           <div class="sunrise-sunset">
             <h6>Sunrise: {{ convertSunriseSunset(day.sunrise) }}</h6>
