@@ -80,7 +80,7 @@
         </h5>
 
         <div>
-          <v-progress-linear height="25" v-model="todaysForecast.uvi">
+          <v-progress-linear height="25" v-model="uviIndex">
             <strong>
               <v-icon left>mdi-weather-sunny</v-icon>
               UV Index: {{ todaysForecast.uvi }}
@@ -112,7 +112,9 @@ export default {
   props: ["todaysForecast"],
 
   data() {
-    return {};
+    return {
+      uviIndex: this.todaysForecast.uvi * 10,
+    };
   },
 
   computed: {},
