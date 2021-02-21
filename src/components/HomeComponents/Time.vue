@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       todaysDate: moment().format("ddd Do MMM YYYY"),
-      timeRightNow: moment().format("hh:mm:ss A"),
+      timeRightNow: moment().format("LT"),
     };
   },
 };

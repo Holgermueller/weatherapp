@@ -1,8 +1,17 @@
 <template>
   <div id="uviInfo">
-    <h6>
-      {{ uviInfo }}
-    </h6>
+    <h5 class="uvi-header">UV Index</h5>
+    <div class="uvi-background">
+      <div
+        class="uvi-percentage-visualization"
+        :style="{ width: uviInfo * 10 }"
+      >
+        <strong class="uvi-data-displayed">
+          <v-icon left>mdi-weather-sunny</v-icon>
+          {{ uviInfo }}
+        </strong>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,4 +28,33 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#uviInfo {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.uvi-header {
+  text-align: center;
+}
+
+.uvi-background {
+  background-color: lightblue;
+  margin: 10px auto;
+  position: relative;
+  border-radius: 15px;
+}
+
+.uvi-percentage-visualization {
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+.uvi-data-displayed {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  padding: 10px 20px;
+}
+</style>

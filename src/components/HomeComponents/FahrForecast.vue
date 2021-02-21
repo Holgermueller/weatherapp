@@ -59,7 +59,6 @@
           <v-icon left>mdi-eye-outline</v-icon>
           Visibility:
           {{ convertVisibilityToMiles(todaysForecast.visibility) }}
-          miles
         </h5>
 
         <h5>
@@ -101,7 +100,15 @@ export default {
     },
 
     convertVisibilityToMiles(value) {
-      return Math.round(value * 0.000621371192);
+      let visibility = Math.round(value * 0.000621371192);
+
+      if (visibility < 1) {
+        return Math.round(value * 3.2808) + " feet";
+      } else if (visibility == 1) {
+        return visibility + " mile";
+      } else {
+        return visibility + " miles";
+      }
     },
 
     convertPressureToInches(value) {
@@ -122,7 +129,7 @@ export default {
       if (accumulationInInches < 1) {
         return "Less than one inch";
       } else {
-        return Math.round((value / 10) * 0.3937) + " inches";
+        return accumulationInInches + " inches";
       }
     },
 

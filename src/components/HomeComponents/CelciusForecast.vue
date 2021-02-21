@@ -55,7 +55,7 @@
         <h5>
           <v-icon left>mdi-eye-outline</v-icon>
           Visibility:
-          {{ convertVisibilityToMetric(todaysForecast.visibility) }} km
+          {{ convertVisibilityToKm(todaysForecast.visibility) }}
         </h5>
 
         <h5>
@@ -94,8 +94,14 @@ export default {
       return Math.round(parseFloat(value) - 273.15);
     },
 
-    convertVisibilityToMetric(value) {
-      return Math.round(value / 1000);
+    convertVisibilityToKm(value) {
+      let visibility = Math.round(value / 1000);
+
+      if (visibility < 1) {
+        return value + " meters";
+      } else {
+        return visibility + " km";
+      }
     },
 
     convertPressureToMetric(value) {

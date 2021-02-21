@@ -1,21 +1,23 @@
 <template>
   <div id="sunriseSunset">
     <v-card-actions>
-      <p>
+      <strong>
         <v-icon left>mdi-weather-sunset-up</v-icon>
         Sunrise: {{ timestampToDate(sunrise) }}
-      </p>
+      </strong>
       <v-spacer></v-spacer>
-      <p>
+      <strong>
         Sunset:
         {{ timestampToDate(sunset) }}
         <v-icon right>mdi-weather-sunset-down</v-icon>
-      </p>
+      </strong>
     </v-card-actions>
   </div>
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   name: "SunriseSunsetInfo",
 
@@ -32,9 +34,8 @@ export default {
   },
 
   methods: {
-    timestampToDate(timestamp) {
-      let date = new Date(timestamp * 1000);
-      return date.toLocaleTimeString();
+    timestampToDate(value) {
+      return moment.unix(value).format("LT");
     },
   },
 };
@@ -43,5 +44,7 @@ export default {
 <style scoped>
 #sunriseSunset {
   width: 100%;
+  background-color: orange;
+  border-radius: 15px;
 }
 </style>
