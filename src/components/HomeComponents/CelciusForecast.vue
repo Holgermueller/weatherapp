@@ -25,6 +25,12 @@
           "
         ></v-img>
 
+        <h4 v-if="todaysForecast.snow || todaysForecast.rain">
+          <v-icon left>mdi-ruler</v-icon>
+          Precipitation this last hour:
+          {{ todaysForecast.snow }}
+        </h4>
+
         <h3>
           Feels like:
           {{ convertKelvinToCelcius(todaysForecast.feels_like) }}&#176; C
@@ -68,29 +74,7 @@
         <h5 v-if="todaysForecast.wind_gust">
           Gusts: {{ todaysForecast.wind_gust }} kph
         </h5>
-
-        <div>
-          <v-progress-linear height="25" v-model="uviIndex">
-            <strong>
-              <v-icon left>mdi-weather-sunny</v-icon>
-              UV Index: {{ todaysForecast.uvi }}
-            </strong>
-          </v-progress-linear>
-        </div>
       </v-card-text>
-
-      <v-card-actions>
-        <p>
-          <v-icon left>mdi-weather-sunset-up</v-icon>
-          Sunrise: {{ timestampToDate(todaysForecast.sunrise) }}
-        </p>
-        <v-spacer></v-spacer>
-        <p>
-          Sunset:
-          {{ timestampToDate(todaysForecast.sunset) }}
-          <v-icon right>mdi-weather-sunset-down</v-icon>
-        </p>
-      </v-card-actions>
     </v-card>
   </div>
 </template>
@@ -102,17 +86,10 @@ export default {
   props: ["todaysForecast"],
 
   data() {
-    return {
-      uviIndex: this.todaysForecast.uvi * 10,
-    };
+    return {};
   },
 
   methods: {
-    timestampToDate(timestamp) {
-      let date = new Date(timestamp * 1000);
-      return date.toLocaleTimeString();
-    },
-
     convertKelvinToCelcius(value) {
       return Math.round(parseFloat(value) - 273.15);
     },

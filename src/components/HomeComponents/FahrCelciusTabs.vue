@@ -12,27 +12,40 @@
       <v-tabs-items v-model="tab">
         <v-tab-item v-for="(tab, index) in tabs" :key="index">
           <v-card>
-            <v-layout class="progress">
-              <v-flex class="tet-xs-center">
-                <v-progress-circular
-                  indeterminate
-                  class="primary--text"
-                  :width="7"
-                  :size="70"
-                  v-if="loading"
-                ></v-progress-circular>
-              </v-flex>
-            </v-layout>
+            <v-card-text>
+              <v-layout class="progress">
+                <v-flex class="tet-xs-center">
+                  <v-progress-circular
+                    indeterminate
+                    class="primary--text"
+                    :width="7"
+                    :size="70"
+                    v-if="loading"
+                  ></v-progress-circular>
+                </v-flex>
+              </v-layout>
 
-            <div v-if="tab.tabName === 'Fahrenheit'">
-              <FahrenheitForecast :todaysForecast="todaysForecast" />
-            </div>
-            <div v-else>
-              <CelciusForecast :todaysForecast="todaysForecast" />
-            </div>
+              <div v-if="tab.tabName === 'Fahrenheit'">
+                <FahrenheitForecast :todaysForecast="todaysForecast" />
+              </div>
+              <div v-else>
+                <CelciusForecast :todaysForecast="todaysForecast" />
+              </div>
+            </v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs-items>
+
+      <v-card-actions>
+        <UviInfo :uviInfo="todaysForecast.uvi" />
+      </v-card-actions>
+
+      <v-card-actions>
+        <SunriseSunsetInfo
+          :sunrise="todaysForecast.sunrise"
+          :sunset="todaysForecast.sunset"
+        />
+      </v-card-actions>
     </v-card>
   </div>
 </template>
@@ -40,6 +53,8 @@
 <script>
 import FahrenheitForecast from "./FahrForecast";
 import CelciusForecast from "./CelciusForecast";
+import UviInfo from "./UviInfo";
+import SunriseSunsetInfo from "./SunriseSunset";
 
 export default {
   name: "FahrCelciusTabs",
@@ -47,6 +62,8 @@ export default {
   components: {
     FahrenheitForecast,
     CelciusForecast,
+    UviInfo,
+    SunriseSunsetInfo,
   },
 
   props: ["todaysForecast"],
