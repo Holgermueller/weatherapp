@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SevenDayHeader :SevenDayForecast="SevenDayForecast" />
+    <SevenDayHeader :SevenDayForecast="allForecasts.daily" />
 
     <v-layout class="progress">
       <v-flex class="tet-xs-center">
@@ -14,7 +14,7 @@
       </v-flex>
     </v-layout>
 
-    <SevenDayExpansion :SevenDayForecast="SevenDayForecast" />
+    <SevenDayExpansion :SevenDayForecast="allForecasts.daily" />
   </div>
 </template>
 
@@ -30,19 +30,13 @@ export default {
     SevenDayExpansion,
   },
 
+  props: ["allForecasts"],
+
   data() {
     return {};
   },
 
-  beforeCreate() {
-    this.$store.dispatch("getForecast");
-  },
-
   computed: {
-    SevenDayForecast() {
-      return this.$store.getters.todaysForecast.daily;
-    },
-
     loading() {
       return this.$store.getters.loading;
     },

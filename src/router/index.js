@@ -11,11 +11,16 @@ Vue.use(VueRouter);
 let router = new VueRouter({
   mode: "history",
   routes: [
-    { path: "/", name: "Home", component: Home },
-    { path: "/hourly", name: "HourlyForecase", component: Hourly },
-    { path: "/sevenDay", name: "SevenDay", component: SevenDay },
+    { path: "/", name: "Home", component: Home, props: true },
+    { path: "/hourly", name: "HourlyForecase", component: Hourly, props: true },
+    { path: "/sevenDay", name: "SevenDay", component: SevenDay, props: true },
     { path: "/about", name: "About", component: About },
-    { path: "/weatherAlerts", name: "WeatherAlerts", component: WeatherAlerts },
+    {
+      path: "/weatherAlerts",
+      name: "WeatherAlerts",
+      component: WeatherAlerts,
+      props: true,
+    },
   ],
 });
 

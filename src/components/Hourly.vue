@@ -1,10 +1,10 @@
 <template>
   <div>
-    <HourlyPageHeader :hourlyForecast="todaysForecast" />
+    <HourlyPageHeader :hourlyForecast="allForecasts.hourly" />
 
-    <FirstSevenHours :hourlyForecast="todaysForecast" />
+    <FirstSevenHours :hourlyForecast="allForecasts.hourly" />
 
-    <SecondSevenHours :hourlyForecast="todaysForecast" />
+    <SecondSevenHours :hourlyForecast="allForecasts.hourly" />
   </div>
 </template>
 
@@ -22,15 +22,7 @@ export default {
     SecondSevenHours,
   },
 
-  beforeCreate() {
-    this.$store.dispatch("getForecast");
-  },
-
-  computed: {
-    todaysForecast() {
-      return this.$store.getters.todaysForecast.hourly;
-    },
-  },
+  props: ["allForecasts"],
 
   methods: {},
 };

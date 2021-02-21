@@ -49,6 +49,8 @@ export default {
     CelciusForecast,
   },
 
+  props: ["todaysForecast"],
+
   data() {
     return {
       tab: null,
@@ -63,15 +65,7 @@ export default {
     };
   },
 
-  beforeCreate() {
-    this.$store.dispatch("getForecast");
-  },
-
   computed: {
-    todaysForecast() {
-      return this.$store.getters.todaysForecast.current;
-    },
-
     loading() {
       return this.$store.getters.loading;
     },

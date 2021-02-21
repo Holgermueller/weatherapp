@@ -2,9 +2,9 @@
   <div>
     <DateAndTime />
 
-    <WeatherAlertsLink :weatherAlerts="weatherAlerts" />
+    <WeatherAlertsLink :weatherAlerts="allForecasts.alerts" />
 
-    <FahrCelciusTabs />
+    <FahrCelciusTabs :todaysForecast="allForecasts.current" />
   </div>
 </template>
 
@@ -22,18 +22,10 @@ export default {
     FahrCelciusTabs,
   },
 
+  props: ["allForecasts"],
+
   data() {
     return {};
-  },
-
-  beforeCreate() {
-    this.$store.dispatch("getForecast");
-  },
-
-  computed: {
-    weatherAlerts() {
-      return this.$store.getters.todaysForecast.alerts;
-    },
   },
 };
 </script>

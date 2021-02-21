@@ -12,7 +12,7 @@
     </v-app-bar>
 
     <v-main>
-      <router-view></router-view>
+      <router-view :allForecasts="allForecasts"></router-view>
     </v-main>
   </v-app>
 </template>
@@ -48,6 +48,16 @@ export default {
         },
       ],
     };
+  },
+
+  beforeCreate() {
+    this.$store.dispatch("getForecast");
+  },
+
+  computed: {
+    allForecasts() {
+      return this.$store.getters.todaysForecast;
+    },
   },
 };
 </script>

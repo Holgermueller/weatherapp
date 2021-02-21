@@ -80,7 +80,7 @@
         </h5>
 
         <div>
-          <v-progress-linear height="25" v-model="uviIndex">
+          <v-progress-linear height="25" v-model="uviIndex" rounded>
             <strong>
               <v-icon left>mdi-weather-sunny</v-icon>
               UV Index: {{ todaysForecast.uvi }}
