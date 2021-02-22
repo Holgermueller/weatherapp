@@ -39,6 +39,8 @@
           {{ convertKelvinToFahrenheit(todaysForecast.feels_like) }}&#176; F
         </h3>
 
+        <v-divider></v-divider>
+
         <p>
           <v-icon left>mdi-water-percent</v-icon>
           Humidity: {{ todaysForecast.humidity }}%
@@ -54,6 +56,8 @@
           <v-icon left>mdi-water</v-icon>Dew point:
           {{ convertKelvinToFahrenheit(todaysForecast.dew_point) }}&#176; F
         </h5>
+
+        <v-divider></v-divider>
 
         <h5>
           <v-icon left>mdi-eye-outline</v-icon>
