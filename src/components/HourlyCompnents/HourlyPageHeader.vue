@@ -22,7 +22,7 @@ export default {
 
   methods: {
     convertTime(value) {
-      return moment.unix(value).format("hh:mm A");
+      return moment.unix(value).format("LT");
     },
   },
 };

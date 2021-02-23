@@ -2,58 +2,54 @@
   <div>
     <v-expansion-panels class="seven-day-display" focusable inset>
       <v-expansion-panel v-for="(day, index) in SevenDayForecast" :key="index">
-        <v-expansion-panel-header>
-          {{ convertTimeToDayOfWeek(day.dt) }}
-          <v-spacer></v-spacer>
+        <v-card>
+          <v-expansion-panel-header>
+            {{ convertTimeToDayOfWeek(day.dt) }}
+            <v-spacer></v-spacer>
 
-          {{ convertKelvinToFahrenheit(day.temp.max) }}&#176; F /
-          {{ convertKelvinToCelcius(day.temp.max) }} &#176; C
-        </v-expansion-panel-header>
+            {{ convertKelvinToFahrenheit(day.temp.max) }}&#176; F /
+            {{ convertKelvinToCelcius(day.temp.max) }} &#176; C
+          </v-expansion-panel-header>
 
-        <v-expansion-panel-content>
-          <v-img
-            class="forecast-icon"
-            alt="image"
-            width="150"
-            height="150"
-            :src="
-              'http://openweathermap.org/img/wn/' +
-                day.weather[0].icon +
-                '@2x.png'
-            "
-          ></v-img>
+          <v-expansion-panel-content>
+            <v-img
+              class="forecast-icon"
+              alt="image"
+              width="150"
+              height="150"
+              :src="
+                'http://openweathermap.org/img/wn/' +
+                  day.weather[0].icon +
+                  '@2x.png'
+              "
+            ></v-img>
 
-          <h5 class="text-center">
-            Description: {{ day.weather[0].description }}
-          </h5>
+            <h5 class="text-center">
+              Description: {{ day.weather[0].description }}
+            </h5>
 
-          <h6 v-if="day.pop">Chance of precipitation: {{ day.pop }} %</h6>
+            <h6 v-if="day.pop">
+              Chance of precipitation: {{ convertPOP(day.pop) }}
+            </h6>
 
-          <h6 v-if="day.snow">
-            Accumulation: {{ convertMMtoInches(day.snow) }} /
-            {{ convertMMtoCM(day.snow) }}
-          </h6>
+            <h6 v-if="day.snow">
+              Accumulation: {{ convertMMtoInches(day.snow) }} /
+              {{ convertMMtoCM(day.snow) }}
+            </h6>
 
-          <h6 v-if="day.rain">
-            Rain: {{ convertMMtoInches(day.rain) }} /
-            {{ convertMMtoCM(day.rain) }}
-          </h6>
+            <h6 v-if="day.rain">
+              Rain: {{ convertMMtoInches(day.rain) }} /
+              {{ convertMMtoCM(day.rain) }}
+            </h6>
 
-          <div>
-            <v-progress-linear height="25" v-model="day.uvi">
-              <strong>
-                <v-icon left>mdi-weather-sunny</v-icon>
-                UV Index: {{ day.uvi }}
-              </strong>
-            </v-progress-linear>
-          </div>
+            <SevenDayUVIForecast :uvIndex="day.uvi" />
 
-          <div class="sunrise-sunset">
-            <h6>Sunrise: {{ convertSunriseSunset(day.sunrise) }}</h6>
-
-            <h6>Sunset: {{ convertSunriseSunset(day.sunset) }}</h6>
-          </div>
-        </v-expansion-panel-content>
+            <SevenDaySunriseSunset
+              :sunrise="day.sunrise"
+              :sunset="day.sunset"
+            />
+          </v-expansion-panel-content>
+        </v-card>
       </v-expansion-panel>
     </v-expansion-panels>
   </div>
@@ -61,19 +57,22 @@
 
 <script>
 import moment from "moment";
+import SevenDayUVIForecast from "./SevenDayUVI";
+import SevenDaySunriseSunset from "./SevenDaySunriseSunset";
 
 export default {
   name: "SevenDayExpanstion",
+
+  components: {
+    SevenDayUVIForecast,
+    SevenDaySunriseSunset,
+  },
 
   props: ["SevenDayForecast"],
 
   methods: {
     convertTimeToDayOfWeek(value) {
       return moment.unix(value).format("ddd Do MMMM YYYY");
-    },
-
-    convertSunriseSunset(value) {
-      return moment.unix(value).format("LT");
     },
 
     convertKelvinToFahrenheit(value) {
@@ -103,6 +102,10 @@ export default {
         return accumInCM + "cm";
       }
     },
+
+    convertPOP(value) {
+      return Math.round(value * 100) + "%";
+    },
   },
 };
 </script>
@@ -111,10 +114,6 @@ export default {
 .seven-day-display {
   width: 75%;
   margin: 2% auto;
-}
-
-.sunrise-sunset {
-  bottom: 0;
 }
 
 .forecast-icon {

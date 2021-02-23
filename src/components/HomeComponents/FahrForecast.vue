@@ -41,10 +41,10 @@
 
         <v-divider></v-divider>
 
-        <p>
+        <h5>
           <v-icon left>mdi-water-percent</v-icon>
           Humidity: {{ todaysForecast.humidity }}%
-        </p>
+        </h5>
 
         <h5>
           <v-icon left>mdi-arrow-collapse-vertical</v-icon>
