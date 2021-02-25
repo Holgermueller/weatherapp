@@ -54,6 +54,10 @@ export default {
     this.$store.dispatch("getForecast");
   },
 
+  // created() {
+  //   this.$store.dispatch("getLocation");
+  // },
+
   computed: {
     allForecasts() {
       return this.$store.getters.todaysForecast;

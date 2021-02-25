@@ -33,7 +33,7 @@
             </h6>
 
             <h6 v-if="day.snow">
-              Accumulation: {{ convertMMtoInches(day.snow) }} /
+              Snow: {{ convertMMtoInches(day.snow) }} /
               {{ convertMMtoCM(day.snow) }}
             </h6>
 
