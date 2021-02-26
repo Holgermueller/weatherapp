@@ -6,7 +6,7 @@
       </v-card-title>
 
       <v-card-subtitle>
-        As of: {{ convertTime(hourlyForecast[0].dt) }} / {{}}
+        As of: {{ convertTime(hourlyForecast[0].dt) }}
       </v-card-subtitle>
     </v-card>
   </div>

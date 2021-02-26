@@ -22,7 +22,7 @@
           <v-spacer></v-spacer>
 
           <h3 class="text-left">
-            {{ hour.weather[0].description }}
+            {{ hour.weather[0].main }}
           </h3>
 
           <v-spacer></v-spacer>
@@ -50,6 +50,16 @@
                 '@2x.png'
             "
           ></v-img>
+
+          <h5 class="description">
+            {{ hour.weather[0].description }}
+          </h5>
+
+          <v-divider></v-divider>
+
+          <h5 v-if="hour.wind_gust">
+            {{ hour.wind_gust }}
+          </h5>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -99,5 +109,9 @@ export default {
 
 .forecast-icon {
   margin: auto;
+}
+
+.description {
+  text-align: center;
 }
 </style>

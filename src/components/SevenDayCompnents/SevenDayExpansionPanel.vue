@@ -42,6 +42,12 @@
               {{ convertMMtoCM(day.rain) }}
             </h6>
 
+            <v-divider class="divider"></v-divider>
+
+            <TempsThroughtoutDayDisplay :temps="day.temp" />
+
+            <v-divider class="divider"></v-divider>
+
             <SevenDayUVIForecast :uvIndex="day.uvi" />
 
             <SevenDaySunriseSunset
@@ -57,6 +63,7 @@
 
 <script>
 import moment from "moment";
+import TempsThroughtoutDayDisplay from "./TempsThroughoutDay";
 import SevenDayUVIForecast from "./SevenDayUVI";
 import SevenDaySunriseSunset from "./SevenDaySunriseSunset";
 
@@ -64,6 +71,7 @@ export default {
   name: "SevenDayExpanstion",
 
   components: {
+    TempsThroughtoutDayDisplay,
     SevenDayUVIForecast,
     SevenDaySunriseSunset,
   },
@@ -118,5 +126,9 @@ export default {
 
 .forecast-icon {
   margin: auto;
+}
+
+.divider {
+  margin: 3px 0;
 }
 </style>
