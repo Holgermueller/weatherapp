@@ -18,27 +18,27 @@
         :key="index"
       >
         <v-expansion-panel-header>
-          {{ convertTime(hour.dt) }}
-          <v-spacer></v-spacer>
-
-          <h3 class="text-left">
-            {{ hour.weather[0].main }}
-          </h3>
-
-          <v-spacer></v-spacer>
-
-          <h3 class="text-right">
-            {{ convertKelvinToFahrenheit(hour.temp) }}&#176; F /
-            {{ convertKelvinToCelcius(hour.temp) }}&#176; C
-          </h3>
-
-          <v-spacer></v-spacer>
+          <v-container>
+            <v-row>
+              <v-col>
+                <h3>{{ convertTime(hour.dt) }}</h3>
+              </v-col>
+              <v-col
+                ><h3 class="text-left">
+                  {{ hour.weather[0].main }}
+                </h3></v-col
+              >
+              <v-col>
+                <h3 class="text-right">
+                  {{ convertKelvinToFahrenheit(hour.temp) }}&#176; F /
+                  {{ convertKelvinToCelcius(hour.temp) }}&#176; C
+                </h3></v-col
+              >
+            </v-row>
+          </v-container>
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          Feels like: {{ convertKelvinToFahrenheit(hour.feels_like) }}&#176; F /
-          {{ convertKelvinToCelcius(hour.feels_like) }}&#176; C
-
           <v-img
             class="forecast-icon"
             alt="image"
@@ -55,13 +55,35 @@
             {{ hour.weather[0].description }}
           </h5>
 
-          <h5>Chance of precipitation: {{ hour.pop }}</h5>
-
           <h5 v-if="hour.snow">{{ hour.snow }}</h5>
 
           <v-divider></v-divider>
 
-          <h5>Humidity: {{ hour.humidity }}</h5>
+          <v-container>
+            <v-row no-gutters>
+              <v-col>
+                <h5>Feels like:</h5>
+                <h5>
+                  {{ convertKelvinToFahrenheit(hour.feels_like) }}&#176; F /
+                  {{ convertKelvinToCelcius(hour.feels_like) }}&#176; C
+                </h5>
+              </v-col>
+              <v-col>
+                <h5>Humidity:</h5>
+                <h5>{{ hour.humidity }}%</h5>
+              </v-col>
+              <v-col
+                ><h5>Chance of Precipitation:</h5>
+                <h5>{{ hour.pop }}%</h5></v-col
+              >
+              <v-col
+                ><h5>UV Index:</h5>
+                <h5>
+                  {{ hour.uvi }}
+                </h5></v-col
+              >
+            </v-row>
+          </v-container>
 
           <h5 v-if="hour.wind_gust">Gusts: {{ hour.wind_gust }}</h5>
         </v-expansion-panel-content>
@@ -116,6 +138,10 @@ export default {
 }
 
 .description {
+  text-align: center;
+}
+
+.col {
   text-align: center;
 }
 </style>
