@@ -55,11 +55,15 @@
             {{ hour.weather[0].description }}
           </h5>
 
+          <h5>Chance of precipitation: {{ hour.pop }}</h5>
+
+          <h5 v-if="hour.snow">{{ hour.snow }}</h5>
+
           <v-divider></v-divider>
 
-          <h5 v-if="hour.wind_gust">
-            {{ hour.wind_gust }}
-          </h5>
+          <h5>Humidity: {{ hour.humidity }}</h5>
+
+          <h5 v-if="hour.wind_gust">Gusts: {{ hour.wind_gust }}</h5>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
