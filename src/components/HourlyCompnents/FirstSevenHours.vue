@@ -18,74 +18,32 @@
         :key="index"
       >
         <v-expansion-panel-header>
-          <v-container>
-            <v-row>
-              <v-col>
-                <h3>{{ convertTime(hour.dt) }}</h3>
-              </v-col>
-              <v-col
-                ><h3 class="text-left">
-                  {{ hour.weather[0].main }}
-                </h3></v-col
-              >
-              <v-col>
-                <h3 class="text-right">
-                  {{ convertKelvinToFahrenheit(hour.temp) }}&#176; F /
-                  {{ convertKelvinToCelcius(hour.temp) }}&#176; C
-                </h3></v-col
-              >
-            </v-row>
-          </v-container>
+          <ExpansionPanelHeaderInfo
+            :time="hour.dt"
+            :weather="hour.weather[0].main"
+            :temp="hour.temp"
+          />
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          <v-img
-            class="forecast-icon"
-            alt="image"
-            width="100"
-            height="100"
-            :src="
-              'http://openweathermap.org/img/wn/' +
-                hour.weather[0].icon +
-                '@2x.png'
-            "
-          ></v-img>
+          <MainHourlyForecastDisplay :mainForecast="hour.weather[0]" />
 
-          <h5 class="description">
-            {{ hour.weather[0].description }}
-          </h5>
-
-          <h5 v-if="hour.snow">{{ hour.snow }}</h5>
+          <HourlyPrecipitation :snow="hour.snow" :rain="hour.rain" />
 
           <v-divider></v-divider>
 
-          <v-container>
-            <v-row no-gutters>
-              <v-col>
-                <h5>Feels like:</h5>
-                <h5>
-                  {{ convertKelvinToFahrenheit(hour.feels_like) }}&#176; F /
-                  {{ convertKelvinToCelcius(hour.feels_like) }}&#176; C
-                </h5>
-              </v-col>
-              <v-col>
-                <h5>Humidity:</h5>
-                <h5>{{ hour.humidity }}%</h5>
-              </v-col>
-              <v-col
-                ><h5>Chance of Precipitation:</h5>
-                <h5>{{ hour.pop }}%</h5></v-col
-              >
-              <v-col
-                ><h5>UV Index:</h5>
-                <h5>
-                  {{ hour.uvi }}
-                </h5></v-col
-              >
-            </v-row>
-          </v-container>
+          <HourlyForecastDataDisplay
+            :feelsLike="hour.feels_like"
+            :humidity="hour.humidity"
+            :pop="hour.pop"
+            :uvi="hour.uvi"
+          />
 
-          <h5 v-if="hour.wind_gust">Gusts: {{ hour.wind_gust }}</h5>
+          <v-divider v-if="hour.wind_gust"></v-divider>
+
+          <h5 class="gusts" v-if="hour.wind_gust">
+            Gusts: {{ hour.wind_gust }}
+          </h5>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -93,10 +51,20 @@
 </template>
 
 <script>
-import moment from "moment";
+import ExpansionPanelHeaderInfo from "./ExpansionPanelHeaderInfo";
+import MainHourlyForecastDisplay from "./MainHourlyForecast";
+import HourlyForecastDataDisplay from "./HourlyForecastDataDisplay";
+import HourlyPrecipitation from "./HourlyPrecipitation";
 
 export default {
   name: "FirstSevenHours",
+
+  components: {
+    ExpansionPanelHeaderInfo,
+    MainHourlyForecastDisplay,
+    HourlyForecastDataDisplay,
+    HourlyPrecipitation,
+  },
 
   props: ["hourlyForecast"],
 
@@ -106,19 +74,7 @@ export default {
     },
   },
 
-  methods: {
-    convertTime(value) {
-      return moment.unix(value).format("LT");
-    },
-
-    convertKelvinToFahrenheit(value) {
-      return Math.round((parseFloat(value) - 273.15) * 1.8 + 32);
-    },
-
-    convertKelvinToCelcius(value) {
-      return Math.round(parseFloat(value) - 273.15);
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -133,15 +89,7 @@ export default {
   margin: auto;
 }
 
-.forecast-icon {
-  margin: auto;
-}
-
-.description {
-  text-align: center;
-}
-
-.col {
+.gusts {
   text-align: center;
 }
 </style>
