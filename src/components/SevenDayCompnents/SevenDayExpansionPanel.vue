@@ -28,19 +28,11 @@
               Description: {{ day.weather[0].description }}
             </h5>
 
-            <h6 v-if="day.pop">
-              Chance of precipitation: {{ convertPOP(day.pop) }}
-            </h6>
-
-            <h6 v-if="day.snow">
-              Snow: {{ convertMMtoInches(day.snow) }} /
-              {{ convertMMtoCM(day.snow) }}
-            </h6>
-
-            <h6 v-if="day.rain">
-              Rain: {{ convertMMtoInches(day.rain) }} /
-              {{ convertMMtoCM(day.rain) }}
-            </h6>
+            <AccummulationDataDisplay
+              :pop="day.pop"
+              :snow="day.snow"
+              :rain="day.rain"
+            />
 
             <v-divider class="divider"></v-divider>
 
@@ -63,6 +55,7 @@
 
 <script>
 import moment from "moment";
+import AccummulationDataDisplay from "./AccummulationData";
 import TempsThroughtoutDayDisplay from "./TempsThroughoutDay";
 import SevenDayUVIForecast from "./SevenDayUVI";
 import SevenDaySunriseSunset from "./SevenDaySunriseSunset";
@@ -71,6 +64,7 @@ export default {
   name: "SevenDayExpanstion",
 
   components: {
+    AccummulationDataDisplay,
     TempsThroughtoutDayDisplay,
     SevenDayUVIForecast,
     SevenDaySunriseSunset,
@@ -89,30 +83,6 @@ export default {
 
     convertKelvinToCelcius(value) {
       return Math.round(parseFloat(value) - 273.15);
-    },
-
-    convertMMtoInches(value) {
-      let accumulationInInches = Math.round((value / 10) * 0.3937);
-
-      if (accumulationInInches < 1) {
-        return "Less than one inch";
-      } else {
-        return accumulationInInches + " inches";
-      }
-    },
-
-    convertMMtoCM(value) {
-      let accumInCM = Math.round(value / 10);
-
-      if (accumInCM < 1) {
-        return "Less than 1 cm";
-      } else {
-        return accumInCM + "cm";
-      }
-    },
-
-    convertPOP(value) {
-      return Math.round(value * 100) + "%";
     },
   },
 };

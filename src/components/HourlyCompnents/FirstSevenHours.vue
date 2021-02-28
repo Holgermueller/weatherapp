@@ -73,8 +73,6 @@ export default {
       return this.$store.getters.loading;
     },
   },
-
-  methods: {},
 };
 </script>
 

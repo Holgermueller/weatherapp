@@ -3,13 +3,13 @@
     <h5 v-if="snow || rain">Accumulation:</h5>
     <h5 v-if="snow">
       Snow:
-      {{ convertCMtoInches(snow["1h"]) }} /
+      {{ convertMMtoInches(snow["1h"]) }} /
       {{ convertMMtoCM(snow["1h"]) }}
     </h5>
 
     <h5 v-if="rain">
       Rain:
-      {{ convertCMtoInches(rain["1h"]) }} / {{ convertMMtoCM(rain["h1"]) }}
+      {{ convertMMtoInches(rain["1h"]) }} / {{ convertMMtoCM(rain["h1"]) }}
     </h5>
   </div>
 </template>
@@ -32,11 +32,23 @@ export default {
 
   methods: {
     convertMMtoCM(value) {
-      return Math.round(value * 10) + " cm";
+      let accumInCM = Math.round(value / 10);
+
+      if (accumInCM < 1) {
+        return "Less than 1 cm";
+      } else {
+        return accumInCM + "cm";
+      }
     },
 
-    convertCMtoInches(value) {
-      return Math.round(value * 10 * 0.3937) + " inches";
+    convertMMtoInches(value) {
+      let accumulationInInches = Math.round((value / 10) * 0.3937);
+
+      if (accumulationInInches < 1) {
+        return "Less than one inch";
+      } else {
+        return accumulationInInches + " inches";
+      }
     },
   },
 };
