@@ -32,14 +32,17 @@
         </h4>
 
         <h3>
+          <v-icon left>mdi-thermometer</v-icon>
           Feels like:
           {{ convertKelvinToCelcius(todaysForecast.feels_like) }}&#176; C
         </h3>
 
-        <p>
+        <v-divider></v-divider>
+
+        <h5>
           <v-icon left>mdi-water-percent</v-icon>
           Humidity: {{ todaysForecast.humidity }}%
-        </p>
+        </h5>
 
         <h5>
           <v-icon left>mdi-arrow-collapse-vertical</v-icon>
@@ -51,6 +54,8 @@
           <v-icon left>mdi-water</v-icon>Dew point:
           {{ convertKelvinToCelcius(todaysForecast.dew_point) }}&#176; C
         </h5>
+
+        <v-divider></v-divider>
 
         <h5>
           <v-icon left>mdi-eye-outline</v-icon>
@@ -129,6 +134,8 @@ export default {
         return "Easterly";
       } else if (value > 22.5) {
         return "North Easterly";
+      } else {
+        return "Northerly";
       }
     },
   },

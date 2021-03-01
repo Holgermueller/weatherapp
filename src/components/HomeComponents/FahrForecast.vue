@@ -154,6 +154,8 @@ export default {
         return "Easterly";
       } else if (value > 22.5) {
         return "North Easterly";
+      } else {
+        return "Northerly";
       }
     },
   },
