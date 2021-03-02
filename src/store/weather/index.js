@@ -39,6 +39,7 @@ export default {
             })
             .catch((err) => {
               console.log(err);
+              commit("SET_LOADING", true);
             });
         },
         (error) => {

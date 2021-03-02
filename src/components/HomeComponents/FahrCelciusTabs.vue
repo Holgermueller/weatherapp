@@ -37,6 +37,10 @@
       </v-tabs-items>
 
       <v-card-actions>
+        <AirQualityDisplay :airQuality="airQuality" />
+      </v-card-actions>
+
+      <v-card-actions>
         <UviInfo :uviInfo="todaysForecast.uvi" />
       </v-card-actions>
 
@@ -53,6 +57,7 @@
 <script>
 import FahrenheitForecast from "./FahrForecast";
 import CelciusForecast from "./CelciusForecast";
+import AirQualityDisplay from "./AirQualityDisplay";
 import UviInfo from "./UviInfo";
 import SunriseSunsetInfo from "./SunriseSunset";
 
@@ -62,11 +67,22 @@ export default {
   components: {
     FahrenheitForecast,
     CelciusForecast,
+    AirQualityDisplay,
     UviInfo,
     SunriseSunsetInfo,
   },
 
-  props: ["todaysForecast"],
+  props: {
+    todaysForecast: {
+      type: Object,
+      required: true,
+    },
+
+    airQuality: {
+      type: Object,
+      required: true,
+    },
+  },
 
   data() {
     return {

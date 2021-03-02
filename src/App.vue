@@ -12,7 +12,10 @@
     </v-app-bar>
 
     <v-main>
-      <router-view :allForecasts="allForecasts"></router-view>
+      <router-view
+        :allForecasts="allForecasts"
+        :airQuality="airQuality"
+      ></router-view>
     </v-main>
   </v-app>
 </template>
@@ -52,6 +55,7 @@ export default {
 
   beforeCreate() {
     this.$store.dispatch("getForecast");
+    this.$store.dispatch("getAirQuality");
   },
 
   // created() {
@@ -61,6 +65,10 @@ export default {
   computed: {
     allForecasts() {
       return this.$store.getters.todaysForecast;
+    },
+
+    airQuality() {
+      return this.$store.getters.airQuality;
     },
   },
 };

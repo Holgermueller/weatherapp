@@ -47,7 +47,7 @@
         <h5>
           <v-icon left>mdi-arrow-collapse-vertical</v-icon>
           Pressure:
-          {{ convertPressureToMetric(todaysForecast.pressure) }} cm
+          {{ todaysForecast.pressure }} mb
         </h5>
 
         <h5>
@@ -73,11 +73,12 @@
           <v-icon left>mdi-weather-windy</v-icon>
           Wind:
           {{ convertWindDirection(todaysForecast.wind_deg) }}
-          {{ convertMPStoKPH(todaysForecast.wind_speed) }} km/h
+          {{ convertMPStoKPH(todaysForecast.wind_speed) }}
         </h5>
 
         <h5 v-if="todaysForecast.wind_gust">
-          Gusts: {{ todaysForecast.wind_gust }} kph
+          <v-icon left>mdi-weather-windy</v-icon>
+          Gusts: {{ convertMPStoKPH(todaysForecast.wind_gust) }}
         </h5>
       </v-card-text>
     </v-card>
@@ -114,7 +115,7 @@ export default {
     },
 
     convertMPStoKPH(value) {
-      return Math.round(value * 3.6);
+      return Math.round(value * 3.6) + " km/h";
     },
 
     convertWindDirection(value) {

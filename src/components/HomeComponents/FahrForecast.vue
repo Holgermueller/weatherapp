@@ -79,6 +79,7 @@
         </h5>
 
         <h5 v-if="todaysForecast.wind_gust">
+          <v-icon left>mdi-weather-windy</v-icon>
           Gusts: {{ convertMetersPerSecondToMPH(todaysForecast.wind_gust) }} mph
         </h5>
       </v-card-text>

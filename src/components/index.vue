@@ -4,7 +4,10 @@
 
     <WeatherAlertsLink :weatherAlerts="allForecasts.alerts" />
 
-    <FahrCelciusTabs :todaysForecast="allForecasts.current" />
+    <FahrCelciusTabs
+      :todaysForecast="allForecasts.current"
+      :airQuality="airQuality"
+    />
   </div>
 </template>
 
@@ -22,7 +25,17 @@ export default {
     FahrCelciusTabs,
   },
 
-  props: ["allForecasts"],
+  props: {
+    allForecasts: {
+      type: Object,
+      required: true,
+    },
+
+    airQuality: {
+      type: Object,
+      required: true,
+    },
+  },
 
   data() {
     return {};
