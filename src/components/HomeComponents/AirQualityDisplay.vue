@@ -4,7 +4,7 @@
       Air Quality:
       {{ airQuality.list[0].main.aqi }}
     </strong>
-    <v-chip>More info</v-chip>
+    <v-chip to="/airQuality">More info</v-chip>
   </div>
 </template>
 

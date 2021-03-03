@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../components/index";
 import Hourly from "../components/Hourly";
 import SevenDay from "../components/SevenDayForecast";
+import AirQuality from "../components/AirQuality";
 import WeatherAlerts from "../components/WeatherAlerts";
 import About from "../components/About";
 
@@ -19,6 +20,12 @@ let router = new VueRouter({
       path: "/weatherAlerts",
       name: "WeatherAlerts",
       component: WeatherAlerts,
+      props: true,
+    },
+    {
+      path: "/airQuality",
+      name: "AirQuality",
+      component: AirQuality,
       props: true,
     },
   ],

@@ -32,6 +32,7 @@ export default {
           .get(QUERYURL)
           .then((response) => {
             let airQuality = response.data;
+
             commit("SET_AIR_QUALITY", airQuality);
             commit("SET_LOADING", false);
           })
