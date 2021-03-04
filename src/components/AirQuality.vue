@@ -6,29 +6,58 @@
       </v-card-title>
 
       <v-card-subtitle>
-        As of: {{ formatTime(airQuality.list[0].dt) }}
+        {{ formatTime(airQuality.list[0].dt) }}
       </v-card-subtitle>
 
       <v-card-text>
-        <h5>Carbon Monoxide: {{ airQuality.list[0].components.co }}</h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Carbon Monoxide: {{ airQuality.list[0].components.co }}
+          </h3>
+        </div>
 
-        <h5>Nitrogen Monoxide: {{ airQuality.list[0].components.no }}</h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Nitrogen Monoxide: {{ airQuality.list[0].components.no }}
+          </h3>
+        </div>
 
-        <h5>Nitrogen Dioxide: {{ airQuality.list[0].components["no2"] }}</h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Nitrogen Dioxide: {{ airQuality.list[0].components["no2"] }}
+          </h3>
+        </div>
 
-        <h5>Ozone: {{ airQuality.list[0].components["o3"] }}</h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Ozone: {{ airQuality.list[0].components["o3"] }}
+          </h3>
+        </div>
 
-        <h5>Sulpher Dioxide: {{ airQuality.list[0].components["so2"] }}</h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Sulpher Dioxide: {{ airQuality.list[0].components["so2"] }}
+          </h3>
+        </div>
 
-        <h5>
-          Fine particles matter: {{ airQuality.list[0].components["pm2_5"] }}
-        </h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Fine particles matter: {{ airQuality.list[0].components["pm2_5"] }}
+          </h3>
+        </div>
 
-        <h5>
-          Coarse particulates matter {{ airQuality.list[0].components["pm10"] }}
-        </h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Coarse particulates matter
+            {{ airQuality.list[0].components["pm10"] }}
+          </h3>
+        </div>
 
-        <h5>Ammonia: {{ airQuality.list[0].components["nh3"] }}</h5>
+        <div class="pollutant-display">
+          <h3 class="pollutant-data">
+            Ammonia: {{ airQuality.list[0].components["nh3"] }}
+          </h3>
+        </div>
       </v-card-text>
     </v-card>
   </div>
@@ -62,5 +91,16 @@ export default {
 .air-quality-card {
   width: 85%;
   margin: 7% auto;
+}
+
+.pollutant-display {
+  margin: 8px auto;
+  background-color: chartreuse;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.pollutant-data {
+  padding: 4px;
 }
 </style>

@@ -1,18 +1,50 @@
+import axios from "axios";
+import APIKey from "../../APIKey";
+
 export default {
   state: {
-    lat: null,
-    long: null,
+    location: {},
   },
 
-  mutations: {},
-
-  actions: {
-    getLocation({ commit, getters }) {
-      commit("SET_LOADING", true);
-
-      console.log(getters.weather.todaysForecast.lon);
+  mutations: {
+    SET_LOCATION(state, payload) {
+      state.location = payload;
     },
   },
 
-  getters: {},
+  actions: {
+    getLocation({ commit }) {
+      commit("SET_LOADING", true);
+
+      navigator.geolocation.getCurrentPosition((position) => {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        let QUERYURL =
+          "https://api.openweathermap.org/geo/1.0/reverse?lat=" +
+          lat +
+          "&lon=" +
+          long +
+          "&exclude=minutely" +
+          "&APPID=" +
+          APIKey;
+
+        axios
+          .get(QUERYURL)
+          .then((response) => {
+            console.log(response.data);
+            commit("SET_LOADING", false);
+          })
+          .catch((err) => {
+            console.log(err);
+            commit("SET_LOADING", true);
+          });
+      });
+    },
+  },
+
+  getters: {
+    location(state) {
+      return state.location;
+    },
+  },
 };
