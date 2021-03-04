@@ -3,7 +3,7 @@ import APIKey from "../../APIKey";
 
 export default {
   state: {
-    todaysForecast: [],
+    todaysForecast: {},
   },
 
   mutations: {

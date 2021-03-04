@@ -3,7 +3,7 @@ import APIKey from "../../APIKey";
 
 export default {
   state: {
-    airQuality: [],
+    airQuality: {},
   },
 
   mutations: {
