@@ -1,14 +1,36 @@
 <template>
   <div>
-    <h1>Air Quality Info:</h1>
+    <v-card class="air-quality-card">
+      <v-card-title>
+        Air Quality for:
+      </v-card-title>
 
-    <h2>As of:</h2>
-    <h2>
-      {{ formatTime(airQuality.list[0].dt) }}
-    </h2>
-    <div>
-      {{ airQuality.list[0].components }}
-    </div>
+      <v-card-subtitle>
+        As of: {{ formatTime(airQuality.list[0].dt) }}
+      </v-card-subtitle>
+
+      <v-card-text>
+        <h5>Carbon Monoxide: {{ airQuality.list[0].components.co }}</h5>
+
+        <h5>Nitrogen Monoxide: {{ airQuality.list[0].components.no }}</h5>
+
+        <h5>Nitrogen Dioxide: {{ airQuality.list[0].components["no2"] }}</h5>
+
+        <h5>Ozone: {{ airQuality.list[0].components["o3"] }}</h5>
+
+        <h5>Sulpher Dioxide: {{ airQuality.list[0].components["so2"] }}</h5>
+
+        <h5>
+          Fine particles matter: {{ airQuality.list[0].components["pm2_5"] }}
+        </h5>
+
+        <h5>
+          Coarse particulates matter {{ airQuality.list[0].components["pm10"] }}
+        </h5>
+
+        <h5>Ammonia: {{ airQuality.list[0].components["nh3"] }}</h5>
+      </v-card-text>
+    </v-card>
   </div>
 </template>
 
@@ -36,4 +58,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.air-quality-card {
+  width: 85%;
+  margin: 7% auto;
+}
+</style>
