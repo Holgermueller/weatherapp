@@ -1,12 +1,17 @@
 <template>
   <div>
     <v-card class="date-time-display">
-      <v-card-title class="text-center">
-        {{ todaysDate }}
+      <v-card-title>
+        <h4>
+          {{ todaysDate }}
+        </h4>
+
+        <v-spacer></v-spacer>
+
+        <h4>
+          {{ timeRightNow }}
+        </h4>
       </v-card-title>
-      <v-card-subtitle class="text-center">
-        {{ timeRightNow }}
-      </v-card-subtitle>
     </v-card>
   </div>
 </template>

@@ -1,6 +1,14 @@
 <template>
   <div>
     <v-card class="forecast-tabs" width="500">
+      <v-card-title>
+        {{ location[0].name }}, {{ location[0].state }}
+
+        <v-spacer></v-spacer>
+
+        {{ location[0].country }}
+      </v-card-title>
+
       <v-tabs v-model="tab" fixed-tabs>
         <v-tab v-for="(tab, index) in tabs" :key="index">
           <h2>
@@ -73,6 +81,11 @@ export default {
   },
 
   props: {
+    location: {
+      type: Array,
+      required: true,
+    },
+
     todaysForecast: {
       type: Object,
       required: true,

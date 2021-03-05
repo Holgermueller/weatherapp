@@ -5,6 +5,7 @@
     <WeatherAlertsLink :weatherAlerts="allForecasts.alerts" />
 
     <FahrCelciusTabs
+      :location="location"
       :todaysForecast="allForecasts.current"
       :airQuality="airQuality"
     />
@@ -26,6 +27,11 @@ export default {
   },
 
   props: {
+    location: {
+      type: Array,
+      required: true,
+    },
+
     allForecasts: {
       type: Object,
       required: true,

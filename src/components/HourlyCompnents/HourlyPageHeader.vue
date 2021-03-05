@@ -3,6 +3,10 @@
     <v-card class="hourly-page-header">
       <v-card-title>
         Hourly Forecast
+
+        <v-spacer></v-spacer>
+
+        {{ location[0].name }}, {{ location[0].state }}
       </v-card-title>
 
       <v-card-subtitle>
@@ -18,7 +22,17 @@ import moment from "moment";
 export default {
   name: "HourlyPageHeader",
 
-  props: ["hourlyForecast"],
+  props: {
+    location: {
+      type: Array,
+      required: true,
+    },
+
+    hourlyForecast: {
+      type: Array,
+      required: true,
+    },
+  },
 
   methods: {
     convertTime(value) {

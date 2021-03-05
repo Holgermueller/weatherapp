@@ -1,9 +1,7 @@
 <template>
   <div>
     <v-card>
-      <v-card-title>
-        <!-- <h1>{{ todaysForecast.name }}, {{ todaysForecast.sys.country }}</h1> -->
-        <v-spacer></v-spacer>
+      <v-card-title class="justify-center">
         <h1>{{ convertKelvinToCelcius(todaysForecast.temp) }}&#176; C</h1>
       </v-card-title>
 

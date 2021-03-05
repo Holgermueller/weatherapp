@@ -1,6 +1,9 @@
 <template>
   <div>
-    <HourlyPageHeader :hourlyForecast="allForecasts.hourly" />
+    <HourlyPageHeader
+      :hourlyForecast="allForecasts.hourly"
+      :location="location"
+    />
 
     <FirstSevenHours :hourlyForecast="allForecasts.hourly" />
 
@@ -22,7 +25,17 @@ export default {
     SecondSevenHours,
   },
 
-  props: ["allForecasts"],
+  props: {
+    location: {
+      type: Array,
+      required: true,
+    },
+
+    allForecasts: {
+      type: Object,
+      required: true,
+    },
+  },
 
   methods: {},
 };

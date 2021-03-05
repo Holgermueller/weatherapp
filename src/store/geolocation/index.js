@@ -3,7 +3,7 @@ import APIKey from "../../APIKey";
 
 export default {
   state: {
-    location: {},
+    location: [],
   },
 
   mutations: {
@@ -31,7 +31,8 @@ export default {
         axios
           .get(QUERYURL)
           .then((response) => {
-            console.log(response.data);
+            let location = response.data;
+            commit("SET_LOCATION", location);
             commit("SET_LOADING", false);
           })
           .catch((err) => {

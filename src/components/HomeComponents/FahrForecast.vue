@@ -1,11 +1,7 @@
 <template>
   <div>
     <v-card class="forecast-display">
-      <v-card-title>
-        <!-- <h1>
-          {{ todaysForecast.current.temp }}, {{ todaysForecast.sys.country }}
-        </h1> -->
-        <v-spacer></v-spacer>
+      <v-card-title class="justify-center">
         <h1>{{ convertKelvinToFahrenheit(todaysForecast.temp) }}&#176; F</h1>
       </v-card-title>
 

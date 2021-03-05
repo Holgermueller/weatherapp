@@ -15,6 +15,7 @@
       <router-view
         :allForecasts="allForecasts"
         :airQuality="airQuality"
+        :location="getLocation"
       ></router-view>
     </v-main>
   </v-app>
@@ -56,6 +57,7 @@ export default {
   beforeCreate() {
     this.$store.dispatch("getForecast");
     this.$store.dispatch("getAirQuality");
+    this.$store.dispatch("getLocation");
   },
 
   // created() {
@@ -69,6 +71,10 @@ export default {
 
     airQuality() {
       return this.$store.getters.airQuality;
+    },
+
+    getLocation() {
+      return this.$store.getters.location;
     },
   },
 };
