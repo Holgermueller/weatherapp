@@ -9,6 +9,10 @@
           {{ link.title }}
         </v-btn>
       </div>
+
+      <v-spacer></v-spacer>
+
+      <NavBarSearchField />
     </v-app-bar>
 
     <v-main class="main-background">
@@ -22,10 +26,14 @@
 </template>
 
 <script>
+import NavBarSearchField from "./components/NavComponents/Search";
+
 export default {
   name: "App",
 
-  components: {},
+  components: {
+    NavBarSearchField,
+  },
 
   data() {
     return {
