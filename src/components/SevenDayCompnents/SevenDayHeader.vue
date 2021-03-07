@@ -3,9 +3,13 @@
     <v-card class="seven-day-header">
       <v-card-title class="text-center">
         8 Day Forecast
+
+        <v-spacer></v-spacer>
+
+        {{ location[0].name }}, {{ location[0].state }}
       </v-card-title>
-      <v-card-subtitle class="text-center">
-        As of: {{ convertTime(SevenDayForecast[0].dt) }}
+      <v-card-subtitle>
+        As of: {{ convertTime(SevenDayForecastLastForecastTime) }}
       </v-card-subtitle>
     </v-card>
   </div>
@@ -17,7 +21,17 @@ import moment from "moment";
 export default {
   name: "SevenDayHeader",
 
-  props: ["SevenDayForecast"],
+  props: {
+    location: {
+      type: Array,
+      required: true,
+    },
+
+    SevenDayForecastLastForecastTime: {
+      type: Number,
+      required: true,
+    },
+  },
 
   methods: {
     convertTime(value) {

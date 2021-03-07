@@ -10,7 +10,7 @@
       </v-card-title>
 
       <v-card-subtitle>
-        As of: {{ convertTime(hourlyForecast[0].dt) }}
+        As of: {{ convertTime(hourlyForecastLastForecastTime) }}
       </v-card-subtitle>
     </v-card>
   </div>
@@ -28,8 +28,8 @@ export default {
       required: true,
     },
 
-    hourlyForecast: {
-      type: Array,
+    hourlyForecastLastForecastTime: {
+      type: Number,
       required: true,
     },
   },

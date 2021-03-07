@@ -1,7 +1,7 @@
 <template>
   <div>
     <HourlyPageHeader
-      :hourlyForecast="allForecasts.hourly"
+      :hourlyForecastLastForecastTime="allForecasts.hourly[0].dt"
       :location="location"
     />
 

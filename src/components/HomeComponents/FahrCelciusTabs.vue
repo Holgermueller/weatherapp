@@ -9,6 +9,10 @@
         {{ location[0].country }}
       </v-card-title>
 
+      <v-card-subtitle>
+        As of: {{ convertTime(todaysForecast.dt) }}
+      </v-card-subtitle>
+
       <v-tabs v-model="tab" fixed-tabs>
         <v-tab v-for="(tab, index) in tabs" :key="index">
           <h2>
@@ -63,6 +67,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import FahrenheitForecast from "./FahrForecast";
 import CelciusForecast from "./CelciusForecast";
 import AirQualityDisplay from "./AirQualityDisplay";
@@ -114,6 +119,12 @@ export default {
   computed: {
     loading() {
       return this.$store.getters.loading;
+    },
+  },
+
+  methods: {
+    convertTime(value) {
+      return moment.unix(value).format("LT");
     },
   },
 };

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <SevenDayHeader :SevenDayForecast="allForecasts.daily" />
+    <SevenDayHeader
+      :SevenDayForecastLastForecastTime="allForecasts.daily[0].dt"
+      :location="location"
+    />
 
     <v-layout class="progress">
       <v-flex class="tet-xs-center">
@@ -30,7 +33,17 @@ export default {
     SevenDayExpansion,
   },
 
-  props: ["allForecasts"],
+  props: {
+    location: {
+      type: Array,
+      required: true,
+    },
+
+    allForecasts: {
+      type: Object,
+      required: true,
+    },
+  },
 
   data() {
     return {};

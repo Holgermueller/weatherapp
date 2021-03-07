@@ -2,11 +2,15 @@
   <div>
     <v-card class="air-quality-card">
       <v-card-title>
-        Air Quality for:
+        Air Quality
+
+        <v-spacer></v-spacer>
+
+        {{ getLocation[0].name }}, {{ getLocation[0].state }}
       </v-card-title>
 
       <v-card-subtitle>
-        {{ formatTime(airQuality.list[0].dt) }}
+        As of: {{ formatTime(airQuality.list[0].dt) }}
       </v-card-subtitle>
 
       <v-card-text>
@@ -71,11 +75,16 @@ export default {
 
   beforeCreate() {
     this.$store.dispatch("getAirQuality");
+    this.$store.dispatch("getLocation");
   },
 
   computed: {
     airQuality() {
       return this.$store.getters.airQuality;
+    },
+
+    getLocation() {
+      return this.$store.getters.location;
     },
   },
 
