@@ -11,7 +11,7 @@
       </div>
     </v-app-bar>
 
-    <v-main>
+    <v-main class="main-background">
       <router-view
         :allForecasts="allForecasts"
         :airQuality="airQuality"
@@ -75,3 +75,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.main-background {
+  background-color: lightblue;
+}
+</style>

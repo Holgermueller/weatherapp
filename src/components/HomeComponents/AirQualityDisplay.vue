@@ -1,18 +1,20 @@
 <template>
   <div :class="`aqi-percentage-visualization ${airQuality.list[0].main.aqi}`">
-    <strong class="aqi-data-displayed ">
-      Air Quality:
-      {{ airQuality.list[0].main.aqi }}
-      <div v-if="airQuality.list[0].main.aqi == 1">Good</div>
-      <div v-if="airQuality.list[0].main.aqi == 2">Fair</div>
-      <div v-if="airQuality.list[0].main.aqi == 3">Bad</div>
-      <div v-if="airQuality.list[0].main.aqi == 4">Worse</div>
-      <div v-if="airQuality.list[0].main.aqi == 5">Worst</div>
-    </strong>
+    <v-card-actions>
+      <strong class="aqi-data-displayed ">
+        <div v-if="airQuality.list[0].main.aqi == 1">Air Quality: Good</div>
+        <div v-if="airQuality.list[0].main.aqi == 2">Air Quality: Fair</div>
+        <div v-if="airQuality.list[0].main.aqi == 3">Air Quality: Bad</div>
+        <div v-if="airQuality.list[0].main.aqi == 4">Air Quality: Worse</div>
+        <div v-if="airQuality.list[0].main.aqi == 5">Air Quality: Worst</div>
+      </strong>
 
-    <v-chip outlined to="/airQuality"
-      >More info <v-icon right> mdi-arrow-right</v-icon>
-    </v-chip>
+      <v-spacer></v-spacer>
+
+      <v-btn text to="/airQuality"
+        >More info <v-icon> mdi-arrow-right</v-icon>
+      </v-btn>
+    </v-card-actions>
   </div>
 </template>
 

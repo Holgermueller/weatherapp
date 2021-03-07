@@ -1,6 +1,5 @@
 <template>
   <div id="sevenDayUVIndex">
-    <h5 class="uvi-header">UV Index</h5>
     <div class="uvi-background">
       <div
         class="uvi-percentage-visualization"
@@ -8,7 +7,7 @@
       >
         <strong class="uvi-data-displayed">
           <v-icon left>mdi-weather-sunny</v-icon>
-          {{ uvIndex }}
+          UV Index: {{ uvIndex }}
         </strong>
       </div>
     </div>
