@@ -88,4 +88,20 @@ export default {
 .main-background {
   background-color: lightblue;
 }
+
+.dawn-background {
+  background-image: linear-gradient(#00faff, #ffcd00);
+}
+
+.day-background {
+  background-color: #00ebff;
+}
+
+.sunset-background {
+  background-image: linear-gradient(#5f0066, m#ff0500);
+}
+
+.night-background {
+  background-color: #280066;
+}
 </style>
