@@ -15,7 +15,7 @@
       <NavBarSearchField />
     </v-app-bar>
 
-    <v-main class="main-background">
+    <v-main class="main-background" :class="getBackgroundColor">
       <router-view
         :allForecasts="allForecasts"
         :airQuality="airQuality"
@@ -59,6 +59,13 @@ export default {
           link: "/about",
         },
       ],
+
+      backgroundClasses: [
+        "dawn-background",
+        "day-background",
+        "sunset-background",
+        "night-background",
+      ],
     };
   },
 
@@ -79,6 +86,24 @@ export default {
 
     getLocation() {
       return this.$store.getters.location;
+    },
+  },
+
+  methods: {
+    getBackgroundColor() {
+      let timeOfDay = this.allForecasts.current.dt;
+      let sunrise = this.allForecasts.current.sunrise;
+      let sunset = this.allForecasts.current.sunset;
+
+      if ((timeOfDay = sunrise)) {
+        return;
+      } else if (timeOfDay > sunrise && timeOfDay < sunset) {
+        return;
+      } else if ((timeOfDay = sunset)) {
+        return;
+      } else {
+        return;
+      }
     },
   },
 };
