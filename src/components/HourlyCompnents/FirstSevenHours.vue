@@ -42,7 +42,8 @@
           <v-divider v-if="hour.wind_gust"></v-divider>
 
           <h5 class="gusts" v-if="hour.wind_gust">
-            Gusts: {{ hour.wind_gust }}
+            Gusts: {{ convertMetersPerSecondToMPH(hour.wind_gust) }} /
+            {{ convertMPStoKPH(hour.wind_gust) }}
           </h5>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -73,6 +74,16 @@ export default {
       return this.$store.getters.loading;
     },
   },
+
+  methods: {
+    convertMetersPerSecondToMPH(value) {
+      return Math.round(value * 2.23694) + " mph";
+    },
+
+    convertMPStoKPH(value) {
+      return Math.round(value * 3.6) + " km/h";
+    },
+  },
 };
 </script>
 
@@ -89,5 +100,6 @@ export default {
 
 .gusts {
   text-align: center;
+  padding: 8px;
 }
 </style>
