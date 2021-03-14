@@ -1,7 +1,7 @@
 <template>
   <div :class="`aqi-percentage-visualization ${airQuality.list[0].main.aqi}`">
     <v-card-actions>
-      <strong class="aqi-data-displayed ">
+      <strong class="aqi-data-displayed">
         <div v-if="airQuality.list[0].main.aqi == 1">
           Air Quality: Good
         </div>

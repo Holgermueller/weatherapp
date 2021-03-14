@@ -1,16 +1,15 @@
 <template>
-  <div id="uviInfo">
-    <div class="uvi-background">
-      <div
-        class="uvi-percentage-visualization"
-        :style="{ width: uviInfo * 10 }"
-      >
-        <strong class="uvi-data-displayed">
+  <div id="uviInfo" class="uvi-background">
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <strong>
+        <div>
           <v-icon left>mdi-weather-sunny</v-icon>
           UV Index: {{ uviInfo }}
-        </strong>
-      </div>
-    </div>
+        </div>
+      </strong>
+      <v-spacer></v-spacer>
+    </v-card-actions>
   </div>
 </template>
 
@@ -33,10 +32,6 @@ export default {
   margin: 0 auto;
 }
 
-.uvi-header {
-  text-align: center;
-}
-
 .uvi-background {
   background-image: linear-gradient(
     to right,
@@ -49,20 +44,8 @@ export default {
     rgba(255, 0, 0, 0.3)
   );
   margin: 10px auto;
-  position: relative;
-  border-radius: 15px;
-}
-
-.uvi-percentage-visualization {
-  height: 100%;
-  box-sizing: border-box;
-  border-radius: 15px;
-}
-
-.uvi-data-displayed {
-  width: 100%;
   text-align: center;
-  display: inline-block;
+  border-radius: 15px;
   padding: 10px 20px;
 }
 </style>
