@@ -85,15 +85,19 @@ export default {
 
   methods: {
     getBackgroundColor() {
-      let timeOfDay = this.allForecasts.current.dt;
-      let sunrise = moment.unix(this.allForecasts.current.sunrise).format("LT");
-      let sunset = moment.unix(this.allForecasts.current.sunset).format("LT");
+      let now = moment().format("HH:mm");
+      let sunrise = moment
+        .unix(this.allForecasts.current.sunrise)
+        .format("HH:mm");
+      let sunset = moment
+        .unix(this.allForecasts.current.sunset)
+        .format("HH:mm");
 
-      if (timeOfDay == sunrise) {
+      if (now == sunrise) {
         return "dawn-background";
-      } else if (timeOfDay > sunrise && timeOfDay < sunset) {
+      } else if (now > sunrise && now < sunset) {
         return "day-background";
-      } else if (timeOfDay == sunset) {
+      } else if (now == sunset) {
         return "sunset-background";
       } else {
         return "night-background";
@@ -104,10 +108,6 @@ export default {
 </script>
 
 <style scoped>
-.main-background {
-  background-color: lightblue;
-}
-
 .dawn-background {
   background-image: linear-gradient(#00faff, #ffcd00);
 }

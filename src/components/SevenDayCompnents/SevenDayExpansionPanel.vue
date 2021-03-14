@@ -4,11 +4,22 @@
       <v-expansion-panel v-for="(day, index) in SevenDayForecast" :key="index">
         <v-card>
           <v-expansion-panel-header>
-            {{ convertTimeToDayOfWeek(day.dt) }}
-            <v-spacer></v-spacer>
-
-            {{ convertKelvinToFahrenheit(day.temp.max) }}&#176; F /
-            {{ convertKelvinToCelcius(day.temp.max) }} &#176; C
+            <v-container>
+              <v-row>
+                <v-col>
+                  <h3 class="text-left">
+                    {{ convertTimeToDayOfWeek(day.dt) }}
+                  </h3>
+                </v-col>
+                <v-col>
+                  <h3 class="text-right">
+                    <v-icon>mdi-thermometer</v-icon>
+                    {{ convertKelvinToFahrenheit(day.temp.max) }}&#176; F /
+                    {{ convertKelvinToCelcius(day.temp.max) }} &#176; C
+                  </h3>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-expansion-panel-header>
 
           <v-expansion-panel-content>

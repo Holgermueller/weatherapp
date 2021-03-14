@@ -3,14 +3,17 @@
     <v-container>
       <v-row no-gutters>
         <v-col
-          ><h5>Morning:</h5>
+          ><h5><v-icon>mdi-weather-sunset-up</v-icon>Morning:</h5>
           <h5>
             {{ convertKelvinToFahrenheit(temps.morn) }}&#176; F /
             {{ convertKelvinToCelcius(temps.morn) }}&#176; C
           </h5></v-col
         >
         <v-col>
-          <h5>Day:</h5>
+          <h5>
+            <v-icon>mdi-weather-sunny</v-icon>
+            Day:
+          </h5>
           <h5>
             {{ convertKelvinToFahrenheit(temps.day) }}&#176; F /
             {{ convertKelvinToCelcius(temps.day) }}&#176; C
@@ -18,6 +21,7 @@
         >
         <v-col>
           <h5>
+            <v-icon>mdi-weather-sunset-down</v-icon>
             Evening:
           </h5>
           <h5>
@@ -26,7 +30,10 @@
           </h5></v-col
         >
         <v-col>
-          <h5>Night:</h5>
+          <h5>
+            <v-icon>mdi-moon-waning-crescent</v-icon>
+            Night:
+          </h5>
           <h5>
             {{ convertKelvinToFahrenheit(temps.night) }}&#176; F /
             {{ convertKelvinToCelcius(temps.night) }}&#176; C
