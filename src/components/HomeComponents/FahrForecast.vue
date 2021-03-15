@@ -26,7 +26,7 @@
         <h4 v-if="todaysForecast.snow || todaysForecast.rain">
           <v-icon left>mdi-ruler</v-icon>
           Precipitation this last hour:
-          {{ todaysForecast.snow }}
+          {{ convertMMtoInches(todaysForecast.snow["1h"]) }}
         </h4>
 
         <h3>

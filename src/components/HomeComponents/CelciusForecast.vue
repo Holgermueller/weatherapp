@@ -26,7 +26,7 @@
         <h4 v-if="todaysForecast.snow || todaysForecast.rain">
           <v-icon left>mdi-ruler</v-icon>
           Precipitation this last hour:
-          {{ todaysForecast.snow }}
+          {{ convertMMtoCM(todaysForecast.snow["1h"]) }}
         </h4>
 
         <h3>
@@ -96,6 +96,16 @@ export default {
   methods: {
     convertKelvinToCelcius(value) {
       return Math.round(parseFloat(value) - 273.15);
+    },
+
+    convertMMtoCM(value) {
+      let accumInCM = Math.round(value / 10);
+
+      if (accumInCM < 1) {
+        return "Less than 1 cm";
+      } else {
+        return accumInCM + "cm";
+      }
     },
 
     convertVisibilityToKm(value) {
