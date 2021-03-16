@@ -12,6 +12,7 @@
         >
         <v-col>
           <h3 class="text-right">
+            <v-icon>mdi-thermometer</v-icon>
             {{ convertKelvinToFahrenheit(temp) }}&#176; F /
             {{ convertKelvinToCelcius(temp) }}&#176; C
           </h3></v-col

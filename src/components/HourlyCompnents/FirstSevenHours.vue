@@ -42,6 +42,7 @@
           <v-divider v-if="hour.wind_gust"></v-divider>
 
           <h5 class="gusts" v-if="hour.wind_gust">
+            <v-icon left>mdi-weather-windy</v-icon>
             Gusts: {{ convertMetersPerSecondToMPH(hour.wind_gust) }} /
             {{ convertMPStoKPH(hour.wind_gust) }}
           </h5>

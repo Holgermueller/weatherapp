@@ -3,22 +3,22 @@
     <v-container>
       <v-row no-gutters>
         <v-col>
-          <h5>Feels like:</h5>
+          <h5><v-icon>mdi-thermometer</v-icon>Feels like:</h5>
           <h5>
             {{ convertKelvinToFahrenheit(feelsLike) }}&#176; F /
             {{ convertKelvinToCelcius(feelsLike) }}&#176; C
           </h5>
         </v-col>
         <v-col>
-          <h5>Humidity:</h5>
+          <h5><v-icon>mdi-water-percent</v-icon>Humidity:</h5>
           <h5>{{ humidity }}%</h5>
         </v-col>
         <v-col
-          ><h5>Precipitation:</h5>
+          ><h5><v-icon>mdi-water-percent</v-icon>Precipitation:</h5>
           <h5>{{ calcPrecip(pop) }}%</h5></v-col
         >
         <v-col
-          ><h5>UV Index:</h5>
+          ><h5><v-icon>mdi-weather-sunny</v-icon> UV Index:</h5>
           <h5>
             {{ uvi }}
           </h5></v-col
