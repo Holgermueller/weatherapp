@@ -11,6 +11,21 @@
                     {{ convertTimeToDayOfWeek(day.dt) }}
                   </h3>
                 </v-col>
+
+                <v-col>
+                  <v-img
+                    class="forecast-icon"
+                    alt="image"
+                    width="50"
+                    height="50"
+                    :src="
+                      'http://openweathermap.org/img/wn/' +
+                        day.weather[0].icon +
+                        '@2x.png'
+                    "
+                  ></v-img>
+                </v-col>
+
                 <v-col>
                   <h3 class="text-right">
                     <v-icon>mdi-thermometer</v-icon>
