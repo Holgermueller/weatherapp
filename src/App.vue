@@ -15,12 +15,25 @@
       <NavBarSearchField />
     </v-app-bar>
 
-    <v-main class="main-background" :class="getBackgroundColor()">
+    <v-main
+      class="main-background"
+      :class="getBackgroundColor()"
+      v-if="allForecasts.length"
+    >
       <router-view
         :allForecasts="allForecasts"
         :airQuality="airQuality"
         :location="getLocation"
       ></router-view>
+    </v-main>
+    <v-main else>
+      <v-card class="error-card">
+        <v-card-title>
+          <h1>We seem to be experiencing technical difficulty.</h1>
+          <h1>Please try back again later.</h1>
+          <h1>We apologize for any inconvenience.</h1>
+        </v-card-title>
+      </v-card>
     </v-main>
   </v-app>
 </template>
@@ -122,5 +135,10 @@ export default {
 
 .night-background {
   background-color: #280066;
+}
+
+.error-card {
+  width: 75%;
+  margin: 7% auto;
 }
 </style>
