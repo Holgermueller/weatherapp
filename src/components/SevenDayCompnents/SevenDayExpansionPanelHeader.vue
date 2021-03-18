@@ -9,13 +9,15 @@
         </v-col>
 
         <v-col>
-          <v-img
-            class="forecast-icon"
-            alt="image"
-            width="50"
-            height="50"
-            :src="'http://openweathermap.org/img/wn/' + icon + '@2x.png'"
-          ></v-img>
+          <v-fade-transition>
+            <v-img
+              class="forecast-icon"
+              alt="image"
+              width="50"
+              height="50"
+              :src="'http://openweathermap.org/img/wn/' + icon + '@2x.png'"
+            ></v-img>
+          </v-fade-transition>
         </v-col>
 
         <v-col>
@@ -69,4 +71,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.forecast-icon {
+  margin: auto;
+}
+</style>
