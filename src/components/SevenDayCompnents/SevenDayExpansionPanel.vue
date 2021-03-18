@@ -4,37 +4,11 @@
       <v-expansion-panel v-for="(day, index) in SevenDayForecast" :key="index">
         <v-card>
           <v-expansion-panel-header>
-            <v-container>
-              <v-row>
-                <v-col>
-                  <h3 class="text-left">
-                    {{ convertTimeToDayOfWeek(day.dt) }}
-                  </h3>
-                </v-col>
-
-                <v-col>
-                  <v-img
-                    class="forecast-icon"
-                    alt="image"
-                    width="50"
-                    height="50"
-                    :src="
-                      'http://openweathermap.org/img/wn/' +
-                        day.weather[0].icon +
-                        '@2x.png'
-                    "
-                  ></v-img>
-                </v-col>
-
-                <v-col>
-                  <h3 class="text-right">
-                    <v-icon>mdi-thermometer</v-icon>
-                    {{ convertKelvinToFahrenheit(day.temp.max) }}&#176; F /
-                    {{ convertKelvinToCelcius(day.temp.max) }} &#176; C
-                  </h3>
-                </v-col>
-              </v-row>
-            </v-container>
+            <SevenDayExpansionPanelHeaderContent
+              :time="day.dt"
+              :icon="day.weather[0].icon"
+              :maxTemp="day.temp.max"
+            />
           </v-expansion-panel-header>
 
           <v-expansion-panel-content>
@@ -81,6 +55,7 @@
 
 <script>
 import moment from "moment";
+import SevenDayExpansionPanelHeaderContent from "./SevenDayExpansionPanelHeader";
 import AccummulationDataDisplay from "./AccummulationData";
 import TempsThroughtoutDayDisplay from "./TempsThroughoutDay";
 import SevenDayUVIForecast from "./SevenDayUVI";
@@ -90,6 +65,7 @@ export default {
   name: "SevenDayExpanstion",
 
   components: {
+    SevenDayExpansionPanelHeaderContent,
     AccummulationDataDisplay,
     TempsThroughtoutDayDisplay,
     SevenDayUVIForecast,
