@@ -46,6 +46,8 @@ export default {
 
       if (accumulationInInches < 1) {
         return "Less than one inch";
+      } else if (accumulationInInches == 1) {
+        return accumulationInInches + " inch";
       } else {
         return accumulationInInches + " inches";
       }
