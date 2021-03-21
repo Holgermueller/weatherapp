@@ -24,7 +24,7 @@
           <h3 class="text-right">
             <v-icon>mdi-thermometer</v-icon>
             {{ convertKelvinToFahrenheit(maxTemp) }}&#176; F /
-            {{ convertKelvinToCelcius(maxTemp) }} &#176; C
+            {{ convertKelvinToCelcius(maxTemp) }}&#176; C
           </h3>
         </v-col>
       </v-row>

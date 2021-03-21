@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <h3>{{ convertTime(time) }}</h3>
+          <h3 class="text-left">{{ convertTime(time) }}</h3>
         </v-col>
         <v-col
           ><h3 class="text-left">
