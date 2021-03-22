@@ -35,7 +35,6 @@ export default {
               let forecast = response.data;
               commit("SET_FORECAST", forecast);
               commit("SET_LOADING", false);
-              console.log(forecast);
             })
             .catch((err) => {
               console.log(err);

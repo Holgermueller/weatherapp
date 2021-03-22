@@ -3,10 +3,10 @@
     <v-expansion-panels class="seven-day-display" focusable inset>
       <v-expansion-panel v-for="(day, index) in SevenDayForecast" :key="index">
         <v-expansion-panel-header>
-          <template v-slot:default="{ closed }">
-            <div v-if="closed"></div>
+          <template v-slot:default="{ open }">
+            <div v-if="open"></div>
             <SevenDayExpansionPanelHeaderContent
-              else
+              v-else
               :time="day.dt"
               :icon="day.weather[0].icon"
               :maxTemp="day.temp.max"
