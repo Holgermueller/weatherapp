@@ -57,7 +57,7 @@ export default {
 
   methods: {
     convertTimeToDayOfWeek(value) {
-      return moment.unix(value).format("ddd Do MMMM YYYY");
+      return moment.unix(value).format("ddd Do MMM YYYY");
     },
 
     convertKelvinToFahrenheit(value) {
