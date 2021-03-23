@@ -3,7 +3,7 @@
     <div>
       <v-container>
         <v-row>
-          <v-col class="test-left">
+          <v-col class="text-left">
             <h3>
               {{ convertTimeToDayOfWeek(time) }}
             </h3>

@@ -6,7 +6,7 @@
           <h3 class="text-left">{{ convertTime(time) }}</h3>
         </v-col>
         <v-col
-          ><h3 class="text-left">
+          ><h3 class="text-center">
             {{ weather }}
           </h3></v-col
         >

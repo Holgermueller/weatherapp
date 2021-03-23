@@ -18,15 +18,23 @@
         :key="index"
       >
         <v-expansion-panel-header>
-          <ExpansionPanelHeaderInfo
-            :time="hour.dt"
-            :weather="hour.weather[0].main"
-            :temp="hour.temp"
-          />
+          <template v-slot:default="{ open }">
+            <div v-if="open"></div>
+            <ExpansionPanelHeaderInfo
+              v-else
+              :time="hour.dt"
+              :weather="hour.weather[0].main"
+              :temp="hour.temp"
+            />
+          </template>
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          <MainHourlyForecastDisplay :mainForecast="hour.weather[0]" />
+          <MainHourlyForecastDisplay
+            :mainForecast="hour.weather[0]"
+            :time="hour.dt"
+            :temp="hour.temp"
+          />
 
           <HourlyPrecipitation :snow="hour.snow" :rain="hour.rain" />
 
@@ -41,11 +49,7 @@
 
           <v-divider v-if="hour.wind_gust"></v-divider>
 
-          <h5 class="gusts" v-if="hour.wind_gust">
-            <v-icon left>mdi-weather-windy</v-icon>
-            Gusts: {{ convertMetersPerSecondToMPH(hour.wind_gust) }} /
-            {{ convertMPStoKPH(hour.wind_gust) }}
-          </h5>
+          <HourlyGustsDisplay :gusts="hour.wind_gust" />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -57,6 +61,7 @@ import ExpansionPanelHeaderInfo from "./ExpansionPanelHeaderInfo";
 import MainHourlyForecastDisplay from "./MainHourlyForecast";
 import HourlyForecastDataDisplay from "./HourlyForecastDataDisplay";
 import HourlyPrecipitation from "./HourlyPrecipitation";
+import HourlyGustsDisplay from "./HourlyGusts";
 
 export default {
   name: "FirstSevenHours",
@@ -66,23 +71,19 @@ export default {
     MainHourlyForecastDisplay,
     HourlyForecastDataDisplay,
     HourlyPrecipitation,
+    HourlyGustsDisplay,
   },
 
-  props: ["hourlyForecast"],
+  props: {
+    hourlyForecast: {
+      type: Array,
+      required: true,
+    },
+  },
 
   computed: {
     loading() {
       return this.$store.getters.loading;
-    },
-  },
-
-  methods: {
-    convertMetersPerSecondToMPH(value) {
-      return Math.round(value * 2.23694) + " mph";
-    },
-
-    convertMPStoKPH(value) {
-      return Math.round(value * 3.6) + " km/h";
     },
   },
 };
@@ -97,10 +98,5 @@ export default {
 .progress {
   width: 55%;
   margin: auto;
-}
-
-.gusts {
-  text-align: center;
-  padding: 8px;
 }
 </style>

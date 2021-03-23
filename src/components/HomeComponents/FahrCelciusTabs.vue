@@ -110,7 +110,7 @@ export default {
           tabName: "Fahrenheit",
         },
         {
-          tabName: "Celcius",
+          tabName: "Celsius",
         },
       ],
     };

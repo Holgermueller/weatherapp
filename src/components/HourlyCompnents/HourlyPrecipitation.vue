@@ -37,7 +37,7 @@ export default {
       if (accumInCM < 1) {
         return "Less than 1 cm";
       } else {
-        return accumInCM + "cm";
+        return accumInCM + " cm";
       }
     },
 
