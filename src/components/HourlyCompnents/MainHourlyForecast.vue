@@ -17,13 +17,17 @@
       </v-row>
     </v-container>
 
-    <v-img
-      class="forecast-icon"
-      alt="image"
-      width="100"
-      height="100"
-      :src="'http://openweathermap.org/img/wn/' + mainForecast.icon + '@2x.png'"
-    ></v-img>
+    <div class="icon-background">
+      <v-img
+        class="forecast-icon"
+        alt="image"
+        width="100"
+        height="100"
+        :src="
+          'http://openweathermap.org/img/wn/' + mainForecast.icon + '@2x.png'
+        "
+      ></v-img>
+    </div>
 
     <h5 class="description">
       {{ mainForecast.description }}
@@ -71,6 +75,12 @@ export default {
 </script>
 
 <style scoped>
+.icon-background {
+  background-color: #00ebff;
+  margin-bottom: 12px;
+  border-radius: 15px;
+}
+
 .forecast-icon {
   margin: auto;
 }

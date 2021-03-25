@@ -47,11 +47,8 @@ export default {
   background-image: linear-gradient(
     to right,
     lightyellow,
-    lightblue,
-    purple
-      /* rgba(255, 255, 0, 0.3),
-    rgba(0, 0, 255, 0.3),
-    rgba(127, 0, 255, 0.3) */
+    lightblue 70%,
+    violet
   );
   background-color: orange;
   border-radius: 15px;
