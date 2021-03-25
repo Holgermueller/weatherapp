@@ -20,12 +20,12 @@ export default {
 
   props: {
     snow: {
-      type: Object,
+      type: Number,
       required: false,
     },
 
     rain: {
-      type: Object,
+      type: Number,
       required: false,
     },
   },
