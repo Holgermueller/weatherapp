@@ -9,7 +9,7 @@
 
     <h5 v-if="rain">
       Rain:
-      {{ convertMMtoInches(rain["1h"]) }} / {{ convertMMtoCM(rain["h1"]) }}
+      {{ convertMMtoInches(rain["1h"]) }} / {{ convertMMtoCM(rain["1h"]) }}
     </h5>
   </div>
 </template>
@@ -20,12 +20,12 @@ export default {
 
   props: {
     snow: {
-      type: Number,
+      type: Object,
       required: false,
     },
 
     rain: {
-      type: Number,
+      type: Object,
       required: false,
     },
   },
