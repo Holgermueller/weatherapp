@@ -11,17 +11,19 @@
       </v-card-subtitle>
 
       <v-card-text>
-        <v-img
-          class="forecast-icon"
-          alt="image"
-          width="150"
-          height="150"
-          :src="
-            'http://openweathermap.org/img/wn/' +
-              todaysForecast.weather[0].icon +
-              '@2x.png'
-          "
-        ></v-img>
+        <div class="icon-background">
+          <v-img
+            class="forecast-icon"
+            alt="image"
+            width="150"
+            height="150"
+            :src="
+              'http://openweathermap.org/img/wn/' +
+                todaysForecast.weather[0].icon +
+                '@2x.png'
+            "
+          ></v-img>
+        </div>
 
         <h4 v-if="todaysForecast.snow || todaysForecast.rain">
           <v-icon left>mdi-ruler</v-icon>
@@ -152,6 +154,12 @@ export default {
 </script>
 
 <style scoped>
+.icon-background {
+  background-color: #00ebff;
+  margin-bottom: 12px;
+  border-radius: 15px;
+}
+
 .forecast-icon {
   margin: auto;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="sunriseSunset">
     <v-card-actions>
       <strong>
         <v-icon left>mdi-weather-sunset-up</v-icon>
@@ -41,4 +41,19 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#sunriseSunset {
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    lightyellow,
+    lightblue,
+    purple
+      /* rgba(255, 255, 0, 0.3),
+    rgba(0, 0, 255, 0.3),
+    rgba(127, 0, 255, 0.3) */
+  );
+  background-color: orange;
+  border-radius: 15px;
+}
+</style>
