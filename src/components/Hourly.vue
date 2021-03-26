@@ -5,24 +5,20 @@
       :location="location"
     />
 
-    <FirstSevenHours :hourlyForecast="allForecasts.hourly" />
-
-    <SecondSevenHours :hourlyForecast="allForecasts.hourly" />
+    <HourlyForecastExpansionPanels :hourlyForecast="allForecasts.hourly" />
   </div>
 </template>
 
 <script>
 import HourlyPageHeader from "./HourlyCompnents/HourlyPageHeader";
-import FirstSevenHours from "./HourlyCompnents/FirstSevenHours";
-import SecondSevenHours from "./HourlyCompnents/SecondSevenHours";
+import HourlyForecastExpansionPanels from "./HourlyCompnents/HourlyForecastExpansionPanels";
 
 export default {
   name: "HourlyForecast",
 
   components: {
     HourlyPageHeader,
-    FirstSevenHours,
-    SecondSevenHours,
+    HourlyForecastExpansionPanels,
   },
 
   props: {

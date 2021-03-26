@@ -89,7 +89,12 @@
 export default {
   name: "CelciusForecast",
 
-  props: ["todaysForecast"],
+  props: {
+    todaysForecast: {
+      type: Object,
+      required: true,
+    },
+  },
 
   data() {
     return {};

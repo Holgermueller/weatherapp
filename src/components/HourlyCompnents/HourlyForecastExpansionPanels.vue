@@ -92,7 +92,7 @@ export default {
 <style scoped>
 .forecast-display {
   width: 75%;
-  margin: 1% auto 0;
+  margin: 1% auto 7%;
 }
 
 .progress {
