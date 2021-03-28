@@ -64,6 +64,10 @@
         </div>
       </v-card-text>
     </v-card>
+
+    <v-card>
+      {{ airQualityForecast }}
+    </v-card>
   </div>
 </template>
 
@@ -76,6 +80,7 @@ export default {
   beforeCreate() {
     this.$store.dispatch("getAirQuality");
     this.$store.dispatch("getLocation");
+    this.$store.dispatch("getAirQualityForecast");
   },
 
   computed: {
@@ -85,6 +90,10 @@ export default {
 
     getLocation() {
       return this.$store.getters.location;
+    },
+
+    airQualityForecast() {
+      return this.$store.getters.airQualityForecast;
     },
   },
 

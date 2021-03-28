@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="red" dark>
+    <v-app-bar app color="#BCB1AF" dark>
       <div v-for="link in menuLinks" :key="link.title" link>
         <v-btn :to="link.link" elevation="0">
           <v-icon left>
@@ -12,7 +12,7 @@
 
       <v-spacer></v-spacer>
 
-      <NavBarSearchField />
+      <!-- <NavBarSearchField /> -->
     </v-app-bar>
 
     <v-main class="main-background" :class="getBackgroundColor()">
@@ -27,13 +27,13 @@
 
 <script>
 import moment from "moment";
-import NavBarSearchField from "./components/NavComponents/Search";
+//import NavBarSearchField from "./components/NavComponents/Search";
 
 export default {
   name: "App",
 
   components: {
-    NavBarSearchField,
+    //NavBarSearchField,
   },
 
   data() {
@@ -124,10 +124,5 @@ export default {
 
 .night-background {
   background-color: #280066;
-}
-
-.error-card {
-  width: 75%;
-  margin: 7% auto;
 }
 </style>
