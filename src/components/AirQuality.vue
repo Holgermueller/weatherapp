@@ -65,17 +65,20 @@
       </v-card-text>
     </v-card>
 
-    <v-card>
-      {{ airQualityForecast }}
-    </v-card>
+    <AirQualityForecastDisplay :airQualityForecast="airQualityForecast.list" />
   </div>
 </template>
 
 <script>
 import moment from "moment";
+import AirQualityForecastDisplay from "./AirQualityComponents/AirQualityForecast";
 
 export default {
   name: "AirQualityPage",
+
+  components: {
+    AirQualityForecastDisplay,
+  },
 
   beforeCreate() {
     this.$store.dispatch("getAirQuality");
