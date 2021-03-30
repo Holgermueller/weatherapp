@@ -6,14 +6,14 @@
           {{ alert.event }}
         </v-expansion-panel-header>
         <v-expansion-panel-content>
-          <h2>
+          <h2 class="alert-headline">
             {{ alert.sender_name }}
           </h2>
           <h3>From: {{ convertTime(alert.start) }}</h3>
 
           <h3>Until: {{ convertTime(alert.end) }}</h3>
 
-          <p>
+          <p class="alert-description">
             {{ alert.description }}
           </p>
         </v-expansion-panel-content>
@@ -28,7 +28,12 @@ import moment from "moment";
 export default {
   name: "WeatherAlertsExpansionPanels",
 
-  props: ["weatherAlerts"],
+  props: {
+    weatherAlerts: {
+      type: Array,
+      required: true,
+    },
+  },
 
   methods: {
     convertTime(value) {
@@ -42,5 +47,10 @@ export default {
 .weather-alerts {
   width: 75%;
   margin: 1% auto;
+}
+
+.alert-headline,
+.alert-description {
+  margin-top: 8px;
 }
 </style>

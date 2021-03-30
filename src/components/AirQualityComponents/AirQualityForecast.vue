@@ -1,32 +1,54 @@
 <template>
   <div id="airQualityDisplayPanels">
-    <v-expansion-panels
-      v-for="(daysQualityInfo, index) in airQualityForecast"
-      :key="index"
-      class="air-quality-display-panels"
-      focusable
-      inset
-    >
-      <v-expansion-panel>
+    <v-expansion-panels class="air-quality-display-panels" focusable inset>
+      <v-expansion-panel
+        v-for="(daysQualityInfo, index) in airQualityForecast"
+        :key="index"
+      >
         <v-expansion-panel-header>
           <v-container>
             <v-row>
               <v-col class="text-left">
-                <v-chip outlined :color="`${daysQualityInfo.main.aqi}`">
+                <h4 :class="`${daysQualityInfo.main.aqi}`">
                   {{ formatTime(daysQualityInfo.dt) }}:
-                </v-chip>
+                </h4>
               </v-col>
               <v-col class="text-right">
-                <v-chip :color="`${daysQualityInfo.main.aqi}`">
+                <h4 :class="`${daysQualityInfo.main.aqi}`">
                   {{ daysQualityInfo.main.aqi }}
-                </v-chip>
+                </h4>
               </v-col>
             </v-row>
           </v-container>
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          {{ daysQualityInfo.components }}
+          <div class="components-display">
+            <h5>
+              {{ daysQualityInfo.components.co }}
+            </h5>
+            <h5>
+              {{ daysQualityInfo.components["nh3"] }}
+            </h5>
+            <h5>
+              {{ daysQualityInfo.components.no }}
+            </h5>
+            <h5>
+              {{ daysQualityInfo.components["no2"] }}
+            </h5>
+            <h5>
+              {{ daysQualityInfo.components["o3"] }}
+            </h5>
+            <h5>
+              {{ daysQualityInfo.components["pm10"] }}
+            </h5>
+            <h5>
+              {{ daysQualityInfo.components["pm2_5"] }}
+            </h5>
+            <h5>
+              {{ daysQualityInfo.components["so2"] }}
+            </h5>
+          </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -55,28 +77,38 @@ export default {
 </script>
 
 <style scoped>
-#airQualityDisplayPanels {
+.air-quality-display-panels {
   width: 75%;
-  margin: auto;
+  margin: 1% auto;
 }
 
 .\31 {
-  color: green;
+  background-color: green;
+  color: whitesmoke;
+  padding: 4px;
 }
 
 .\32 {
-  color: yellow;
+  background-color: yellow;
+  padding: 4px;
 }
 
 .\33 {
-  color: orange;
+  background-color: orange;
+  padding: 4px;
 }
 
 .\34 {
   color: red;
+  padding: 4px;
 }
 
 .\35 {
   color: maroon;
+  padding: 4px;
+}
+
+.components-display {
+  margin-top: 8px;
 }
 </style>
