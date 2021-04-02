@@ -9,14 +9,26 @@
           <v-container>
             <v-row>
               <v-col class="text-left">
-                <h4 :class="`${daysQualityInfo.main.aqi}`">
+                <v-btn
+                  :class="`${daysQualityInfo.main.aqi}`"
+                  rounded
+                  text
+                  depressed
+                >
                   {{ formatTime(daysQualityInfo.dt) }}:
-                </h4>
+                </v-btn>
               </v-col>
               <v-col class="text-right">
-                <h4 :class="`${daysQualityInfo.main.aqi}`">
-                  {{ daysQualityInfo.main.aqi }}
-                </h4>
+                <v-btn
+                  :class="`${daysQualityInfo.main.aqi}`"
+                  rounded
+                  text
+                  depressed
+                >
+                  <h4>
+                    {{ daysQualityInfo.main.aqi }}
+                  </h4>
+                </v-btn>
               </v-col>
             </v-row>
           </v-container>
