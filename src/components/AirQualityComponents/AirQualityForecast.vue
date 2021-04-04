@@ -97,27 +97,25 @@ export default {
 .\31 {
   background-color: green;
   color: whitesmoke;
-  padding: 4px;
 }
 
 .\32 {
   background-color: yellow;
-  padding: 4px;
 }
 
 .\33 {
   background-color: orange;
-  padding: 4px;
+  color: whitesmoke;
 }
 
 .\34 {
-  color: red;
-  padding: 4px;
+  background-color: red;
+  color: whitesmoke;
 }
 
 .\35 {
-  color: maroon;
-  padding: 4px;
+  background-color: maroon;
+  color: whitesmoke;
 }
 
 .components-display {
