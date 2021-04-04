@@ -27,14 +27,11 @@
 
 <script>
 import moment from "moment";
-//import NavBarSearchField from "./components/NavComponents/Search";
 
 export default {
   name: "App",
 
-  components: {
-    //NavBarSearchField,
-  },
+  components: {},
 
   data() {
     return {
@@ -88,9 +85,11 @@ export default {
   methods: {
     getBackgroundColor() {
       let now = moment().format("HH:mm");
+
       let sunrise = moment
         .unix(this.allForecasts.current.sunrise)
         .format("HH:mm");
+
       let sunset = moment
         .unix(this.allForecasts.current.sunset)
         .format("HH:mm");

@@ -65,7 +65,9 @@
       </v-card-text>
     </v-card>
 
-    <AirQualityForecastDisplay :airQualityForecast="airQualityForecast.list" />
+    <AirQualityForecastDisplay
+      :airQualityForecast="airQualityForecast.list || []"
+    />
   </div>
 </template>
 
