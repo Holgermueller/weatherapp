@@ -2,7 +2,7 @@
   <div id="airQualityDisplayPanels">
     <v-expansion-panels class="air-quality-display-panels" focusable inset>
       <v-expansion-panel
-        v-for="(daysQualityInfo, index) in filteredOutOlderDays"
+        v-for="(daysQualityInfo, index) in airQualityForecast"
         :key="index"
       >
         <v-expansion-panel-header>
@@ -36,30 +36,53 @@
 
         <v-expansion-panel-content>
           <div class="components-display">
-            <h5>
-              {{ daysQualityInfo.components.co }}
-            </h5>
-            <h5>
-              {{ daysQualityInfo.components["nh3"] }}
-            </h5>
-            <h5>
-              {{ daysQualityInfo.components.no }}
-            </h5>
-            <h5>
-              {{ daysQualityInfo.components["no2"] }}
-            </h5>
-            <h5>
-              {{ daysQualityInfo.components["o3"] }}
-            </h5>
-            <h5>
-              {{ daysQualityInfo.components["pm10"] }}
-            </h5>
-            <h5>
-              {{ daysQualityInfo.components["pm2_5"] }}
-            </h5>
-            <h5>
-              {{ daysQualityInfo.components["so2"] }}
-            </h5>
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components.co }}
+              </h5>
+            </div>
+
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components["nh3"] }}
+              </h5>
+            </div>
+
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components.no }}
+              </h5>
+            </div>
+
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components["no2"] }}
+              </h5>
+            </div>
+
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components["o3"] }}
+              </h5>
+            </div>
+
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components["pm10"] }}
+              </h5>
+            </div>
+
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components["pm2_5"] }}
+              </h5>
+            </div>
+
+            <div class="pollutant-display">
+              <h5 class="pollutant-data">
+                {{ daysQualityInfo.components["so2"] }}
+              </h5>
+            </div>
           </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -84,9 +107,12 @@ export default {
     filteredOutOlderDays() {
       let now = moment();
 
-      return this.airQualityForecast.filter((thisDaysQuality) => {
-        return thisDaysQuality.dt >= now;
+      return this.airQualityForecast.map((oneForecast) => {
+        oneForecast.dt = oneForecast.dt.filter((time) => time >= now);
       });
+      // return this.airQualityForecast.filter((thisDaysQuality) => {
+      //   return thisDaysQuality.dt >= now;
+      // });
     },
   },
 
@@ -130,5 +156,16 @@ export default {
 
 .components-display {
   margin-top: 8px;
+}
+
+.pollutant-display {
+  margin: 8px auto;
+  background-color: chartreuse;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.pollutant-data {
+  padding: 4px;
 }
 </style>
