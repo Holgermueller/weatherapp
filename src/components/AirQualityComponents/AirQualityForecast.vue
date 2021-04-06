@@ -2,7 +2,7 @@
   <div id="airQualityDisplayPanels">
     <v-expansion-panels class="air-quality-display-panels" focusable inset>
       <v-expansion-panel
-        v-for="(daysQualityInfo, index) in airQualityForecast"
+        v-for="(daysQualityInfo, index) in filteredOutOlderDays"
         :key="index"
       >
         <v-expansion-panel-header>
@@ -105,14 +105,11 @@ export default {
 
   computed: {
     filteredOutOlderDays() {
-      let now = moment();
+      let now = moment().unix();
 
-      return this.airQualityForecast.map((oneForecast) => {
-        oneForecast.dt = oneForecast.dt.filter((time) => time >= now);
+      return this.airQualityForecast.filter((thisDaysQuality) => {
+        return thisDaysQuality.dt >= now;
       });
-      // return this.airQualityForecast.filter((thisDaysQuality) => {
-      //   return thisDaysQuality.dt >= now;
-      // });
     },
   },
 
