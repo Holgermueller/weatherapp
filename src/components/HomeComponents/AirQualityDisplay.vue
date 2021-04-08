@@ -2,13 +2,9 @@
   <div :class="`aqi-percentage-visualization ${airQuality.list[0].main.aqi}`">
     <v-card-actions>
       <strong class="aqi-data-displayed">
-        <div v-if="airQuality.list[0].main.aqi == 1">
-          Air Quality: Good
+        <div>
+          Air Quality: {{ convertAQToText(airQuality.list[0].main.aqi) }}
         </div>
-        <div v-if="airQuality.list[0].main.aqi == 2">Air Quality: Fair</div>
-        <div v-if="airQuality.list[0].main.aqi == 3">Air Quality: Bad</div>
-        <div v-if="airQuality.list[0].main.aqi == 4">Air Quality: Worse</div>
-        <div v-if="airQuality.list[0].main.aqi == 5">Air Quality: Worst</div>
       </strong>
 
       <v-spacer></v-spacer>
@@ -28,6 +24,22 @@ export default {
     airQuality: {
       type: Object,
       required: true,
+    },
+  },
+
+  methods: {
+    convertAQToText(value) {
+      if (value === 1) {
+        return "Good";
+      } else if (value === 2) {
+        return "Fair";
+      } else if (value === 3) {
+        return "Bad";
+      } else if (value === 4) {
+        return "Worse";
+      } else {
+        return "Worst";
+      }
     },
   },
 };

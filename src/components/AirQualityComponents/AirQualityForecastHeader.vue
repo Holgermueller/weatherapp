@@ -10,7 +10,7 @@
         <v-col class="text-right">
           <v-btn :class="`${aqi}`" rounded text depressed>
             <h4>
-              {{ aqi }}
+              {{ convertAQToText(aqi) }}
             </h4>
           </v-btn>
         </v-col>
@@ -40,6 +40,20 @@ export default {
   methods: {
     formatTime(value) {
       return moment.unix(value).format("DD MMM LT");
+    },
+
+    convertAQToText(value) {
+      if (value === 1) {
+        return "Good";
+      } else if (value === 2) {
+        return "Fair";
+      } else if (value === 3) {
+        return "Bad";
+      } else if (value === 4) {
+        return "Worse";
+      } else {
+        return "Worst";
+      }
     },
   },
 };
