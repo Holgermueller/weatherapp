@@ -13,55 +13,7 @@
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
-          <div class="components-display">
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components.co }}
-              </h5>
-            </div>
-
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components["nh3"] }}
-              </h5>
-            </div>
-
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components.no }}
-              </h5>
-            </div>
-
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components["no2"] }}
-              </h5>
-            </div>
-
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components["o3"] }}
-              </h5>
-            </div>
-
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components["pm10"] }}
-              </h5>
-            </div>
-
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components["pm2_5"] }}
-              </h5>
-            </div>
-
-            <div class="pollutant-display">
-              <h5 class="pollutant-data">
-                {{ daysQualityInfo.components["so2"] }}
-              </h5>
-            </div>
-          </div>
+          <AQHourlyComponents :HourlyComponents="daysQualityInfo.components" />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -71,12 +23,14 @@
 <script>
 import moment from "moment";
 import AirQualityForecastHeader from "./AirQualityForecastHeader";
+import AQHourlyComponents from "./AQHourlyComponents";
 
 export default {
   name: "AirQualityForecastDisplay",
 
   components: {
     AirQualityForecastHeader,
+    AQHourlyComponents,
   },
 
   props: {
@@ -95,8 +49,6 @@ export default {
       });
     },
   },
-
-  methods: {},
 };
 </script>
 
@@ -108,16 +60,5 @@ export default {
 
 .components-display {
   margin-top: 8px;
-}
-
-.pollutant-display {
-  margin: 8px auto;
-  background-color: chartreuse;
-  text-align: center;
-  border-radius: 15px;
-}
-
-.pollutant-data {
-  padding: 4px;
 }
 </style>
