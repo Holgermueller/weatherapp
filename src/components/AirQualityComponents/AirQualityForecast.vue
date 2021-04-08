@@ -6,32 +6,10 @@
         :key="index"
       >
         <v-expansion-panel-header>
-          <v-container>
-            <v-row>
-              <v-col class="text-left">
-                <v-btn
-                  :class="`${daysQualityInfo.main.aqi}`"
-                  rounded
-                  text
-                  depressed
-                >
-                  {{ formatTime(daysQualityInfo.dt) }}:
-                </v-btn>
-              </v-col>
-              <v-col class="text-right">
-                <v-btn
-                  :class="`${daysQualityInfo.main.aqi}`"
-                  rounded
-                  text
-                  depressed
-                >
-                  <h4>
-                    {{ daysQualityInfo.main.aqi }}
-                  </h4>
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-container>
+          <AirQualityForecastHeader
+            :time="daysQualityInfo.dt"
+            :aqi="daysQualityInfo.main.aqi"
+          />
         </v-expansion-panel-header>
 
         <v-expansion-panel-content>
@@ -92,9 +70,14 @@
 
 <script>
 import moment from "moment";
+import AirQualityForecastHeader from "./AirQualityForecastHeader";
 
 export default {
   name: "AirQualityForecastDisplay",
+
+  components: {
+    AirQualityForecastHeader,
+  },
 
   props: {
     airQualityForecast: {
@@ -113,11 +96,7 @@ export default {
     },
   },
 
-  methods: {
-    formatTime(value) {
-      return moment.unix(value).format("DD MMM LT");
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -125,30 +104,6 @@ export default {
 .air-quality-display-panels {
   width: 75%;
   margin: 1% auto;
-}
-
-.\31 {
-  background-color: green;
-  color: whitesmoke;
-}
-
-.\32 {
-  background-color: yellow;
-}
-
-.\33 {
-  background-color: orange;
-  color: whitesmoke;
-}
-
-.\34 {
-  background-color: red;
-  color: whitesmoke;
-}
-
-.\35 {
-  background-color: maroon;
-  color: whitesmoke;
 }
 
 .components-display {
