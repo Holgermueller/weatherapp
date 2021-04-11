@@ -70,9 +70,9 @@
 import moment from "moment";
 import FahrenheitForecast from "./FahrForecast";
 import CelciusForecast from "./CelciusForecast";
-import AirQualityDisplay from "./AirQualityDisplay";
-import UviInfo from "./UviInfo";
-import SunriseSunsetInfo from "./SunriseSunset";
+import AirQualityDisplay from "./ComponentsForBoth/AirQualityDisplay";
+import UviInfo from "./ComponentsForBoth/UviInfo";
+import SunriseSunsetInfo from "./ComponentsForBoth/SunriseSunset";
 
 export default {
   name: "FahrCelciusTabs",
