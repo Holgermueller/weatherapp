@@ -23,7 +23,7 @@
       </v-container>
     </div>
 
-    <div class="icon-background">
+    <div class="icon-background" :class="getBackgroundColor()">
       <v-img
         class="forecast-icon"
         alt="image"
@@ -68,6 +68,16 @@ export default {
       type: String,
       required: true,
     },
+
+    sunrise: {
+      type: Number,
+      required: true,
+    },
+
+    sunset: {
+      type: Number,
+      required: true,
+    },
   },
 
   methods: {
@@ -82,15 +92,48 @@ export default {
     convertKelvinToCelcius(value) {
       return Math.round(parseFloat(value) - 273.15);
     },
+
+    getBackgroundColor() {
+      let now = moment().format("HH:mm");
+
+      let sunrise = moment.unix(this.sunrise).format("HH:mm");
+
+      let sunset = moment.unix(this.sunset).format("HH:mm");
+
+      if (now == sunrise) {
+        return "dawn-background";
+      } else if (now > sunrise && now < sunset) {
+        return "day-background";
+      } else if (now == sunset) {
+        return "sunset-background";
+      } else {
+        return "night-background";
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
 .icon-background {
-  background-color: #00ebff;
   margin-bottom: 12px;
   border-radius: 15px;
+}
+
+.dawn-background {
+  background-image: linear-gradient(#00faff, #ffcd00);
+}
+
+.day-background {
+  background-color: #00ebff;
+}
+
+.sunset-background {
+  background-image: linear-gradient(#5f0066, m#ff0500);
+}
+
+.night-background {
+  background-color: #280066;
 }
 
 .forecast-icon {

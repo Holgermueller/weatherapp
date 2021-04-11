@@ -21,6 +21,8 @@
             :minTemp="day.temp.min"
             :icon="day.weather[0].icon"
             :description="day.weather[0].description"
+            :sunrise="day.sunrise"
+            :sunset="day.sunset"
           />
 
           <AccummulationDataDisplay
