@@ -17,6 +17,12 @@
         v-for="(hour, index) in hourlyForecast.slice(1, 48)"
         :key="index"
       >
+        <v-card>
+          <v-card-title>
+            <DayDisplayHeader :time="hour.dt" />
+          </v-card-title>
+        </v-card>
+
         <v-expansion-panel-header>
           <template v-slot:default="{ open }">
             <div v-if="open"></div>
@@ -57,6 +63,7 @@
 </template>
 
 <script>
+import DayDisplayHeader from "./DayDisplayHeader";
 import ExpansionPanelHeaderInfo from "./ExpansionPanelHeaderInfo";
 import MainHourlyForecastDisplay from "./MainHourlyForecast";
 import HourlyForecastDataDisplay from "./HourlyForecastDataDisplay";
@@ -67,6 +74,7 @@ export default {
   name: "FirstSevenHours",
 
   components: {
+    DayDisplayHeader,
     ExpansionPanelHeaderInfo,
     MainHourlyForecastDisplay,
     HourlyForecastDataDisplay,
