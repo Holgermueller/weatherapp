@@ -94,6 +94,8 @@ export default {
       return this.$store.getters.loading;
     },
   },
+
+  filterUnique() {},
 };
 </script>
 
