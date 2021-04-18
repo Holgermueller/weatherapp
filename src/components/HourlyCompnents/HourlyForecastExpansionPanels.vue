@@ -14,7 +14,7 @@
 
     <v-expansion-panels class="forecast-display" focusable inset>
       <v-expansion-panel
-        v-for="(hour, index) in hourlyForecast.slice(1, 48)"
+        v-for="(hour, index) in hourlyForecast.slice(1, 14)"
         :key="index"
       >
         <v-card>
