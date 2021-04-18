@@ -17,7 +17,7 @@
         v-for="(hour, index) in hourlyForecast.slice(1, 14)"
         :key="index"
       >
-        <v-card>
+        <v-card v-if="hour.dt" elevation="0">
           <v-card-title>
             <DayDisplayHeader :time="hour.dt" />
           </v-card-title>
@@ -93,9 +93,14 @@ export default {
     loading() {
       return this.$store.getters.loading;
     },
-  },
 
-  filterUnique() {},
+    forecastDuplicateDatesRemoved() {
+      let dates = this.hourlyForecast;
+      let removeDuplicateDates = [...new Set(dates.dt)];
+      console.log(removeDuplicateDates);
+      return removeDuplicateDates;
+    },
+  },
 };
 </script>
 
