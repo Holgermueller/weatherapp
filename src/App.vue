@@ -3,38 +3,56 @@
     <v-app-bar app elevation="0">
       <v-spacer></v-spacer>
 
-      <v-btn elevation="0" text>
-        About
+      <v-btn @click="determineTimeOfDay">
+        Test
       </v-btn>
+      <AboutModal />
     </v-app-bar>
 
-    <v-main class="main-background">
-      <h1>
-        {{ allForecasts }}
-      </h1>
-      <CurrentWeatherDisplay />
-      <HourlyForecastDisplay />
-      <DailyForecastDisplay />
+    <v-main class="main-background" :class="getBackgroundImage()">
+      <CurrentWeatherDisplay :currentWeather="currentWeather" />
     </v-main>
-    <footer>
-      &copy; 2022 Holger Mueller
-    </footer>
+    <v-footer>
+      <h5>
+        &copy; 2022 Holger Mueller
+      </h5>
+      <v-spacer></v-spacer>
+      <h5>
+        <a href="#">
+          <v-icon>
+            mdi-github
+          </v-icon>
+        </a>
+      </h5>
+      <h5>
+        <a href="#">
+          <v-icon>
+            mdi-stack-overflow
+          </v-icon>
+        </a>
+      </h5>
+      <h5>
+        <a href="#">
+          <v-icon>
+            mdi-linkedin
+          </v-icon>
+        </a>
+      </h5>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
 //import moment from "moment";
+import AboutModal from "./components/AboutModal.vue";
 import CurrentWeatherDisplay from "./components/CurrentWeather.vue";
-import HourlyForecastDisplay from "./components/HourlyForecast.vue";
-import DailyForecastDisplay from "./components/DailyForecast.vue";
 
 export default {
   name: "App",
 
   components: {
+    AboutModal,
     CurrentWeatherDisplay,
-    HourlyForecastDisplay,
-    DailyForecastDisplay,
   },
 
   data() {
@@ -44,41 +62,46 @@ export default {
   },
 
   created() {
-    this.$store.dispatch("getForecast").then(() => {
+    this.$store.dispatch("getWeather").then(() => {
       console.log("Forecast fetched!");
     });
   },
 
   computed: {
-    allForecasts() {
-      return this.$store.getters.todaysForecast;
+    currentWeather() {
+      return this.$store.getters.currentWeather;
     },
   },
 
   methods: {
-    // getBackgroundColor() {
-    //   let now = moment().format("HH:mm");
-    //   let sunrise = moment
-    //     .unix(this.allForecasts.current.sunrise)
-    //     .format("HH:mm");
-    //   let sunset = moment
-    //     .unix(this.allForecasts.current.sunset)
-    //     .format("HH:mm");
-    //   if (now == sunrise) {
-    //     return "dawn-background";
-    //   } else if (now > sunrise && now < sunset) {
-    //     return "day-background";
-    //   } else if (now == sunset) {
-    //     return "sunset-background";
-    //   } else {
-    //     return "night-background";
-    //   }
-    // },
+    determineTimeOfDay() {
+      const sunrise = this.currentWeather.sunrise;
+      const sunset = this.currentWeather.sunrise;
+      console.log("click");
+      console.log(sunrise, sunset);
+    },
+
+    getBackgroundImage() {
+      if (this.currentWeather.weather === "Clear") {
+        return "clear-background";
+      } else {
+        return "cloudy-background";
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
+/* Imagesby Pixabay via Pexels.com */
+.cloudy-background {
+  background-image: url("./assets/cloudy.png");
+}
+/*Image by Bri Schneiter via Pexels*/
+.clear-background {
+  background-image: url("./assets/clearsky.png");
+}
+
 .theme--light.v-app-bar.v-toolbar.v-sheet {
   background: transparent;
 }
@@ -97,5 +120,8 @@ export default {
 
 .night-background {
   background-color: #280066;
+}
+a {
+  text-decoration: none;
 }
 </style>

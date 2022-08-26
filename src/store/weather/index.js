@@ -3,27 +3,26 @@ import axios from "axios";
 
 export default {
   state: {
-    todaysForecast: {},
+    currentWeather: {},
   },
 
   mutations: {
-    SET_FORECAST(state, payload) {
-      state.todaysForecast = payload;
+    SET_WEATHER(state, payload) {
+      state.currentWeather = payload;
     },
   },
 
   actions: {
-    getForecast({ commit }) {
+    async getWeather({ commit }) {
       commit("SET_LOADING", true);
 
       const API_KEY = process.env.VUE_APP_API_KEY;
       const REQUEST_URL = process.env.VUE_APP_REQUEST_URL;
 
-      navigator.geolocation.getCurrentPosition(
+      await navigator.geolocation.getCurrentPosition(
         (position) => {
           let lat = position.coords.latitude;
           let long = position.coords.longitude;
-
           let QUERYURL =
             REQUEST_URL +
             "?lat=" +
@@ -37,9 +36,21 @@ export default {
           axios
             .get(QUERYURL)
             .then((response) => {
-              let forecast = response.data;
               console.log(response.data);
-              commit("SET_FORECAST", forecast);
+              let weatherData = {
+                location: response.data.name,
+                temp: response.data.main.temp,
+                feelsLike: response.data.main.feels_like,
+                weather: response.data.weather[0].main,
+                sunrise: response.data.sys.sunrise,
+                sunset: response.data.sys.sunset,
+                humidity: response.data.main.humidity,
+                pressure: response.data.main.pressure,
+                wind: response.data.wind.speed,
+                windDirection: response.data.wind.deg,
+              };
+
+              commit("SET_WEATHER", weatherData);
               commit("SET_LOADING", false);
             })
             .catch((err) => {
@@ -55,8 +66,8 @@ export default {
   },
 
   getters: {
-    todaysForecast(state) {
-      return state.todaysForecast;
+    currentWeather(state) {
+      return state.currentWeather;
     },
   },
 };
