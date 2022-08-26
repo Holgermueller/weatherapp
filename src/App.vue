@@ -9,6 +9,9 @@
     </v-app-bar>
 
     <v-main class="main-background">
+      <h1>
+        {{ allForecasts }}
+      </h1>
       <CurrentWeatherDisplay />
       <HourlyForecastDisplay />
       <DailyForecastDisplay />
@@ -40,7 +43,11 @@ export default {
     };
   },
 
-  created() {},
+  created() {
+    this.$store.dispatch("getForecast").then(() => {
+      console.log("Forecast fetched!");
+    });
+  },
 
   computed: {
     allForecasts() {

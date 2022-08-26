@@ -1,3 +1,4 @@
+require("dotenv").config();
 import axios from "axios";
 
 export default {
@@ -15,12 +16,17 @@ export default {
     getForecast({ commit }) {
       commit("SET_LOADING", true);
 
+      const API_KEY = process.env.VUE_APP_API_KEY;
+      const REQUEST_URL = process.env.VUE_APP_REQUEST_URL;
+
       navigator.geolocation.getCurrentPosition(
         (position) => {
           let lat = position.coords.latitude;
           let long = position.coords.longitude;
+
           let QUERYURL =
-            "" +
+            REQUEST_URL +
+            "?lat=" +
             lat +
             "&lon=" +
             long +
@@ -32,6 +38,7 @@ export default {
             .get(QUERYURL)
             .then((response) => {
               let forecast = response.data;
+              console.log(response.data);
               commit("SET_FORECAST", forecast);
               commit("SET_LOADING", false);
             })
