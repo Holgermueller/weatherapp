@@ -20,13 +20,13 @@ export default {
           let lat = position.coords.latitude;
           let long = position.coords.longitude;
           let QUERYURL =
-            "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+            "" +
             lat +
             "&lon=" +
             long +
             "&exclude=minutely" +
             "&APPID=" +
-            APIKey;
+            API_KEY;
 
           axios
             .get(QUERYURL)
