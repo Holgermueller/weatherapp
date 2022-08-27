@@ -104,6 +104,8 @@ export default {
         return "smoke";
       } else if (this.currentWeather.weather === "Haze") {
         return "haze";
+      } else if (this.currentWeather.weather === "Dust") {
+        return "dust";
       } else {
         return "cloudy-background";
       }
@@ -128,6 +130,8 @@ export default {
         return "smoke";
       } else if (this.currentWeather.weather === "Haze") {
         return "haze";
+      } else if (this.currentWeather.weather === "Dust") {
+        return "dust";
       } else {
         return "cloudy-night";
       }
@@ -195,6 +199,10 @@ export default {
 /* Johannes Plenio-Pexels */
 .haze {
   background-image: url("./assets/haze.png");
+}
+/* Cristiana Bonzanini - Pexels */
+.dust {
+  background-image: url("./assets/dust.png");
 }
 a {
   text-decoration: none;
