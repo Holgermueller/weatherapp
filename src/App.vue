@@ -110,6 +110,8 @@ export default {
         return "fog";
       } else if (this.currentWeather.weather === "Sand") {
         return "sand";
+      } else if (this.currentWeather.weather === "Squall") {
+        return "squall";
       } else {
         return "cloudy-background";
       }
@@ -140,6 +142,8 @@ export default {
         return "fog";
       } else if (this.currentWeather.weather === "Sand") {
         return "sand";
+      } else if (this.currentWeather.weather === "Squall") {
+        return "squall";
       } else {
         return "cloudy-night";
       }
@@ -219,6 +223,10 @@ export default {
 /* Emiliano Arano - Pexels */
 .sand {
   background-image: url("./assets/sand.png");
+}
+/* Greg via Pexels */
+.squall {
+  background-image: url("./assets/squall.png");
 }
 a {
   text-decoration: none;
