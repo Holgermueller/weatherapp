@@ -106,6 +106,8 @@ export default {
         return "haze";
       } else if (this.currentWeather.weather === "Dust") {
         return "dust";
+      } else if (this.currentWeather.weather === "Fog") {
+        return "fog";
       } else {
         return "cloudy-background";
       }
@@ -132,6 +134,8 @@ export default {
         return "haze";
       } else if (this.currentWeather.weather === "Dust") {
         return "dust";
+      } else if (this.currentWeather.weather === "Fog") {
+        return "fog";
       } else {
         return "cloudy-night";
       }
@@ -203,6 +207,10 @@ export default {
 /* Cristiana Bonzanini - Pexels */
 .dust {
   background-image: url("./assets/dust.png");
+}
+/* Pixabay - Pexels */
+.fog {
+  background-image: url("./assets/fog.png");
 }
 a {
   text-decoration: none;
