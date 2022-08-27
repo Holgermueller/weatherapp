@@ -3,9 +3,6 @@
     <v-app-bar app elevation="0">
       <v-spacer></v-spacer>
 
-      <v-btn @click="determineTimeOfDay">
-        Test
-      </v-btn>
       <AboutModal />
     </v-app-bar>
 
@@ -43,7 +40,7 @@
 </template>
 
 <script>
-//import moment from "moment";
+import moment from "moment";
 import AboutModal from "./components/AboutModal.vue";
 import CurrentWeatherDisplay from "./components/CurrentWeather.vue";
 
@@ -53,12 +50,6 @@ export default {
   components: {
     AboutModal,
     CurrentWeatherDisplay,
-  },
-
-  data() {
-    return {
-      menuLinks: [],
-    };
   },
 
   created() {
@@ -74,18 +65,43 @@ export default {
   },
 
   methods: {
-    determineTimeOfDay() {
-      const sunrise = this.currentWeather.sunrise;
-      const sunset = this.currentWeather.sunrise;
-      console.log("click");
-      console.log(sunrise, sunset);
+    isNight() {
+      const now = moment().format("HH:mm");
+      const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+      const sunset = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+
+      if (now < sunset && now > sunrise) {
+        console.log(false);
+      } else {
+        console.log(true);
+      }
     },
 
     getBackgroundImage() {
-      if (this.currentWeather.weather === "Clear") {
+      const now = moment().format("HH:mm");
+      const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+      const sunset = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+
+      if (
+        now < sunset &&
+        now > sunrise &&
+        this.currentWeather.weather === "Clear"
+      ) {
+        return "night-sky";
+      } else if (
+        now < sunset &&
+        now > sunrise &&
+        this.currentWeather.weather === "Clear"
+      ) {
         return "clear-background";
+      } else if (
+        now < sunset &&
+        now > sunrise &&
+        this.currentWeather.weather === "Cloudy"
+      ) {
+        return "cloudy-night";
       } else {
-        return "cloudy-background";
+        return "night-sky";
       }
     },
   },
@@ -93,7 +109,10 @@ export default {
 </script>
 
 <style scoped>
-/* Imagesby Pixabay via Pexels.com */
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background: transparent;
+}
+/* Image by Pixabay via Pexels.com */
 .cloudy-background {
   background-image: url("./assets/cloudy.png");
 }
@@ -101,26 +120,15 @@ export default {
 .clear-background {
   background-image: url("./assets/clearsky.png");
 }
-
-.theme--light.v-app-bar.v-toolbar.v-sheet {
-  background: transparent;
+/* Image by Pixabay via Pexels.com */
+.night-sky {
+  background-image: url("./assets/nightsky.png");
+}
+/* Image by Pixabay via Pexels.com */
+.cloudy-night {
+  background-image: url("./assets/cloudynight.png");
 }
 
-.dawn-background {
-  background-image: linear-gradient(#00faff, #ffcd00);
-}
-
-.day-background {
-  background-color: #00ebff;
-}
-
-.sunset-background {
-  background-image: linear-gradient(#5f0066, m#ff0500);
-}
-
-.night-background {
-  background-color: #280066;
-}
 a {
   text-decoration: none;
 }
