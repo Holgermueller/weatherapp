@@ -108,6 +108,8 @@ export default {
         return "dust";
       } else if (this.currentWeather.weather === "Fog") {
         return "fog";
+      } else if (this.currentWeather.weather === "Sand") {
+        return "sand";
       } else {
         return "cloudy-background";
       }
@@ -136,6 +138,8 @@ export default {
         return "dust";
       } else if (this.currentWeather.weather === "Fog") {
         return "fog";
+      } else if (this.currentWeather.weather === "Sand") {
+        return "sand";
       } else {
         return "cloudy-night";
       }
@@ -211,6 +215,10 @@ export default {
 /* Pixabay - Pexels */
 .fog {
   background-image: url("./assets/fog.png");
+}
+/* Emiliano Arano - Pexels */
+.sand {
+  background-image: url("./assets/sand.png");
 }
 a {
   text-decoration: none;
