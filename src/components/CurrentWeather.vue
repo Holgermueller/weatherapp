@@ -25,18 +25,34 @@
                 Feels like: {{ currentWeather.feelsLike | convertToF }}&deg; F /
                 {{ currentWeather.feelsLike | convertToC }}&deg; C
               </h2>
+
               <hr class="my-4" />
-              <h4>
-                Pressure: {{ currentWeather.pressure | convertPressure }} in.
-              </h4>
-              <h4>Humidity: {{ currentWeather.humidity }}&#x25;</h4>
 
-              <div class="wind-data">
-                <h4>Winds: {{ currentWeather.wind | convertWindToMPH }} mph</h4>
+              <div class="v-container">
+                <v-row>
+                  <v-col>
+                    <div class="other-data">
+                      <h4>
+                        Pressure:
+                        {{ currentWeather.pressure | convertPressure }} in.
+                      </h4>
+                      <h4>Humidity: {{ currentWeather.humidity }}&#x25;</h4>
+                    </div>
+                  </v-col>
+                  <v-col>
+                    <div class="wind-data">
+                      <h4>
+                        Winds: {{ currentWeather.wind | convertWindToMPH }} mph
+                      </h4>
 
-                <h4>
-                  {{ currentWeather.windDirection | convertWindDirection }}
-                </h4>
+                      <h4>
+                        {{
+                          currentWeather.windDirection | convertWindDirection
+                        }}
+                      </h4>
+                    </div>
+                  </v-col>
+                </v-row>
               </div>
             </v-card-text>
           </v-card>
