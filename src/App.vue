@@ -100,6 +100,10 @@ export default {
         return "snowy-day";
       } else if (this.currentWeather.weather === "Mist") {
         return "mist";
+      } else if (this.currentWeather.weather === "Smoke") {
+        return "smoke";
+      } else if (this.currentWeather.weather === "Haze") {
+        return "haze";
       } else {
         return "cloudy-background";
       }
@@ -120,6 +124,10 @@ export default {
         return "snowy-night";
       } else if (this.currentWeather.weather === "Mist") {
         return "mist";
+      } else if (this.currentWeather.weather === "Smoke") {
+        return "smoke";
+      } else if (this.currentWeather.weather === "Haze") {
+        return "haze";
       } else {
         return "cloudy-night";
       }
@@ -176,8 +184,17 @@ export default {
 .snowy-night {
   background-image: url("./assets/snowynight.png");
 }
+/*Karol Wisniewski-Pexels*/
 .mist {
   background-image: url("./assets/mist.png");
+}
+/* Pixabay-Pexels */
+.smoke {
+  background-image: url("./assets/smoke.png");
+}
+/* Johannes Plenio-Pexels */
+.haze {
+  background-image: url("./assets/haze.png");
 }
 a {
   text-decoration: none;
