@@ -36,7 +36,7 @@ export default {
           axios
             .get(QUERYURL)
             .then((response) => {
-              console.log(response.data);
+              console.log("Forecast received!");
               let weatherData = {
                 location: response.data.name,
                 temp: response.data.main.temp,

@@ -46,6 +46,7 @@
                       </h4>
 
                       <h4>
+                        Direction:
                         {{
                           currentWeather.windDirection | convertWindDirection
                         }}

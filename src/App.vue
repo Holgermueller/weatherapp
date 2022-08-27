@@ -6,8 +6,10 @@
       <AboutModal />
     </v-app-bar>
 
-    <v-main class="main-background" :class="getBackgroundImage()">
-      <CurrentWeatherDisplay :currentWeather="currentWeather" />
+    <v-main class="main-background" :class="isNight()">
+      <LoadingCard v-if="loading" />
+
+      <CurrentWeatherDisplay v-else :currentWeather="currentWeather" />
     </v-main>
     <v-footer>
       <h5>
@@ -42,6 +44,7 @@
 <script>
 import moment from "moment";
 import AboutModal from "./components/AboutModal.vue";
+import LoadingCard from "./components/LoadingCard.vue";
 import CurrentWeatherDisplay from "./components/CurrentWeather.vue";
 
 export default {
@@ -49,6 +52,7 @@ export default {
 
   components: {
     AboutModal,
+    LoadingCard,
     CurrentWeatherDisplay,
   },
 
@@ -62,6 +66,10 @@ export default {
     currentWeather() {
       return this.$store.getters.currentWeather;
     },
+
+    loading() {
+      return this.$store.getters.loading;
+    },
   },
 
   methods: {
@@ -71,37 +79,29 @@ export default {
       const sunset = moment.unix(this.currentWeather.sunrise).format("HH:mm");
 
       if (now < sunset && now > sunrise) {
-        console.log(false);
+        return this.getNightBackgroundImage();
       } else {
-        console.log(true);
+        return this.getDayBackgroundImage();
       }
     },
 
-    getBackgroundImage() {
-      const now = moment().format("HH:mm");
-      const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
-      const sunset = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+    getDayBackgroundImage() {
+      console.log("Day");
 
-      if (
-        now < sunset &&
-        now > sunrise &&
-        this.currentWeather.weather === "Clear"
-      ) {
-        return "night-sky";
-      } else if (
-        now < sunset &&
-        now > sunrise &&
-        this.currentWeather.weather === "Clear"
-      ) {
+      if (this.currentWeather.weather === "Clear") {
         return "clear-background";
-      } else if (
-        now < sunset &&
-        now > sunrise &&
-        this.currentWeather.weather === "Cloudy"
-      ) {
-        return "cloudy-night";
       } else {
+        return "cloudy-background";
+      }
+    },
+
+    getNightBackgroundImage() {
+      console.log("night");
+
+      if (this.currentWeather.weather === "Clear") {
         return "night-sky";
+      } else {
+        return "cloudy-night";
       }
     },
   },
