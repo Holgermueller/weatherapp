@@ -98,6 +98,8 @@ export default {
         return "rainy-day";
       } else if (this.currentWeather.weather === "Snow") {
         return "snowy-day";
+      } else if (this.currentWeather.weather === "Mist") {
+        return "mist";
       } else {
         return "cloudy-background";
       }
@@ -116,6 +118,8 @@ export default {
         return "rainy-night";
       } else if (this.currentWeather.weather === "Snow") {
         return "snowy-night";
+      } else if (this.currentWeather.weather === "Mist") {
+        return "mist";
       } else {
         return "cloudy-night";
       }
@@ -171,6 +175,9 @@ export default {
 /* Image eberhard grossgasteiger via Pexels */
 .snowy-night {
   background-image: url("./assets/snowynight.png");
+}
+.mist {
+  background-image: url("./assets/mist.png");
 }
 a {
   text-decoration: none;
