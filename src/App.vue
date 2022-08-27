@@ -114,6 +114,8 @@ export default {
         return "squall";
       } else if (this.currentWeather.weather === "Tornado") {
         return "tornado";
+      } else if (this.currentWeather.weather === "Ash") {
+        return "ash";
       } else {
         return "cloudy-background";
       }
@@ -148,6 +150,8 @@ export default {
         return "squall";
       } else if (this.currentWeather.weather === "Tornado") {
         return "tornado";
+      } else if (this.currentWeather.weather === "Ash") {
+        return "ash";
       } else {
         return "cloudy-night";
       }
@@ -235,6 +239,10 @@ export default {
 /* Ralph W.Iambrecht - Pexels */
 .tornado {
   background-image: url("./assets/tornado.png");
+}
+/* Pixabay - Pexels */
+.ash {
+  background-image: url("./assets/ash.png");
 }
 a {
   text-decoration: none;
