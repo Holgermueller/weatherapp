@@ -90,6 +90,14 @@ export default {
 
       if (this.currentWeather.weather === "Clear") {
         return "clear-background";
+      } else if (this.currentWeather.weather === "Thunderstorm") {
+        return "thunder-day";
+      } else if (this.currentWeather.weather === "Drizzle") {
+        return "drizzle";
+      } else if (this.currentWeather.weather === "Rain") {
+        return "rainy-day";
+      } else if (this.currentWeather.weather === "Snow") {
+        return "snowy-day";
       } else {
         return "cloudy-background";
       }
@@ -100,6 +108,14 @@ export default {
 
       if (this.currentWeather.weather === "Clear") {
         return "night-sky";
+      } else if (this.currentWeather.weather === "Thunderstorm") {
+        return "thunder-night";
+      } else if (this.currentWeather.weather === "Drizzle") {
+        return "drizzle";
+      } else if (this.currentWeather.weather === "Rain") {
+        return "rainy-night";
+      } else if (this.currentWeather.weather === "Snow") {
+        return "snowy-night";
       } else {
         return "cloudy-night";
       }
@@ -128,7 +144,34 @@ export default {
 .cloudy-night {
   background-image: url("./assets/cloudynight.png");
 }
-
+/* Image by Frank Cone via Pexels,com */
+.thunder-night {
+  background-image: url("./assets/thundernight.png");
+}
+/* image by john mckenna via Pexels.com */
+.thunder-day {
+  background-image: url("./assets/thunderday.png");
+}
+/*Image by Matheus Natan via Pexels.com*/
+.drizzle {
+  background-image: url("./assets/drizzle.png");
+}
+/*Image by Pixaby via Pexels.com*/
+.rainy-day {
+  background-image: url("./assets/rainyday.png");
+}
+/* Image by Ave Calvar Martinez via Pexels.com */
+.rainy-night {
+  background-image: url("./assets/rainynight.png");
+}
+/*Image Simon Berger via Pexels*/
+.snowy-day {
+  background-image: url("./assets/snowyday.png");
+}
+/* Image eberhard grossgasteiger via Pexels */
+.snowy-night {
+  background-image: url("./assets/snowynight.png");
+}
 a {
   text-decoration: none;
 }
