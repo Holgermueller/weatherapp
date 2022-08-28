@@ -57,7 +57,7 @@ export default {
   },
 
   created() {
-    this.$store.dispatch("getWeather").then(() => {
+    this.$store.dispatch("getWeatherOnLoad").then(() => {
       console.log("Forecast fetched!");
     });
   },
@@ -195,10 +195,12 @@ export default {
 /*Image by Pixaby via Pexels.com*/
 .rainy-day {
   background-image: url("./assets/rainyday.png");
+  background-size: cover;
 }
 /* Image by Ave Calvar Martinez via Pexels.com */
 .rainy-night {
   background-image: url("./assets/rainynight.png");
+  background-size: cover;
 }
 /*Image Simon Berger via Pexels*/
 .snowy-day {
@@ -219,14 +221,17 @@ export default {
 /* Johannes Plenio-Pexels */
 .haze {
   background-image: url("./assets/haze.png");
+  background-size: cover;
 }
 /* Cristiana Bonzanini - Pexels */
 .dust {
   background-image: url("./assets/dust.png");
+  background-size: cover;
 }
 /* Pixabay - Pexels */
 .fog {
   background-image: url("./assets/fog.png");
+  background-size: cover;
 }
 /* Emiliano Arano - Pexels */
 .sand {

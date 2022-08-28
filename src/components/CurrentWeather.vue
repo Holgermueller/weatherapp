@@ -4,14 +4,12 @@
       <v-row>
         <v-col>
           <v-card elevation="0" class="weather-display">
-            <v-card-title>
-              <h2 class="ma-auto display-2">
+            <v-card-text>
+              <SearchField />
+              <h2 class="text-center display-2 my-4">
                 Weather in {{ currentWeather.location }}
               </h2>
               <hr />
-            </v-card-title>
-
-            <v-card-text>
               <h2 class="text-center display-3 ma-4">
                 {{ currentWeather.weather }}
               </h2>
@@ -64,8 +62,15 @@
 </template>
 
 <script>
+import SearchField from "./SearchField.vue";
+
 export default {
   name: "CurrentWeatherDisplay",
+
+  components: {
+    SearchField,
+  },
+
   props: {
     currentWeather: {
       type: Object,

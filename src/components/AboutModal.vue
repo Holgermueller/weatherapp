@@ -2,7 +2,7 @@
   <div id="AboutModal">
     <v-dialog v-model="dialog" width="500">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn elevation="0" text v-bind="attrs" v-on="on"> ABOUT</v-btn>
+        <v-btn elevation="0" v-bind="attrs" v-on="on"> ABOUT</v-btn>
       </template>
 
       <v-card>
@@ -10,8 +10,23 @@
           <h1>About this app</h1>
         </v-card-title>
         <v-card-text>
-          <h1>About this app</h1>
+          <br />
+          <hr />
+          <br />
+          <p class="body-1">
+            This app fetches data from the OpenWeatherAPI. On loading, it grabs
+            the current weather conditions of the user's immediate location, via
+            geolocation.
+          </p>
+
+          <p class="body-1">
+            The background image displayed is conditional, depending on current
+            weather conditions.
+          </p>
         </v-card-text>
+        <v-card-actions>
+          <v-btn @click="closeDialog">Close</v-btn>
+        </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
@@ -24,6 +39,12 @@ export default {
   data: () => ({
     dialog: false,
   }),
+
+  methods: {
+    closeDialog() {
+      this.dialog = false;
+    },
+  },
 };
 </script>
 
