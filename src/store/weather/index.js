@@ -56,7 +56,7 @@ export default {
             })
             .catch((err) => {
               console.log(err);
-              commit("SET_ERROR", err.message);
+              commit("SET_ERROR", err);
               commit("SET_LOADING", true);
             });
         },
@@ -103,10 +103,14 @@ export default {
           commit("SET_LOADING", false);
         })
         .catch((err) => {
-          console.log(err);
-          console.log(err.message);
-          commit("SET_ERROR", err.message);
-          commit("SET_LOADING", true);
+          const errorMessage = {
+            message: err.message,
+            errorLocation: payload.cityToSearch,
+          };
+          console.log(errorMessage);
+
+          commit("SET_ERROR", errorMessage);
+          commit("SET_LOADING", false);
         });
     },
   },

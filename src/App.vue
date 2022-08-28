@@ -8,7 +8,7 @@
 
     <v-main class="main-background" :class="isNight()">
       <LoadingCard v-if="loading" />
-
+      <ErrorCard v-else-if="error" />
       <CurrentWeatherDisplay v-else :currentWeather="currentWeather" />
     </v-main>
     <v-footer>
@@ -44,6 +44,7 @@
 <script>
 import moment from "moment";
 import AboutModal from "./components/AboutModal.vue";
+import ErrorCard from "./components/ErrorCard.vue";
 import LoadingCard from "./components/LoadingCard.vue";
 import CurrentWeatherDisplay from "./components/CurrentWeather.vue";
 
@@ -52,6 +53,7 @@ export default {
 
   components: {
     AboutModal,
+    ErrorCard,
     LoadingCard,
     CurrentWeatherDisplay,
   },
@@ -69,6 +71,10 @@ export default {
 
     loading() {
       return this.$store.getters.loading;
+    },
+
+    error() {
+      return this.$store.getters.error;
     },
   },
 
