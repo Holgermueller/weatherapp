@@ -75,10 +75,10 @@ export default {
   methods: {
     isNight() {
       const now = moment().format("HH:mm");
-      const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+      //const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
       const sunset = moment.unix(this.currentWeather.sunrise).format("HH:mm");
 
-      if (now < sunset && now > sunrise) {
+      if (now > sunset) {
         return this.getNightBackgroundImage();
       } else {
         return this.getDayBackgroundImage();
@@ -122,7 +122,7 @@ export default {
     },
 
     getNightBackgroundImage() {
-      console.log("night");
+      console.log("Night");
 
       if (this.currentWeather.weather === "Clear") {
         return "night-sky";
@@ -183,6 +183,7 @@ export default {
 /* Image by Frank Cone via Pexels,com */
 .thunder-night {
   background-image: url("./assets/thundernight.png");
+  background-size: cover;
 }
 /* image by john mckenna via Pexels.com */
 .thunder-day {

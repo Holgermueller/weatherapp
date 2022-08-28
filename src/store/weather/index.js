@@ -15,6 +15,7 @@ export default {
   actions: {
     async getWeatherOnLoad({ commit }) {
       commit("SET_LOADING", true);
+      commit("SET_ERROR", "");
 
       const API_KEY = process.env.VUE_APP_API_KEY;
       const REQUEST_URL = process.env.VUE_APP_REQUEST_URL;
@@ -55,6 +56,7 @@ export default {
             })
             .catch((err) => {
               console.log(err);
+              commit("SET_ERROR", err.message);
               commit("SET_LOADING", true);
             });
         },
@@ -67,6 +69,7 @@ export default {
     async getWeatherOnClick({ commit }, payload) {
       commit("SET_WEATHER", {});
       commit("SET_LOADING", true);
+      commit("SET_ERROR", "");
 
       const API_KEY = process.env.VUE_APP_API_KEY;
       const REQUEST_URL = process.env.VUE_APP_REQUEST_URL;
@@ -102,6 +105,7 @@ export default {
         .catch((err) => {
           console.log(err);
           console.log(err.message);
+          commit("SET_ERROR", err.message);
           commit("SET_LOADING", true);
         });
     },
