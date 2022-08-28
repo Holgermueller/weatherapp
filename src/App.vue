@@ -81,13 +81,17 @@ export default {
   methods: {
     isNight() {
       const now = moment().format("HH:mm");
-      //const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
-      const sunset = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+      const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
+      const sunset = moment.unix(this.currentWeather.sunset).format("HH:mm");
 
-      if (now > sunset) {
+      console.log(now, sunrise, sunset);
+
+      if (now < sunrise && now < sunset) {
+        return this.getDayBackgroundImage();
+      } else if (sunset < now && now < sunrise) {
         return this.getNightBackgroundImage();
       } else {
-        return this.getDayBackgroundImage();
+        return "clear-background";
       }
     },
 

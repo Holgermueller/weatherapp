@@ -20,6 +20,7 @@
                 class="primary--text"
                 :width="10"
                 :size="350"
+                rotate="180"
               ></v-progress-circular
             ></v-progress-circular>
           </v-flex>
