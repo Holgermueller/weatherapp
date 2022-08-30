@@ -6,6 +6,7 @@
           <v-card elevation="0" class="weather-display">
             <v-card-text>
               <SearchField />
+
               <h2 class="text-center display-2 my-4">
                 Weather in {{ currentWeather.location }},
                 {{ currentWeather.country | getCountryName }}

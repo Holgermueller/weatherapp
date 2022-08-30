@@ -1,9 +1,9 @@
 <template>
   <div id="SearchField">
-    <v-form @keyup.native.enter="getWeather" class="form" ref="form">
-      <v-container>
-        <v-row>
-          <v-col cols="10">
+    <v-form @keyup.enter="checkForm" class="form" ref="form">
+      <v-container fluid>
+        <v-layout row wrap>
+          <v-flex xs7 md10 lg10 xl10>
             <v-text-field
               v-model="cityToSearch"
               class="search-field"
@@ -13,12 +13,14 @@
               clearable
               dense
               full-width
-            ></v-text-field>
-          </v-col>
-          <v-col cols="2">
-            <v-btn class="submit" @click.prevent="checkForm">Submit</v-btn>
-          </v-col>
-        </v-row>
+            ></v-text-field
+          ></v-flex>
+          <v-flex xs4 md2 lg2 xl2>
+            <v-btn color="primary" class="submit" @click.prevent="checkForm"
+              >Submit</v-btn
+            >
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-form>
     <strong>{{ emptyFieldMessage }}</strong>
@@ -69,7 +71,6 @@ export default {
 .form {
   width: 100%;
 }
-
 .submit {
   float: right;
 }

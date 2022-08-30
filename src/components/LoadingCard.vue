@@ -11,13 +11,13 @@
           <v-flex class="ma-auto">
             <v-progress-circular
               indeterminate
-              class="primary--text"
+              class="primary--text outer-loading"
               :width="10"
               :size="400"
             >
               <v-progress-circular
                 indeterminate
-                class="primary--text"
+                class="primary--text inner-loading"
                 :width="10"
                 :size="350"
                 rotate="180"
@@ -46,5 +46,19 @@ export default {
 #loadingCard {
   width: 75%;
   margin: auto;
+}
+
+@media (max-width: 414px) {
+  .v-application .display-4 {
+    font-size: 2.5rem !important;
+  }
+
+  .outer-loading {
+    size: 30px;
+  }
+
+  .inner-loading {
+    size: 25px;
+  }
 }
 </style>

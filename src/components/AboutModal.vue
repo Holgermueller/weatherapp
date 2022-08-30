@@ -29,6 +29,12 @@
             location on the globe. By that, I mean, for example, entering
             Athens, Georgia will grab the weather data for Athens, Greece.
           </p>
+
+          <p class="body-1">
+            Sometimes it will return seemingly strange data. By that I mean,
+            searching Dublin will return a Dublin in the United States, and not
+            Dublin, Ireland.
+          </p>
         </v-card-text>
         <v-card-actions>
           <v-btn @click="closeDialog">Close</v-btn>
