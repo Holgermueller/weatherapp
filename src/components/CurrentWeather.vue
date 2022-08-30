@@ -153,4 +153,10 @@ export default {
     font-weight: bold;
   }
 }
+
+@media (max-width: 1180px) {
+  .weather-display {
+    width: 85%;
+  }
+}
 </style>

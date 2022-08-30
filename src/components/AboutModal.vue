@@ -23,6 +23,12 @@
             The background image displayed is conditional, depending on current
             weather conditions.
           </p>
+
+          <p class="body-1">
+            Unfortunately, the API is limited and does not recognize every
+            location on the globe. By that, I mean, for example, entering
+            Athens, Georgia will grab the weather data for Athens, Greece.
+          </p>
         </v-card-text>
         <v-card-actions>
           <v-btn @click="closeDialog">Close</v-btn>
