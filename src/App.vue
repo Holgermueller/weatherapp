@@ -6,7 +6,7 @@
       <AboutModal />
     </v-app-bar>
 
-    <v-main class="main-background" :class="isNight()">
+    <v-main class="main-background" :class="getBackgroundImage()">
       <LoadingCard v-if="loading" />
       <ErrorCard v-else-if="error" />
       <CurrentWeatherDisplay v-else :currentWeather="currentWeather" />
@@ -79,6 +79,40 @@ export default {
   },
 
   methods: {
+    getBackgroundImage() {
+      if (this.currentWeather.weather === "Clear") {
+        return "clear-background";
+      } else if (this.currentWeather.weather === "Thunderstorm") {
+        return "thunder-day";
+      } else if (this.currentWeather.weather === "Drizzle") {
+        return "drizzle";
+      } else if (this.currentWeather.weather === "Rain") {
+        return "rainy-day";
+      } else if (this.currentWeather.weather === "Snow") {
+        return "snowy-day";
+      } else if (this.currentWeather.weather === "Mist") {
+        return "mist";
+      } else if (this.currentWeather.weather === "Smoke") {
+        return "smoke";
+      } else if (this.currentWeather.weather === "Haze") {
+        return "haze";
+      } else if (this.currentWeather.weather === "Dust") {
+        return "dust";
+      } else if (this.currentWeather.weather === "Fog") {
+        return "fog";
+      } else if (this.currentWeather.weather === "Sand") {
+        return "sand";
+      } else if (this.currentWeather.weather === "Squall") {
+        return "squall";
+      } else if (this.currentWeather.weather === "Tornado") {
+        return "tornado";
+      } else if (this.currentWeather.weather === "Ash") {
+        return "ash";
+      } else {
+        return "cloudy-background";
+      }
+    },
+
     isNight() {
       const now = moment().format("HH:mm");
       const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
@@ -224,6 +258,7 @@ export default {
 /*Karol Wisniewski-Pexels*/
 .mist {
   background-image: url("./assets/mist.png");
+  background-size: cover;
 }
 /* Pixabay-Pexels */
 .smoke {
