@@ -54,9 +54,9 @@
                   </v-col>
                 </v-row>
               </div>
-              <div>
+              <!-- <div>
                 {{ currentWeather.timezone }}
-              </div>
+              </div> -->
             </v-card-text>
           </v-card>
         </v-col>
@@ -138,5 +138,19 @@ export default {
 }
 .wind-data {
   text-align: right;
+}
+
+@media (max-width: 414px) {
+  .v-application .display-4 {
+    font-size: 2.5rem !important;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 720px) {
+  .v-application .display-4 {
+    font-size: 2rem !important;
+    font-weight: bold;
+  }
 }
 </style>
