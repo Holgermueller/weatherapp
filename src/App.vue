@@ -84,9 +84,9 @@ export default {
       const sunrise = moment.unix(this.currentWeather.sunrise).format("HH:mm");
       const sunset = moment.unix(this.currentWeather.sunset).format("HH:mm");
 
-      console.log(now, sunrise, sunset);
+      console.log(sunrise, now, sunset);
 
-      if (now < sunrise && now < sunset) {
+      if (sunrise < now && now < sunset) {
         return this.getDayBackgroundImage();
       } else if (sunset < now && now < sunrise) {
         return this.getNightBackgroundImage();
@@ -228,6 +228,7 @@ export default {
 /* Pixabay-Pexels */
 .smoke {
   background-image: url("./assets/smoke.png");
+  background-size: cover;
 }
 /* Johannes Plenio-Pexels */
 .haze {

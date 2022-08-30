@@ -49,6 +49,8 @@ export default {
                 pressure: response.data.main.pressure,
                 wind: response.data.wind.speed,
                 windDirection: response.data.wind.deg,
+                timezone: response.data.timezone,
+                country: response.data.sys.country,
               };
 
               commit("SET_WEATHER", weatherData);
@@ -97,7 +99,11 @@ export default {
             pressure: response.data.main.pressure,
             wind: response.data.wind.speed,
             windDirection: response.data.wind.deg,
+            timezone: response.data.timezone,
+            country: response.data.sys.country,
           };
+
+          console.log(weatherData);
 
           commit("SET_WEATHER", weatherData);
           commit("SET_LOADING", false);

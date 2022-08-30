@@ -7,7 +7,8 @@
             <v-card-text>
               <SearchField />
               <h2 class="text-center display-2 my-4">
-                Weather in {{ currentWeather.location }}
+                Weather in {{ currentWeather.location }},
+                {{ currentWeather.country | getCountryName }}
               </h2>
               <hr />
               <h2 class="text-center display-3 ma-4">
@@ -53,6 +54,9 @@
                   </v-col>
                 </v-row>
               </div>
+              <div>
+                {{ currentWeather.timezone }}
+              </div>
             </v-card-text>
           </v-card>
         </v-col>
@@ -78,6 +82,11 @@ export default {
   },
 
   filters: {
+    getCountryName(data) {
+      const displayName = new Intl.DisplayNames(["en"], { type: "region" });
+      return displayName.of(data);
+    },
+
     convertToF(data) {
       return Math.ceil(((data - 273.15) * 9) / 5 + 32);
     },
