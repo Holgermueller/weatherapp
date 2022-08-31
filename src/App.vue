@@ -12,31 +12,40 @@
       <CurrentWeatherDisplay v-else :currentWeather="currentWeather" />
     </v-main>
     <v-footer>
-      <h5>
-        &copy; 2022 Holger Mueller
-      </h5>
+      <strong>
+        &copy; 2022 Holger Mueller |
+        <a href="https://github.com/Holgermueller/weatherapp" target="_blank"
+          >Repo</a
+        >
+      </strong>
       <v-spacer></v-spacer>
-      <h5>
-        <a href="#">
+      <strong>
+        <a href="https://github.com/Holgermueller" target="_blank">
           <v-icon>
             mdi-github
           </v-icon>
         </a>
-      </h5>
-      <h5>
-        <a href="#">
+      </strong>
+      <strong>
+        <a
+          href="https://stackoverflow.com/users/9111512/holger-mueller?tab=profile"
+          target="_blank"
+        >
           <v-icon>
             mdi-stack-overflow
           </v-icon>
         </a>
-      </h5>
-      <h5>
-        <a href="#">
+      </strong>
+      <strong>
+        <a
+          href="https://www.linkedin.com/in/holger-mueller-75855114a/"
+          target="_blank"
+        >
           <v-icon>
             mdi-linkedin
           </v-icon>
         </a>
-      </h5>
+      </strong>
     </v-footer>
   </v-app>
 </template>
