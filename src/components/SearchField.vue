@@ -1,6 +1,6 @@
 <template>
   <div id="SearchField">
-    <v-form @keyup.enter="checkForm" class="form" ref="form">
+    <v-form @keyup.enter="checkForm" id="searchForm" class="form" ref="form">
       <v-container fluid>
         <v-layout row wrap>
           <v-flex xs7 md10 lg10 xl10>
@@ -39,7 +39,7 @@ export default {
     checkForm() {
       if (this.cityToSearch === "") {
         this.emptyFieldMessage =
-          "Oops, looks like you forgot to fill out the field!";
+          "Oops, looks like you forgot to fill out the text field!";
       } else {
         this.getWeather();
       }
@@ -71,9 +71,11 @@ export default {
 .form {
   width: 100%;
 }
+
 .submit {
   float: right;
 }
+
 strong {
   color: red;
 }
